@@ -1,5 +1,7 @@
 {
   "name": "dentista",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

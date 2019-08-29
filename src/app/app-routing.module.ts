@@ -1,11 +1,9 @@
-import { LoginComponent } from './pages/auth/login/login.component';
-import { IndexComponent } from './pages/index/index.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
-  { path: 'login', component: LoginComponent }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', loadChildren: './auth/pages/login/login.module#LoginPageModule' }
 ];
 
 @NgModule({

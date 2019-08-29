@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import {
   MatTableModule,
   MatStepperModule,
@@ -9,9 +9,23 @@ import {
   MatSelectModule,
   MatIconModule,
   MatPaginatorModule,
-  MatSortModule
-} from "@angular/material";
- 
+  MatSortModule,
+  MatCardActions,
+  MatGridListModule, // for grid column
+  MatRadioModule, //mat-radio-group - radio button
+  MatDatepickerModule, //matDatepicker - datepicker
+  MatNativeDateModule, //required for datepicker
+  MatCheckboxModule, //mat-checkbox - checkbox
+  MatCardModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatListModule,
+  MatMenuModule,
+  MatDialogModule
+} from '@angular/material';
+
 @NgModule({
   exports: [
     MatTableModule,
@@ -19,11 +33,25 @@ import {
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
     MatOptionModule,
     MatSelectModule,
+    MatIconModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatCardActions,
+    MatGridListModule, // for grid column
+    MatRadioModule, //mat-radio-group - radio button
+    MatDatepickerModule, //matDatepicker - datepicker
+    MatNativeDateModule, //required for datepicker
+    MatCheckboxModule, //mat-checkbox - checkbox
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatListModule,
+    MatMenuModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {}
