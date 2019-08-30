@@ -10,7 +10,6 @@ import {
   MatIconModule,
   MatPaginatorModule,
   MatSortModule,
-  MatCardActions,
   MatGridListModule, // for grid column
   MatRadioModule, //mat-radio-group - radio button
   MatDatepickerModule, //matDatepicker - datepicker
@@ -38,7 +37,6 @@ import {
     MatIconModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardActions,
     MatGridListModule, // for grid column
     MatRadioModule, //mat-radio-group - radio button
     MatDatepickerModule, //matDatepicker - datepicker
