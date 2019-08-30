@@ -1,9 +1,66 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content padding>
+  <h1 text-center>
+    <ion-icon name="contact" color="secondary" class="icon-7em"></ion-icon>
+  </h1>
+  <form [formGroup]="authForm" (submit)="fazerLogin()">
 
-<ion-content>
+    <!-- //ngcontainer: so abri esse componente quando apertar no botao de cadastre-se  -->
+    <ng-container *ngIf="!configs.isSignIn">
+      <ion-item>
+        <ion-icon name="person" color="secondary" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+        <ion-note slot="end" color="danger" *ngIf="nome.dirty &&
+          nome.hasError('required')">
+          Obrigatório
+        </ion-note>
+        <ion-note slot="end" color="danger" *ngIf="nome.dirty &&
+          nome.hasError('minlength')">
+          Minino 3 Caracteres
+        </ion-note>
+      </ion-item>
+    </ng-container>
 
+    <ion-item>
+      <ion-icon name="mail" color="secondary" slot="start"></ion-icon>
+      <ion-input type="email" placeholder="Email" formControlName="email"
+        inputmode="email" autofocus="true">
+      </ion-input>
+      <ion-note slot="end" color="danger" *ngIf="email.dirty &&
+        email.hasError('required')">
+        Obrigatório
+      </ion-note>
+      <ion-note slot="end" color="danger" *ngIf="email.dirty &&
+        email.hasError('email')">
+        E-mail Inválido
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="lock" color="secondary" slot="start"></ion-icon>
+      <ion-input type="password" placeholder="Digite sua senha"
+        formControlName="senha"></ion-input>
+      <ion-note slot="end" color="danger" *ngIf="senha.dirty &&
+        senha.hasError('required')">
+        Obrigatório
+      </ion-note>
+      <ion-note slot="end" color="danger" *ngIf="senha.dirty &&
+        senha.hasError('minlength')">
+        Minimo 6 Caracteres
+      </ion-note>
+    </ion-item>
+    <ion-button color="secondary" expand="block" type="submit"
+      [disabled]="authForm.invalid">
+      {{ configs.action }}
+    </ion-button>
+  </form>
+
+  <ion-button color="secondary" expand="block" fill="clear"
+    (click)="changeAuthAction()">
+    {{ configs.actionChange }}
+  </ion-button>
+
+  <ion-button color="secondary" expand="block">
+    <ion-icon name="logo-google" slot="start"></ion-icon>
+    Login com Google
+  </ion-button>
 </ion-content>
