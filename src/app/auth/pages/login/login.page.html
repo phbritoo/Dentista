@@ -1,4 +1,4 @@
-<ion-content padding>
+<ion-content>
   <h1 text-center>
     <ion-icon name="contact" color="secondary" class="icon-7em"></ion-icon>
   </h1>
@@ -22,8 +22,7 @@
 
     <ion-item>
       <ion-icon name="mail" color="secondary" slot="start"></ion-icon>
-      <ion-input type="email" placeholder="Email" formControlName="email"
-        inputmode="email" autofocus="true">
+      <ion-input type="email" placeholder="Email" formControlName="email" inputmode="email" autofocus="true">
       </ion-input>
       <ion-note slot="end" color="danger" *ngIf="email.dirty &&
         email.hasError('required')">
@@ -37,8 +36,7 @@
 
     <ion-item>
       <ion-icon name="lock" color="secondary" slot="start"></ion-icon>
-      <ion-input type="password" placeholder="Digite sua senha"
-        formControlName="senha"></ion-input>
+      <ion-input type="password" placeholder="Digite sua senha" formControlName="senha"></ion-input>
       <ion-note slot="end" color="danger" *ngIf="senha.dirty &&
         senha.hasError('required')">
         Obrigatório
@@ -48,14 +46,12 @@
         Minimo 6 Caracteres
       </ion-note>
     </ion-item>
-    <ion-button color="secondary" expand="block" type="submit"
-      [disabled]="authForm.invalid">
+    <ion-button color="secondary" expand="block" type="submit" [disabled]="authForm.invalid">
       {{ configs.action }}
     </ion-button>
   </form>
 
-  <ion-button color="secondary" expand="block" fill="clear"
-    (click)="changeAuthAction()">
+  <ion-button color="secondary" expand="block" fill="clear" (click)="changeAuthAction()">
     {{ configs.actionChange }}
   </ion-button>
 

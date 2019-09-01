@@ -1,0 +1,57 @@
+<ion-slide>
+  <form [formGroup]="cadastrarProtetico" (submit)="efetuarCadastroProtetico()">
+    <div class="slide-inner ion-padding">
+      <h1>CADASTRO PROTÉICO</h1>
+      <ion-item>
+        <ion-icon name="person" color="primary" slot="start"></ion-icon>
+        <ion-input type="text" class="ion-margin-top" formControlName="nome" placeholder="Nome"></ion-input>
+        <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
+          Obrigatório
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" color="primary" slot="start"></ion-icon>
+        <ion-input type="text" class="ion-margin-top" formControlName="cro" placeholder="CRO"></ion-input>
+        <ion-note slot="end" color="danger" *ngIf="cro.dirty && cro.hasError('required')">
+          Obrigatório
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person" color="primary" slot="start"></ion-icon>
+        <ion-input type="text" class="ion-margin-top" formControlName="cpf" placeholder="CPF"></ion-input>
+        <ion-note slot="end" color="danger" *ngIf="cpf.dirty && cpf.hasError('required')">
+          Obrigatório
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person" color="primary" slot="start"></ion-icon>
+        <ion-input type="email" class="ion-margin-top" formControlName="email" placeholder="E-mail"></ion-input>
+        <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
+          Obrigatório
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person" color="primary" slot="start"></ion-icon>
+        <ion-input type="text" class="ion-margin-top" formControlName="telefone" placeholder="Telefone"></ion-input>
+        <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('required')">
+          Obrigatório
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person" color="primary" slot="start"></ion-icon>
+        <ion-input type="password" class="ion-margin-top" formControlName="senha" placeholder="senha"></ion-input>
+        <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
+          Obrigatório
+        </ion-note>
+      </ion-item>
+
+      <ion-button color="primary" expand="block" type="submit">
+        Cadastrar
+      </ion-button>
+    </div>
+  </form>
+</ion-slide>
