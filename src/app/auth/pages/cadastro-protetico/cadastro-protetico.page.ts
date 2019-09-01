@@ -18,7 +18,6 @@ export class CadastroProteticoPage implements OnInit {
     this.cadastrarProtetico = this.fb.group({
       telefone: ['', [Validators.required, Validators.minLength(6)]],
       cpf: ['', [Validators.required, Validators.minLength(6)]],
-      cro: ['', [Validators.required, Validators.minLength(6)]],
       nome: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]]
@@ -40,10 +39,6 @@ export class CadastroProteticoPage implements OnInit {
   // mostrar mensagem de erro no ion-note
   get cpf(): FormControl {
     return this.cadastrarProtetico.get('cpf') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get cro(): FormControl {
-    return this.cadastrarProtetico.get('cro') as FormControl;
   }
   // mostrar mensagem de erro no ion-note
   get telefone(): FormControl {
