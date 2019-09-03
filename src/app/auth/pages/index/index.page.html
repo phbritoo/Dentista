@@ -1,9 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>index</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
+    <ion-slides pager="true">
+
+        <ion-slide *ngFor="let slide of slides">
+
+            <div class="slide-img-padding">
+                <img [src]="slide.img">
+            </div>
+            <div>
+                <h3 [innerHTML]="slide.titulo"></h3>
+            </div>
+
+        </ion-slide>
+
+    </ion-slides>
+
 </ion-content>
+
+<ion-footer no-border>
+
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col
+                size="10"
+                offset="1"
+            >
+                <ion-button
+                    color="primary"
+                    expand="full"
+                    shape="round"
+                    mode="ios"
+                    class="btn-primary"
+                >
+                    FAZER CADASTRO
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col
+                size="10"
+                offset="1"
+            >
+                <ion-button
+                    expand="full"
+                    fill="clear"
+                >
+                    JÁ TENHO CADASTRO
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-footer>
