@@ -12,6 +12,7 @@ export class IndexPage implements OnInit {
   ngOnInit() {
   }
 
+  // coleção de imagens e títulos
   slides = [
     {
       img: 'assets/img/dentista.png',
