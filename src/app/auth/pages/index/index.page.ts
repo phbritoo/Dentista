@@ -23,6 +23,7 @@ export class IndexPage implements OnInit {
       titulo: 'Desde o pedido até a entrega.<br>Faça já seu cadastro!'
     }
   ];
+  // Chama a tela de login
   openLogin() {
     this.router.navigateByUrl('/login');
   }
