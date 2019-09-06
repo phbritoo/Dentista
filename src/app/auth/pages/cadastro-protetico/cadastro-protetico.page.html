@@ -23,7 +23,8 @@
             </ion-item>
             <ion-item>
               <ion-icon name="calendar" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="data" placeholder="Data de Nascimento" required></ion-input>
+              <ion-input type="text" formControlName="data" placeholder="Data de Nascimento" mask="9999-99-99" required>
+              </ion-input>
               <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
                 Obrigatório
               </ion-note>

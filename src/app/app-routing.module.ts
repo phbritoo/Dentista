@@ -22,8 +22,6 @@ const routes: Routes = [
     path: 'home-protetico',
     loadChildren: './auth/pages/home-protetico/home-protetico.module#HomeProteticoPageModule'
   },
-  { path: 'header', loadChildren: './auth/pages/header/header.module#HeaderPageModule' },
-  { path: 'footer', loadChildren: './auth/pages/footer/footer.module#FooterPageModule' },
   { path: 'index', loadChildren: './auth/pages/index/index.module#IndexPageModule' }
 ];
 
