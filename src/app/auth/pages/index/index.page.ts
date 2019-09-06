@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
-  styleUrls: ['./index.page.scss'],
+  styleUrls: ['./index.page.scss']
 })
 export class IndexPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private router: Router) {}
 
   // coleção de imagens e títulos
   slides = [
@@ -26,6 +23,11 @@ export class IndexPage implements OnInit {
       img: 'assets/img/dente.png',
       titulo: 'Desde o pedido até a entrega.<br>Faça já seu cadastro!'
     }
-
   ];
+  // Chama a tela de login
+  openLogin() {
+    this.router.navigateByUrl('/login');
+  }
+
+  ngOnInit() {}
 }

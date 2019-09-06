@@ -1,6 +1,5 @@
-<ion-content>
+<ion-content class="back">
     <ion-slides pager="true">
-        <!-- Laço 'for' para trazer a coleção "slides" de imagens e títulos -->
         <ion-slide *ngFor="let slide of slides">
             <div class="slide-img-padding">
                 <img [src]="slide.img">
@@ -13,21 +12,22 @@
 </ion-content>
 
 <ion-footer no-border>
+
     <ion-grid fixed>
         <ion-row>
             <ion-col
                 size="10"
                 offset="1"
             >
-                <!-- botei o color SECONDARY pq o ACESSE AQUI esta da mesma cor do botao, ai ele nao vai aparecer, mudar a cor do ACESSE AQUI -->
+                <!-- Botão pra chamar a tela de login -->
                 <ion-button
-                    color="secondary"
                     expand="full"
                     shape="round"
                     mode="ios"
                     class="btn-primary"
+                    (click)="openLogin()"
                 >
-                    <a [routerLink]="['/login']">ACESSE AQUI</a>
+                    ACESSE AQUI
                 </ion-button>
             </ion-col>
         </ion-row>

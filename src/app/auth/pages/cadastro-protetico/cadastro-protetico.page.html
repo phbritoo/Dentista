@@ -1,66 +1,55 @@
-<form [formGroup]="cadastrarProtetico" (submit)="efetuarCadastroProtetico()">
-  <ion-grid>
-    <ion-row color="primary" justify-content-center>
-      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <div text-center>
-          <h3>Protético, Crie sua conta!</h3>
-        </div>
-        <div padding>
-          <ion-item>
-            <ion-icon name="person" color="primary" slot="start"></ion-icon>
-            <ion-input type="text" formControlName="nome" placeholder="Nome" required></ion-input>
-            <ion-note slot="end" color="danger" *ngIf="nome.dirty &&
-          nome.hasError('required')">
-              Obrigatório
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="finger-print" color="primary" slot="start"></ion-icon>
-            <ion-input type="text" formControlName="cpf" placeholder="CPF" required></ion-input>
-            <ion-note slot="end" color="danger" *ngIf="cpf.dirty &&
-          cpf.hasError('required')">
-              Obrigatório
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="mail-open" color="primary" slot="start"></ion-icon>
-            <ion-input type="email" formControlName="email" placeholder="E-mail" required></ion-input>
-            <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
-              Obrigatório
-            </ion-note>
-            <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
-              E-mail Inválido
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="call" color="primary" slot="start"></ion-icon>
-            <ion-input type="text" required formControlName="telefone" placeholder="Telefone"></ion-input>
-            <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('required')">
-              Obrigatório
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="eye-off" color="primary" slot="start"></ion-icon>
-            <ion-input type="password" required formControlName="senha" placeholder="Senha"></ion-input>
-            <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
-              Obrigatório
-            </ion-note>
-            <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
-              Minimo 6 Caracteres
-            </ion-note>
-          </ion-item>
-        </div>
-        <div padding>
-          <ion-button size="large" type="submit" expand="block" [disabled]="cadastrarProtetico.invalid"> Cadastrar
-            <ion-icon slot="end" name="send"></ion-icon>
-          </ion-button>
-        </div>
-        <div padding>
-          <a [routerLink]="['/login']">
-            <ion-icon name="return-left" class="ion-margin" color="primary" slot="end"></ion-icon>
-          </a>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</form>
+<ion-content>
+  <form [formGroup]="cadastrarProtetico" (submit)="efetuarCadastroProtetico()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Protético, Crie sua conta!</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-icon name="person" color="primary" slot="start"></ion-icon>
+              <ion-input type="text" formControlName="nome" placeholder="Nome" required></ion-input>
+              <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
+                Obrigatório
+              </ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="finger-print" color="primary" slot="start"></ion-icon>
+              <ion-input type="text" formControlName="cpf" placeholder="CPF" required></ion-input>
+              <ion-note slot="end" color="danger" *ngIf="cpf.dirty && cpf.hasError('required')">
+                Obrigatório
+              </ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="calendar" color="primary" slot="start"></ion-icon>
+              <ion-input type="text" formControlName="data" placeholder="Data de Nascimento" mask="9999-99-99" required>
+              </ion-input>
+              <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
+                Obrigatório
+              </ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="call" color="primary" slot="start"></ion-icon>
+              <ion-input type="text" formControlName="telefone" placeholder="Telefone">
+              </ion-input>
+              <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('required')">
+                Obrigatório
+              </ion-note>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button size="medium" type="submit" expand="block" [disabled]="cadastrarProtetico.invalid"> Cadastrar
+              <ion-icon slot="end" name="send"></ion-icon>
+            </ion-button>
+          </div>
+          <div padding>
+            <ion-button color="primary" expand="block" fill="clear" (click)="botaoVoltar()">
+              Login
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
@@ -10,7 +11,7 @@ export class LoginPage implements OnInit {
   formLogin: FormGroup;
 
   private nameControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -33,5 +34,14 @@ export class LoginPage implements OnInit {
   }
   fazerLogin(): void {
     console.log('formLogin: ', this.formLogin.value);
+  }
+  cadastrarProtetico() {
+    this.router.navigateByUrl('/cadastro-protetico');
+  }
+  cadastrarDentista() {
+    this.router.navigateByUrl('/cadastro-dentista');
+  }
+  esqueceuSenha() {
+    this.router.navigateByUrl('/');
   }
 }

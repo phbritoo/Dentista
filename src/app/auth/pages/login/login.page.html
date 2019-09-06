@@ -1,98 +1,52 @@
-<form [formGroup]="formLogin" (submit)="fazerLogin()">
-  <ion-grid>
-    <ion-row color="primary" justify-content-center>
-      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <div class="slide-img-padding" text-center>
-          <img src="assets/img/dentista.png" alt="">
-        </div>
-        <div padding>
-          <ion-item>
-            <ion-icon name="mail-open" color="primary" slot="start"></ion-icon>
-            <ion-input type="email" formControlName="email" placeholder="E-mail" required></ion-input>
-            <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
-              Obrigatório
-            </ion-note>
-            <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
-              E-mail Inválido
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="eye-off" color="primary" slot="start"></ion-icon>
-            <ion-input type="password" required formControlName="senha" placeholder="Senha"></ion-input>
-            <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
-              Obrigatório
-            </ion-note>
-            <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
-              Minimo 6 Caracteres
-            </ion-note>
-          </ion-item>
-        </div>
-        <div padding>
-          <ion-button size="large" type="submit" expand="block" [disabled]="formLogin.invalid"> Cadastrar
-            <ion-icon slot="end" name="send"></ion-icon>
-          </ion-button>
-        </div>
-        <div padding>
-          <ion-button expand="block">
-            <ion-icon name="logo-google" slot="start"></ion-icon>
-            Login com Google
-          </ion-button>
-        </div>
-        <div padding>
-          <ion-button color="primary" expand="block" fill="clear">
-            <a [routerLink]="['/cadastro-protetico']"> Cadastre-se</a>
-          </ion-button>
-          <ion-button color="primary" expand="block" fill="clear">
-            <a [routerLink]="['/cadastro-protetico']"> Esquece a senha? </a>
-          </ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</form>
+<ion-content>
+  <form [formGroup]="formLogin" (submit)="fazerLogin()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div class="slide-img-padding" text-center>
+            <img src="assets/img/dentista.png" alt="">
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-icon name="mail-open" color="primary" slot="start"></ion-icon>
+              <ion-input type="email" formControlName="email" placeholder="E-mail" required></ion-input>
+              <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
+                Obrigatório
+              </ion-note>
+              <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
+                E-mail Inválido
+              </ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="eye-off" color="primary" slot="start"></ion-icon>
+              <ion-input type="password" required formControlName="senha" placeholder="Senha"></ion-input>
+              <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
+                Obrigatório
+              </ion-note>
+              <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
+                Minimo 6 Caracteres
+              </ion-note>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button type="submit" expand="block" [disabled]="formLogin.invalid"> Fazer Login
+              <ion-icon slot="end" name="send"></ion-icon>
+            </ion-button>
+          </div>
 
-<!-- <ion-content>
-  <h1 text-center>
-    <ion-icon name="contact" color="secondary" class="icon-7em"></ion-icon>
-  </h1>
-  <form [formGroup]="authForm" (submit)="fazerLogin()">
-    <ion-item>
-      <ion-icon name="mail" color="secondary" slot="start"></ion-icon>
-      <ion-input type="email" placeholder="Email" formControlName="email" inputmode="email" autofocus="true">
-      </ion-input>
-      <ion-note slot="end" color="danger" *ngIf="email.dirty &&
-        email.hasError('required')">
-        Obrigatório
-      </ion-note>
-      <ion-note slot="end" color="danger" *ngIf="email.dirty &&
-        email.hasError('email')">
-        E-mail Inválido
-      </ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="lock" color="secondary" slot="start"></ion-icon>
-      <ion-input type="password" placeholder="Digite sua senha" formControlName="senha"></ion-input>
-      <ion-note slot="end" color="danger" *ngIf="senha.dirty &&
-        senha.hasError('required')">
-        Obrigatório
-      </ion-note>
-      <ion-note slot="end" color="danger" *ngIf="senha.dirty &&
-        senha.hasError('minlength')">
-        Minimo 6 Caracteres
-      </ion-note>
-    </ion-item>
-    <ion-button color="secondary" expand="block" type="submit" [disabled]="authForm.invalid">
-      {{ configs.action }}
-    </ion-button>
+          <div padding>
+            <ion-button color="primary" expand="block" fill="clear" (click)="cadastrarProtetico()">
+              Cadastrar Protetico (link provisorio)
+            </ion-button>
+            <ion-button color="primary" expand="block" fill="clear" (click)="cadastrarDentista()">
+              Cadastrar Dentista (link provisorio)
+            </ion-button>
+            <ion-button color="primary" expand="block" fill="clear" (click)="esqueceuSenha()">
+              Esqueceu a senha?
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
-
-  <ion-button color="secondary" expand="block" fill="clear" (click)="changeAuthAction()">
-    <a [routerLink]="['/cadastro-protetico']">{{ configs.actionChange }}</a>
-  </ion-button>
-
-  <ion-button color="secondary" expand="block">
-    <ion-icon name="logo-google" slot="start"></ion-icon>
-    Login com Google
-  </ion-button>
-</ion-content> -->
+</ion-content>

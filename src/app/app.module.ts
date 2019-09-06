@@ -1,3 +1,4 @@
+import { NgxMaskModule } from 'ngx-mask';
 import { MaterialModule } from './shared/material.module';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -6,7 +7,7 @@ import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CoreModule, AppRoutingModule, MaterialModule],
+  imports: [CoreModule, AppRoutingModule, MaterialModule, NgxMaskModule.forRoot()],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
