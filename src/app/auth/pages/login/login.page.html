@@ -1,10 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+           </ion-buttons>
+        <ion-title><div class="text" text-center>Login</div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
+
   <form [formGroup]="formLogin" (submit)="fazerLogin()">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div class="slide-img-padding" text-center>
-            <img src="assets/img/dentista.png" alt="">
+            <img src="assets/img/logo.png" alt="">
           </div>
           <div padding>
             <ion-item>
@@ -49,4 +59,14 @@
       </ion-row>
     </ion-grid>
   </form>
+
 </ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+     <div class= "logo"  text-center>
+        <img src="assets/img/copyright.png" alt="" >
+      </div>
+  </ion-toolbar>
+</ion-footer>
