@@ -32,10 +32,7 @@
             <ion-item>
               <ion-icon name="call" color="primary" slot="start"></ion-icon>
               <ion-input type="text" formControlName="telefone" placeholder="Telefone">
-                <!-- <ion-input type="text" name="phone" formControlName="mask" placeholder="Phone" [brmasker]="{phone: true}"></ion-input> -->
-                <!-- <ion-input type="text" name="phone" formControlName="mask" placeholder="Phone" mask="(000) 000 00 00"> -->
               </ion-input>
-              <!-- </ion-input> -->
               <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('required')">
                 Obrigatório
               </ion-note>
