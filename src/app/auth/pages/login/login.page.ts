@@ -38,8 +38,10 @@ export class LoginPage implements OnInit {
   cadastrarProtetico() {
     this.router.navigateByUrl('/cadastro-protetico');
   }
-  esqueceuSenha(){
+  cadastrarDentista() {
+    this.router.navigateByUrl('/cadastro-dentista');
+  }
+  esqueceuSenha() {
     this.router.navigateByUrl('/');
   }
-
 }

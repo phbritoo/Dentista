@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-cadastro-protetico',
   templateUrl: './cadastro-protetico.page.html',
@@ -8,7 +10,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class CadastroProteticoPage implements OnInit {
   cadastrarProtetico: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -20,10 +22,10 @@ export class CadastroProteticoPage implements OnInit {
       cpf: ['', [Validators.required, Validators.minLength(6)]],
       nome: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6)]]
+      senha: ['', [Validators.required, Validators.minLength(6)]],
+      data: ['', [Validators.required]]
     });
   }
-
   // mostrar mensagem de erro no ion-note
   get email(): FormControl {
     return this.cadastrarProtetico.get('email') as FormControl;
@@ -45,7 +47,16 @@ export class CadastroProteticoPage implements OnInit {
     return this.cadastrarProtetico.get('telefone') as FormControl;
   }
 
+  // mostrar mensagem de erro no ion-note
+  get data(): FormControl {
+    return this.cadastrarProtetico.get('data') as FormControl;
+  }
+
   efetuarCadastroProtetico(): void {
     console.log('cadastrarProtetico: ', this.cadastrarProtetico.value);
+  }
+
+  botaoVoltar() {
+    this.router.navigateByUrl('/login');
   }
 }
