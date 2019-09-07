@@ -1,3 +1,5 @@
+import { BrMaskerModule } from 'br-mask';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes), ReactiveFormsModule, BrMaskerModule],
   declarations: [CadastroProteticoPage]
 })
 export class CadastroProteticoPageModule {}
