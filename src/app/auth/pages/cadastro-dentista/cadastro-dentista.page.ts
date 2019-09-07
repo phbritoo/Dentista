@@ -24,7 +24,6 @@ export class CadastroDentistaPage implements OnInit {
       cro: ['', [Validators.required, Validators.minLength(4)]],
       data: ['', [Validators.required]],
       telefone: ['', [Validators.required, Validators.minLength(11)]],
-      endereco: ['', [Validators.required, Validators.minLength(15)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]]
     });
@@ -53,11 +52,6 @@ export class CadastroDentistaPage implements OnInit {
   get telefone(): FormControl {
     return this.cadastrarDentista.get('telefone') as FormControl;
   }
-
-  get endereco(): FormControl {
-    return this.cadastrarDentista.get('endereco') as FormControl;
-  }
-
   // mostrar mensagem de erro no ion-note
   get email(): FormControl {
     return this.cadastrarDentista.get('email') as FormControl;
