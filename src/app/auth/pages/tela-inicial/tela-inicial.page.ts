@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.page.html',
-  styleUrls: ['./index.page.scss']
+  selector: 'app-tela-inicial',
+  templateUrl: './tela-inicial.page.html',
+  styleUrls: ['./tela-inicial.page.scss']
 })
-export class IndexPage implements OnInit {
+export class TelaInicialPage implements OnInit {
   constructor(private router: Router) {}
 
   // coleção de imagens e títulos

@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndexPage } from './index.page';
+import { TelaInicialPage } from './tela-inicial.page';
 
-describe('IndexPage', () => {
-  let component: IndexPage;
-  let fixture: ComponentFixture<IndexPage>;
+describe('TelaInicialPage', () => {
+  let component: TelaInicialPage;
+  let fixture: ComponentFixture<TelaInicialPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndexPage ],
+      declarations: [ TelaInicialPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IndexPage);
+    fixture = TestBed.createComponent(TelaInicialPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
