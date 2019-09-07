@@ -16,9 +16,9 @@ import { BrMaskerModule } from 'br-mask';
   imports: [
     IonicModule.forRoot(),
     ReactiveFormsModule /* Para trabalhar com Reactive Forms Rapha */,
-    BrMaskerModule,
     CommonModule,
     FormsModule,
+    BrMaskerModule,
     // Metodo do AngulaFire que fornece a inicializacao do projeto no firebase
     // Esses servicos ficaram disponiveis por toda aplicacao
     AngularFireModule.initializeApp(environment.firebase),
