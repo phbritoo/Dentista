@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'index', pathMatch: 'full' },
+  { path: '', redirectTo: 'tela-inicial', pathMatch: 'full' },
   { path: 'login', loadChildren: './auth/pages/login/login.module#LoginPageModule' },
   {
     path: 'cadastro-protetico',
@@ -22,7 +22,10 @@ const routes: Routes = [
     path: 'home-protetico',
     loadChildren: './auth/pages/home-protetico/home-protetico.module#HomeProteticoPageModule'
   },
-  { path: 'index', loadChildren: './auth/pages/index/index.module#IndexPageModule' }
+  {
+    path: 'tela-inicial',
+    loadChildren: './auth/pages/tela-inicial/tela-inicial.module#TelaInicialPageModule'
+  }
 ];
 
 @NgModule({

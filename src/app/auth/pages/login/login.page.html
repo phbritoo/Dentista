@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
-           </ion-buttons>
-        <ion-title><div class="text" text-center>Login</div></ion-title>
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="text ion-text-center">Login</div>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,12 +13,12 @@
 
   <form [formGroup]="formLogin" (submit)="fazerLogin()">
     <ion-grid>
-      <ion-row color="primary" justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div class="slide-img-padding" text-center>
+      <ion-row color="primary" class="ion-justify-content-center">
+        <ion-col class="align-self-center" size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-text-center slide-img-padding">
             <img src="assets/img/logo.png" alt="">
           </div>
-          <div padding>
+          <div class="ion-padding">
             <ion-item>
               <ion-icon name="mail-open" color="primary" slot="start"></ion-icon>
               <ion-input type="email" formControlName="email" placeholder="E-mail" required></ion-input>
@@ -38,13 +40,13 @@
               </ion-note>
             </ion-item>
           </div>
-          <div padding>
+          <div class="ion-padding">
             <ion-button type="submit" expand="block" [disabled]="formLogin.invalid"> Fazer Login
               <ion-icon slot="end" name="send"></ion-icon>
             </ion-button>
           </div>
 
-          <div padding>
+          <div class="ion-padding">
             <ion-button color="primary" expand="block" fill="clear" (click)="cadastrarProtetico()">
               Cadastrar Protetico (link provisorio)
             </ion-button>
@@ -65,8 +67,8 @@
 
 <ion-footer>
   <ion-toolbar>
-     <div class= "logo"  text-center>
-        <img src="assets/img/copyright.png" alt="" >
-      </div>
+    <div class="ion-text-center logo">
+      <img src="assets/img/copyright.png" alt="">
+    </div>
   </ion-toolbar>
 </ion-footer>
