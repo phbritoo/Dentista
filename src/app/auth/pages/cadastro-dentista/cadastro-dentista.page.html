@@ -27,7 +27,9 @@
 
             <ion-item>
               <ion-icon name="finger-print" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="cpf" placeholder="CPF" required></ion-input>
+              <ion-input type="text" maxlength="14" formControlName="cpf" placeholder="CPF" [brmasker]="{person: true}"
+                required>
+              </ion-input>
               <ion-note slot="end" color="danger" *ngIf="cpf.dirty && cpf.hasError('required')">
                 Obrigatório
               </ion-note>
@@ -35,7 +37,9 @@
 
             <ion-item>
               <ion-icon name="md-medkit" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="cro" placeholder="CRO" required></ion-input>
+              <ion-input type="text" minlength="4" formControlName="cro" placeholder="CRO"
+                [brmasker]="{mask: '000000/00', len:9, type:'num'}" required>
+              </ion-input>
               <ion-note slot="end" color="danger" *ngIf="cro.dirty && cro.hasError('required')">
                 Obrigatório
               </ion-note>
@@ -43,7 +47,8 @@
 
             <ion-item>
               <ion-icon name="calendar" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="data" placeholder="Data de Nascimento" required>
+              <ion-input type="text" formControlName="data" placeholder="Data de Nascimento"
+                [brmasker]="{mask: '00/00/0000', len:10, type:'num'}" required>
               </ion-input>
               <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
                 Obrigatório
@@ -52,7 +57,8 @@
 
             <ion-item>
               <ion-icon name="call" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="telefone" placeholder="Telefone">
+              <ion-input type="text" maxlength="15" formControlName="telefone" placeholder="Telefone"
+                [brmasker]="{phone: true}">
               </ion-input>
               <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('required')">
                 Obrigatório
