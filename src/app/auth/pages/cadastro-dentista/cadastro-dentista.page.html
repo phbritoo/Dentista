@@ -37,7 +37,9 @@
 
             <ion-item>
               <ion-icon name="md-medkit" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" maxlength="8" minlength="4" formControlName="cro" placeholder="CRO" required></ion-input>
+              <ion-input type="text" minlength="4" formControlName="cro" placeholder="CRO"
+                [brmasker]="{mask: '000000/00', len:9, type:'num'}" required>
+              </ion-input>
               <ion-note slot="end" color="danger" *ngIf="cro.dirty && cro.hasError('required')">
                 Obrigatório
               </ion-note>
@@ -45,7 +47,8 @@
 
             <ion-item>
               <ion-icon name="calendar" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="data" placeholder="Data de Nascimento" required>
+              <ion-input type="text" formControlName="data" placeholder="Data de Nascimento"
+                [brmasker]="{mask: '00/00/0000', len:10, type:'num'}" required>
               </ion-input>
               <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
                 Obrigatório
