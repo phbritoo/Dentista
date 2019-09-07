@@ -38,7 +38,7 @@
             <ion-item>
               <ion-icon name="md-medkit" color="primary" slot="start"></ion-icon>
               <ion-input type="text" minlength="4" formControlName="cro" placeholder="CRO"
-                [brmasker]="{mask: '000000/00', len:9, type:'num'}" required>
+                [brmasker]="{mask: '000000/00', len:9}" required>
               </ion-input>
               <ion-note slot="end" color="danger" *ngIf="cro.dirty && cro.hasError('required')">
                 Obrigatório
@@ -64,15 +64,6 @@
                 Obrigatório
               </ion-note>
             </ion-item>
-
-            <ion-item>
-              <ion-icon name="md-pin" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="endereco" placeholder="Endereço" required></ion-input>
-              <ion-note slot="end" color="danger" *ngIf="endereco.dirty && endereco.hasError('required')">
-                Obrigatório
-              </ion-note>
-            </ion-item>
-
             <ion-item>
               <ion-icon name="mail" color="primary" slot="start"></ion-icon>
               <ion-input type="text" formControlName="email" placeholder="E-mail">
