@@ -18,8 +18,8 @@ export class CadastroProteticoPage implements OnInit {
   // validacoes do formulario
   private createForm(): void {
     this.cadastrarProtetico = this.fb.group({
-      telefone: ['', [Validators.required, Validators.minLength(6)]],
-      cpf: ['', [Validators.required, Validators.minLength(6)]],
+      telefone: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
       nome: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
