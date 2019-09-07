@@ -1,3 +1,5 @@
+import { BrMaskerModule } from 'br-mask';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,7 +21,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    BrMaskerModule
   ],
   declarations: [CadastroDentistaPage]
 })
