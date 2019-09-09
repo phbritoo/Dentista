@@ -52,7 +52,10 @@ export class CadastroDentistaPage implements OnInit {
   get telefone(): FormControl {
     return this.cadastrarDentista.get('telefone') as FormControl;
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75d652a523fd600b176c3876e2a8da5a1c9ed86b
   // mostrar mensagem de erro no ion-note
   get email(): FormControl {
     return this.cadastrarDentista.get('email') as FormControl;
