@@ -19,7 +19,7 @@
           <div class="ion-padding">
             <ion-item>
               <ion-icon name="person" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="nome" placeholder="Nome" required></ion-input>
+              <ion-input type="text" [(ngModel)]="nome" formControlName="nome" placeholder="Nome" required></ion-input>
               <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
                 Obrigatório
               </ion-note>

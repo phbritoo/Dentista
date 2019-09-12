@@ -11,4 +11,4 @@ import { CoreModule } from './core/core.module';
   imports: [CoreModule, AppRoutingModule, MaterialModule, ReactiveFormsModule, BrMaskerModule],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
+import { firestore } from 'firebase/app';
+import { UserService } from '../../../core/services/auth.service';
+
 @Component({
   selector: 'app-cadastro-protetico',
   templateUrl: './cadastro-protetico.page.html',
