@@ -6,11 +6,11 @@ import { auth } from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthService {
-  // Propriedade fAuth criada no construtor que exporta do core.modules -> AngularFireAuthModeule o serviço AngularFireAuth
-  constructor(private fAuth: AngularFireAuth) {}
+  // Propriedade afa criada no construtor que exporta do core.modules -> AngularFireAuthModeule o serviço AngularFireAuth
+  constructor(private afa: AngularFireAuth) {}
 
   // Metodo de autenticacao para o login e passaword
   private signInEmailPassword({ email, password }): Promise<auth.UserCredential> {
-    return this.fAuth.auth.signInWithEmailAndPassword(email, password);
+    return this.afa.auth.signInWithEmailAndPassword(email, password);
   }
 }
