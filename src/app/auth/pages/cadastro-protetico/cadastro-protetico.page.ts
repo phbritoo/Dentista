@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class CadastroProteticoPage implements OnInit {
   cadastrarProtetico: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.createForm();
