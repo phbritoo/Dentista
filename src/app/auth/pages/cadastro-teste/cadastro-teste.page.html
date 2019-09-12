@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tela-inicial"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro-Teste</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item lines="none">
+    <ion-input type="text" placeholder="Nome" [(ngModel)]="user.name"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-select placeholder="Tipo" [(ngModel)]="user.type">
+      <ion-select-option value="Dentista">Dentista</ion-select-option>
+      <ion-select-option value="Protetico">Protetico</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input type="email" placeholder="E-mail" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input type="password" placeholder="Senha" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="register()" color="light" expand="block">
+    Cadastrar
+  </ion-button>
+
+</ion-content>

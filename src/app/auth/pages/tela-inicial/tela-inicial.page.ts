@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class TelaInicialPage implements OnInit {
   constructor(private router: Router) {}
 
+  // coleção de imagens e títulos
   slides = [
     {
       img: 'assets/img/dentista.png',
