@@ -3,6 +3,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/shared/user';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-cadastro-teste',
@@ -11,6 +12,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class CadastroTestePage implements OnInit {
 
+  public user: any ={};
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
@@ -19,10 +21,19 @@ export class CadastroTestePage implements OnInit {
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private authService: AuthService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private afa: AngularFireAuth
   ) { }
 
   ngOnInit() {
   }
 
+  async register() {
+    try {
+      const newUser = await this.afa.auth.createUserWithEmailAndPassword(this.user.email, this.user.password);
+      console.log('Cadastro OK');
+    }catch(error) {
+      console.error(error);
+    }
+  }
 }
