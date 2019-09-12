@@ -12,7 +12,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class CadastroTestePage implements OnInit {
 
-  public user: any ={};
+  public user: any = {};
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
@@ -31,8 +31,9 @@ export class CadastroTestePage implements OnInit {
   async register() {
     try {
       const newUser = await this.afa.auth.createUserWithEmailAndPassword(this.user.email, this.user.password);
-      console.log('Cadastro OK');
-    }catch(error) {
+      await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.user);
+      console.log('Cadastro Efetuado com sucesso');
+    } catch (error) {
       console.error(error);
     }
   }
