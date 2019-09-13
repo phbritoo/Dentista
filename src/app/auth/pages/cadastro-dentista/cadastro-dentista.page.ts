@@ -68,13 +68,15 @@ export class CadastroDentistaPage implements OnInit {
     try {
       const newUser = await this.authService.register(this.cadastrarDentista.value);
       await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.cadastrarDentista.value);
-      console.log('cadastrarDentista: ', this.cadastrarDentista.value);
+      //console.log('cadastrarDentista: ', this.cadastrarDentista.value);
+      this.presentToast('Dentista cadastrado com sucesso!');
     } catch (error) {
       this.presentToast(error.message);
       console.log(error.message);
     } finally {
       this.loading.dismiss();
     }
+    this.router.navigate(['/login']);
   }
 
   async presentLoading() {
