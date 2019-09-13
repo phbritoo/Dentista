@@ -1,6 +1,12 @@
+//Provavelmente teremos no futuro criar uma interface de dentista e outra de protético
+// Por enquanto esta inteface está setada para o dentista
+
 export interface User {
-  name?: string;
-  type?: string;
+  nome?: string;
+  cpf?: string;
+  cro?: string;
+  data?: string;
+  telefone?: string;
   email?: string;
-  password?: string;
+  senha?: string;
 }
