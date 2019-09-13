@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AuthService } from 'src/app/core/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { firestore } from 'firebase/app';
-import { UserService } from '../../../core/services/user.service';
-import { AlertController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
+import { User } from '../../../core/services/user';
+
 
 @Component({
   selector: 'app-cadastro-protetico',
@@ -15,25 +14,22 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./cadastro-protetico.page.scss']
 })
 export class CadastroProteticoPage implements OnInit {
-
-  email: string = '';
-  senha: string = '';
-  nome: string
-  telefone: string
-  cpf: string
-  data: string
-  desc: string = 'Protético';
-
-
   cadastrarProtetico: FormGroup;
-
+  public user: User = {};
+  public userLogin: User = {};
+  public userRegister: User = {};
+  private loading: any;
   constructor(
+
     private fb: FormBuilder,
     private router: Router,
-    public afAuth: AngularFireAuth,
-    public afstore: AngularFirestore,
-    public user: UserService,
-    public alertController: AlertController) { }
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    private authService: AuthService,
+    private afs: AngularFirestore,
+    private afa: AngularFireAuth
+
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -46,22 +42,60 @@ export class CadastroProteticoPage implements OnInit {
       nome: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      data: ['', [Validators.required]]
+      data: ['', [Validators.required]],
+      desc: ['Protético'],
     });
   }
 
-  // mostrar mensagem de erro no ion-note
-  /** get email(): FormControl {
-     return this.cadastrarProtetico.get('email') as FormControl;
-   }
-   // mostrar mensagem de erro no ion-note
-   get senha(): FormControl {
-     return this.cadastrarProtetico.get('senha') as FormControl;
-   }
-   // mostrar mensagem de erro no ion-note
-   /**  get nome(): FormControl {
-      return this.cadastrarProtetico.get('nome') as FormControl;
+  async login() {
+    await this.presentLoading();
+
+    try {
+      await this.authService.login(this.userLogin);
+    } catch (error) {
+      this.presentToast(error.message);
+    } finally {
+      this.loading.dismiss();
     }
+  }
+
+  async register() {
+    await this.presentLoading();
+
+    try {
+      const newUser = await this.authService.register(this.cadastrarProtetico.value);
+      await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.cadastrarProtetico.value);
+    } catch (error) {
+      this.presentToast(error.message);
+      console.log(error.message);
+    } finally {
+      this.loading.dismiss();
+    }
+    this.router.navigate(['/login']);
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({ message, duration: 4000 });
+    toast.present();
+  }
+
+  // mostrar mensagem de erro no ion-note
+  get email(): FormControl {
+    return this.cadastrarProtetico.get('email') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get senha(): FormControl {
+    return this.cadastrarProtetico.get('senha') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get nome(): FormControl {
+    return this.cadastrarProtetico.get('nome') as FormControl;
+  }
   // mostrar mensagem de erro no ion-note
   get cpf(): FormControl {
     return this.cadastrarProtetico.get('cpf') as FormControl;
@@ -74,58 +108,11 @@ export class CadastroProteticoPage implements OnInit {
   // mostrar mensagem de erro no ion-note
   get data(): FormControl {
     return this.cadastrarProtetico.get('data') as FormControl;
-  }*/
-
-  async presentAlert(title: string, content: string) {
-    const alert = await this.alertController.create({
-      header: title,
-      message: content,
-      buttons: ['OK']
-    });
-    await alert.present();
   }
 
-  async efetuarCadastroProtetico() {
-    const { email, senha, nome, desc, telefone, cpf, data } = this;
-
-    try {
-      const res = await this.afAuth.auth.createUserWithEmailAndPassword(
-        email,
-        senha
-      );
-
-      this.afstore.doc(`protetico/${res.user.uid}`).set({
-        email,
-        nome,
-        desc,
-        telefone,
-        cpf,
-        data
-      });
-
-
-      /**
-      this.user.setUser({
-        email,
-        uid: res.user.uid,
-        nome,
-        desc,
-        telefone,
-        cpf,
-        data
-      });*/
-
-      this.presentAlert('Sucesso', 'Agora você está registrado!');
-      this.router.navigate(['/login']);
-    } catch (error) {
-      console.dir(error);
-    }
-  }
-
-
-  /**  efetuarCadastroProtetico(): void {
+  efetuarCadastroProtetico(): void {
     console.log('cadastrarProtetico: ', this.cadastrarProtetico.value);
-  } */
+  }
 
   botaoVoltar() {
     this.router.navigateByUrl('/login');
