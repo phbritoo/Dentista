@@ -9,10 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 // Pacote do AngularFire
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import environment from '../../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { UserService } from './services/user.service';
-
+import { environment } from 'src/environments/environment';
 import { BrMaskerModule } from 'br-mask';
 
 @NgModule({
@@ -24,16 +21,14 @@ import { BrMaskerModule } from 'br-mask';
     BrMaskerModule,
     // Metodo do AngulaFire que fornece a inicializacao do projeto no firebase
     // Esses servicos ficaram disponiveis por toda aplicacao
-    AngularFireModule.initializeApp(environment),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   exports: [BrowserModule, IonicModule],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    UserService
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ]
 })
-export class CoreModule { }
+export class CoreModule {}
