@@ -43,7 +43,8 @@ export class CadastroProteticoPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       data: ['', [Validators.required]],
-      desc: ['Protético'],
+      criadoEm: [new Date().getTime()],
+      isDentista: [false]
     });
   }
 
@@ -65,6 +66,7 @@ export class CadastroProteticoPage implements OnInit {
     try {
       const newUser = await this.authService.register(this.cadastrarProtetico.value);
       await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.cadastrarProtetico.value);
+      this.presentToast('Protético cadastrado com sucesso!');
     } catch (error) {
       this.presentToast(error.message);
       console.log(error.message);
