@@ -65,7 +65,7 @@ export class CadastroDentistaPage implements OnInit {
 
     try {
       const newUser = await this.authService.register(this.cadastrarDentista.value);
-      await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.userRegister);
+      await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.cadastrarDentista.value);
     } catch (error) {
       this.presentToast(error.message);
       console.log(error.message);
