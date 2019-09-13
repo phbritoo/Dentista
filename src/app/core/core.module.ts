@@ -9,7 +9,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 // Pacote do AngularFire
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { environment } from 'src/environments/environment';
+import environment from '../../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { BrMaskerModule } from 'br-mask';
 
 @NgModule({

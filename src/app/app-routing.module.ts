@@ -25,12 +25,11 @@ const routes: Routes = [
   {
     path: 'tela-inicial',
     loadChildren: './auth/pages/tela-inicial/tela-inicial.module#TelaInicialPageModule'
-  },
-  { path: 'cadastro-teste', loadChildren: './auth/pages/cadastro-teste/cadastro-teste.module#CadastroTestePageModule' }
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
