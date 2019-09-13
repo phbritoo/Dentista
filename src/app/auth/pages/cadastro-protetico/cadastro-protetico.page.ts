@@ -49,6 +49,7 @@ export class CadastroProteticoPage implements OnInit {
       data: ['', [Validators.required]]
     });
   }
+
   // mostrar mensagem de erro no ion-note
   /** get email(): FormControl {
      return this.cadastrarProtetico.get('email') as FormControl;
