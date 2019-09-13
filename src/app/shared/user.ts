@@ -9,4 +9,5 @@ export interface User {
   telefone?: string;
   email?: string;
   senha?: string;
+  criadoEm?: number;
 }
