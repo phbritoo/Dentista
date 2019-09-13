@@ -23,9 +23,8 @@ import { BrMaskerModule } from 'br-mask';
     BrMaskerModule,
     // Metodo do AngulaFire que fornece a inicializacao do projeto no firebase
     // Esses servicos ficaram disponiveis por toda aplicacao
-    AngularFireModule.initializeApp(environment),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   exports: [BrowserModule, IonicModule],
   providers: [
@@ -34,4 +33,4 @@ import { BrMaskerModule } from 'br-mask';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ]
 })
-export class CoreModule { }
+export class CoreModule {}

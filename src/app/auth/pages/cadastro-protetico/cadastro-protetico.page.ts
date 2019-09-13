@@ -14,13 +14,11 @@ import { User } from '../../../core/services/user';
   styleUrls: ['./cadastro-protetico.page.scss']
 })
 export class CadastroProteticoPage implements OnInit {
-
   cadastrarProtetico: FormGroup;
   public user: User = {};
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
-
   constructor(
 
     private fb: FormBuilder,
