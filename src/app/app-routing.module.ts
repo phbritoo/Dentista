@@ -1,31 +1,16 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'tela-inicial', pathMatch: 'full' },
   { path: 'login', loadChildren: './auth/pages/login/login.module#LoginPageModule' },
-  {
-    path: 'cadastro-protetico',
-    loadChildren:
-      './auth/pages/cadastro-protetico/cadastro-protetico.module#CadastroProteticoPageModule'
-  },
-  {
-    path: 'cadastro-dentista',
-    loadChildren:
-      './auth/pages/cadastro-dentista/cadastro-dentista.module#CadastroDentistaPageModule'
-  },
-  {
-    path: 'home-dentista',
-    loadChildren: './auth/pages/home-dentista/home-dentista.module#HomeDentistaPageModule'
-  },
-  {
-    path: 'home-protetico',
-    loadChildren: './auth/pages/home-protetico/home-protetico.module#HomeProteticoPageModule'
-  },
-  {
-    path: 'tela-inicial',
-    loadChildren: './auth/pages/tela-inicial/tela-inicial.module#TelaInicialPageModule'
-  }
+  { path: 'tela-inicial', loadChildren: './auth/pages/tela-inicial/tela-inicial.module#TelaInicialPageModule', canActivate: [LoginGuard] },
+  { path: 'cadastro-dentista', loadChildren: './auth/pages/cadastro-dentista/cadastro-dentista.module#CadastroDentistaPageModule' },
+  { path: 'cadastro-protetico', loadChildren: './auth/pages/cadastro-protetico/cadastro-protetico.module#CadastroProteticoPageModule' },
+  { path: 'home-dentista', loadChildren: './auth/pages/home-dentista/home-dentista.module#HomeDentistaPageModule', canActivate: [AuthGuard] },
+  { path: 'home-protetico', loadChildren: './auth/pages/home-protetico/home-protetico.module#HomeProteticoPageModule' }
 ];
 
 @NgModule({
