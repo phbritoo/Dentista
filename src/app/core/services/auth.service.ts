@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+import { User } from 'src/app/shared/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // Propriedade fAuth criada no construtor que exporta do core.modules -> AngularFireAuthModeule o serviço AngularFireAuth
-  constructor(private fAuth: AngularFireAuth) {}
+  // Propriedade afa criada no construtor que exporta do core.modules -> AngularFireAuthModeule o serviço AngularFireAuth
+  constructor(
+    private afa: AngularFireAuth
+  ) { }
 
   // Metodo de autenticacao para o login e passaword
-  private signInEmailPassword({ email, password }): Promise<auth.UserCredential> {
-    return this.fAuth.auth.signInWithEmailAndPassword(email, password);
+  login(user: User) {
+    return this.afa.auth.signInWithEmailAndPassword(user.email, user.senha);
+  }
+
+  register(user: User) {
+    return this.afa.auth.createUserWithEmailAndPassword(user.email, user.senha);
+  }
+
+  logout() {
+    return this.afa.auth.signOut();
+  }
+
+  getAuth() {
+    return this.afa.auth;
   }
 }

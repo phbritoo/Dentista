@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form [formGroup]="cadastrarDentista" (submit)="efetuarCadastroDentista()">
+  <form [formGroup]="cadastrarDentista" (submit)="register()">
     <ion-grid>
       <ion-row color="primary" class="ion-justify-content-center">
         <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
@@ -68,9 +68,9 @@
               <ion-icon name="mail" color="primary" slot="start"></ion-icon>
               <ion-input type="text" formControlName="email" placeholder="E-mail">
               </ion-input>
-              <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
+              <!-- <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
                 Obrigatório
-              </ion-note>
+              </ion-note> -->
             </ion-item>
             <ion-item>
               <ion-icon name="eye-off" color="primary" slot="start"></ion-icon>
