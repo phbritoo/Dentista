@@ -13,11 +13,11 @@ export class AuthService {
 
   // Metodo de autenticacao para o login e passaword
   login(user: User) {
-    return this.afa.auth.signInWithEmailAndPassword(user.email, user.password);
+    return this.afa.auth.signInWithEmailAndPassword(user.email, user.senha);
   }
 
   register(user: User) {
-    return this.afa.auth.createUserWithEmailAndPassword(user.email, user.password);
+    return this.afa.auth.createUserWithEmailAndPassword(user.email, user.senha);
   }
 
   logout() {

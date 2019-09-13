@@ -14,6 +14,7 @@ import { User } from 'src/app/shared/user';
 })
 export class CadastroDentistaPage implements OnInit {
   cadastrarDentista: FormGroup;
+  public user: User = {};
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
@@ -28,7 +29,7 @@ export class CadastroDentistaPage implements OnInit {
     private afs: AngularFirestore,
     private afa: AngularFireAuth
 
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -63,10 +64,11 @@ export class CadastroDentistaPage implements OnInit {
     await this.presentLoading();
 
     try {
-      const newUser = await this.authService.register(this.userRegister);
+      const newUser = await this.authService.register(this.cadastrarDentista.value);
       await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.userRegister);
     } catch (error) {
       this.presentToast(error.message);
+      console.log(error.message);
     } finally {
       this.loading.dismiss();
     }
@@ -78,7 +80,7 @@ export class CadastroDentistaPage implements OnInit {
   }
 
   async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    const toast = await this.toastCtrl.create({ message, duration: 4000 });
     toast.present();
   }
 
