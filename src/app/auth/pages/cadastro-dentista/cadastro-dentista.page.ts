@@ -44,7 +44,8 @@ export class CadastroDentistaPage implements OnInit {
       data: ['', [Validators.required]],
       telefone: ['', [Validators.required, Validators.minLength(11)]],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6)]]
+      senha: ['', [Validators.required, Validators.minLength(6)]],
+      criadoEm: [new Date().getTime()]
     });
   }
 
@@ -66,6 +67,7 @@ export class CadastroDentistaPage implements OnInit {
     try {
       const newUser = await this.authService.register(this.cadastrarDentista.value);
       await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.cadastrarDentista.value);
+      console.log('cadastrarDentista: ', this.cadastrarDentista.value);
     } catch (error) {
       this.presentToast(error.message);
       console.log(error.message);
