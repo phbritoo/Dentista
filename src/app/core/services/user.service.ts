@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 interface user {
-  username: string;
+  email: string;
   uid: string;
   desc: string;
   nome: string;
@@ -20,8 +20,8 @@ export class UserService {
   setUser(user: user) {
     this.user = user;
   }
-  getUsername(): string {
-    return this.user.username;
+  getEmail(): string {
+    return this.user.email;
   }
   getDesc(): string {
     return this.user.desc;
