@@ -20,7 +20,7 @@
             <ion-item>
               <ion-icon name="person" color="primary" slot="start"></ion-icon>
               <ion-input type="text" [(ngModel)]="nome" formControlName="nome" placeholder="Nome" required></ion-input>
-              <ion-note slot="end" color="danger" *ngIf="nomev.dirty && nomev.hasError('required')">
+              <!-- <ion-note slot="end" color="danger" *ngIf="nomev.dirty && nomev.hasError('required')">
                 Obrigatório
               </ion-note>
             </ion-item>
