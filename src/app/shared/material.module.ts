@@ -11,10 +11,10 @@ import {
   MatPaginatorModule,
   MatSortModule,
   MatGridListModule, // for grid column
-  MatRadioModule, //mat-radio-group - radio button
-  MatDatepickerModule, //matDatepicker - datepicker
-  MatNativeDateModule, //required for datepicker
-  MatCheckboxModule, //mat-checkbox - checkbox
+  MatRadioModule, // mat-radio-group - radio button
+  MatDatepickerModule, // matDatepicker - datepicker
+  MatNativeDateModule, // required for datepicker
+  MatCheckboxModule, // mat-checkbox - checkbox
   MatCardModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
@@ -38,10 +38,10 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatGridListModule, // for grid column
-    MatRadioModule, //mat-radio-group - radio button
-    MatDatepickerModule, //matDatepicker - datepicker
-    MatNativeDateModule, //required for datepicker
-    MatCheckboxModule, //mat-checkbox - checkbox
+    MatRadioModule, // mat-radio-group - radio button
+    MatDatepickerModule, // matDatepicker - datepicker
+    MatNativeDateModule, // required for datepicker
+    MatCheckboxModule, // mat-checkbox - checkbox
     MatCardModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
