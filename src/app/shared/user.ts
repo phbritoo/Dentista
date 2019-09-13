@@ -10,4 +10,5 @@ export interface User {
   email?: string;
   senha?: string;
   criadoEm?: number;
+  isDentista?: boolean;
 }

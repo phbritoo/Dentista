@@ -45,7 +45,8 @@ export class CadastroDentistaPage implements OnInit {
       telefone: ['', [Validators.required, Validators.minLength(11)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      criadoEm: [new Date().getTime()]
+      criadoEm: [new Date().getTime()],
+      isDentista: [true]
     });
   }
 
