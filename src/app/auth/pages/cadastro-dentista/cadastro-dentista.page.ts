@@ -107,6 +107,7 @@ export class CadastroDentistaPage implements OnInit {
   get telefone(): FormControl {
     return this.cadastrarDentista.get('telefone') as FormControl;
   }
+
   // mostrar mensagem de erro no ion-note
   get email(): FormControl {
     return this.cadastrarDentista.get('email') as FormControl;
