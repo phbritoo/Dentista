@@ -11,7 +11,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import environment from '../../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { UserService } from './services/user.service';
 
 import { BrMaskerModule } from 'br-mask';
 
@@ -32,8 +31,7 @@ import { BrMaskerModule } from 'br-mask';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    UserService
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ]
 })
 export class CoreModule { }
