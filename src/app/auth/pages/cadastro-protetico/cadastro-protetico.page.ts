@@ -5,7 +5,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { User } from '../../../core/services/user';
+//import { User } from '../../../core/services/user';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-cadastro-protetico',
