@@ -7,10 +7,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   /*Esse canActivate vai fazer com que ele retorne
     pra página de login caso não estaja logado
@@ -18,11 +15,12 @@ export class AuthGuard implements CanActivate {
   canActivate(): Promise<boolean> {
     return new Promise(resolve => {
       this.authService.getAuth().onAuthStateChanged(user => {
-        if (!user) this.router.navigate(['login']);
+        if (!user) {
+          this.router.navigate(['login']);
+        }
 
         resolve(user ? true : false);
       });
     });
   }
-
 }

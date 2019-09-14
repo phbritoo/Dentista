@@ -66,14 +66,14 @@ export class CadastroProteticoPage implements OnInit {
         .collection('GildoTesteUser')
         .doc(newUser.user.uid)
         .set(this.cadastrarProtetico.value);
-      this.presentToast('Protético cadastrado com sucesso!');
+      this.presentToast('Bem vindo ');
     } catch (error) {
       this.presentToast(error.message);
       console.log(error.message);
     } finally {
       this.loading.dismiss();
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home-protetico']);
   }
 
   async presentLoading() {
