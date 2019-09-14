@@ -6,15 +6,39 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'tela-inicial', pathMatch: 'full' },
   { path: 'login', loadChildren: './auth/pages/login/login.module#LoginPageModule' },
-  { path: 'tela-inicial', loadChildren: './auth/pages/tela-inicial/tela-inicial.module#TelaInicialPageModule', canActivate: [LoginGuard] },
-  { path: 'cadastro-dentista', loadChildren: './auth/pages/cadastro-dentista/cadastro-dentista.module#CadastroDentistaPageModule' },
-  { path: 'cadastro-protetico', loadChildren: './auth/pages/cadastro-protetico/cadastro-protetico.module#CadastroProteticoPageModule' },
-  { path: 'home-dentista', loadChildren: './auth/pages/home-dentista/home-dentista.module#HomeDentistaPageModule', canActivate: [AuthGuard] },
-  { path: 'home-protetico', loadChildren: './auth/pages/home-protetico/home-protetico.module#HomeProteticoPageModule' }
+  {
+    path: 'tela-inicial',
+    loadChildren: './auth/pages/tela-inicial/tela-inicial.module#TelaInicialPageModule'
+  },
+  {
+    path: 'cadastro-dentista',
+    loadChildren:
+      './auth/pages/cadastro-dentista/cadastro-dentista.module#CadastroDentistaPageModule'
+  },
+  {
+    path: 'cadastro-protetico',
+    loadChildren:
+      './auth/pages/cadastro-protetico/cadastro-protetico.module#CadastroProteticoPageModule'
+  },
+  {
+    path: 'home-dentista',
+    loadChildren: './auth/pages/home-dentista/home-dentista.module#HomeDentistaPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'home-protetico',
+    loadChildren: './auth/pages/home-protetico/home-protetico.module#HomeProteticoPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'novo-pedido',
+    loadChildren: './auth/pages/novo-pedido/novo-pedido.module#NovoPedidoPageModule',
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -10,7 +10,6 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class LoginPage implements OnInit {
   formLogin: FormGroup;
 
-  private nameControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
   constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {

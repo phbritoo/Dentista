@@ -77,7 +77,7 @@ export class CadastroDentistaPage implements OnInit {
     } finally {
       this.loading.dismiss();
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home-dentista']);
   }
 
   async presentLoading() {
