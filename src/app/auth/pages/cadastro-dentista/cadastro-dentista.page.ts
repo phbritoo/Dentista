@@ -19,7 +19,6 @@ export class CadastroDentistaPage implements OnInit {
   public userRegister: User = {};
   private loading: any;
 
-
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -28,8 +27,7 @@ export class CadastroDentistaPage implements OnInit {
     private authService: AuthService,
     private afs: AngularFirestore,
     private afa: AngularFireAuth
-
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -38,13 +36,13 @@ export class CadastroDentistaPage implements OnInit {
   // validacoes do formulario
   private createForm(): void {
     this.cadastrarDentista = this.fb.group({
-      nome: ['', [Validators.required, Validators.minLength(6)]],
-      cpf: ['', [Validators.required, Validators.minLength(11)]],
-      cro: ['', [Validators.required, Validators.minLength(4)]],
-      data: ['', [Validators.required]],
-      telefone: ['', [Validators.required, Validators.minLength(11)]],
+      telefone: ['', [Validators.required, Validators.minLength(15)]],
+      cpf: ['', [Validators.required, Validators.minLength(14)]],
+      nome: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
+      data: ['', [Validators.required, Validators.minLength(10)]],
+      cro: ['', [Validators.required, Validators.minLength(4)]],
       criadoEm: [new Date().getTime()],
       isDentista: [true]
     });
@@ -67,8 +65,11 @@ export class CadastroDentistaPage implements OnInit {
 
     try {
       const newUser = await this.authService.register(this.cadastrarDentista.value);
-      await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.cadastrarDentista.value);
-      //console.log('cadastrarDentista: ', this.cadastrarDentista.value);
+      await this.afs
+        .collection('GildoTesteUser')
+        .doc(newUser.user.uid)
+        .set(this.cadastrarDentista.value);
+      // console.log('cadastrarDentista: ', this.cadastrarDentista.value);
       this.presentToast('Dentista cadastrado com sucesso!');
     } catch (error) {
       this.presentToast(error.message);
