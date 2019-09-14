@@ -11,5 +11,6 @@ export class NovoPedidoPage implements OnInit {
 
   ngOnInit() {
   }
+  
 
 }
