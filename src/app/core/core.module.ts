@@ -33,4 +33,4 @@ import { BrMaskerModule } from 'br-mask';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ]
 })
-export class CoreModule {}
+export class CoreModule { }

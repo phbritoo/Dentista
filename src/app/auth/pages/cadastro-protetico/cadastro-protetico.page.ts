@@ -7,7 +7,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { User } from '../../../core/services/user';
 
-
 @Component({
   selector: 'app-cadastro-protetico',
   templateUrl: './cadastro-protetico.page.html',
@@ -20,7 +19,6 @@ export class CadastroProteticoPage implements OnInit {
   public userRegister: User = {};
   private loading: any;
   constructor(
-
     private fb: FormBuilder,
     private router: Router,
     private loadingCtrl: LoadingController,
@@ -28,8 +26,7 @@ export class CadastroProteticoPage implements OnInit {
     private authService: AuthService,
     private afs: AngularFirestore,
     private afa: AngularFireAuth
-
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -37,13 +34,14 @@ export class CadastroProteticoPage implements OnInit {
   // validacoes do formulario
   private createForm(): void {
     this.cadastrarProtetico = this.fb.group({
-      telefone: ['', [Validators.required]],
-      cpf: ['', [Validators.required]],
-      nome: ['', [Validators.required, Validators.minLength(6)]],
+      telefone: ['', [Validators.required, Validators.minLength(15)]],
+      cpf: ['', [Validators.required, Validators.minLength(14)]],
+      nome: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      data: ['', [Validators.required]],
-      desc: ['Protético'],
+      data: ['', [Validators.required, Validators.minLength(10)]],
+      criadoEm: [new Date().getTime()],
+      isDentista: [false]
     });
   }
 
@@ -64,14 +62,18 @@ export class CadastroProteticoPage implements OnInit {
 
     try {
       const newUser = await this.authService.register(this.cadastrarProtetico.value);
-      await this.afs.collection('GildoTesteUser').doc(newUser.user.uid).set(this.cadastrarProtetico.value);
+      await this.afs
+        .collection('GildoTesteUser')
+        .doc(newUser.user.uid)
+        .set(this.cadastrarProtetico.value);
+      this.presentToast('Bem vindo ');
     } catch (error) {
       this.presentToast(error.message);
       console.log(error.message);
     } finally {
       this.loading.dismiss();
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home-protetico']);
   }
 
   async presentLoading() {

@@ -23,6 +23,9 @@
               <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
                 Obrigatório
               </ion-note>
+              <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('minlength')">
+                Minimo 5 Caracteres
+              </ion-note>
             </ion-item>
             <ion-item>
               <ion-icon name="finger-print" color="primary" slot="start"></ion-icon>
@@ -31,6 +34,9 @@
               </ion-input>
               <ion-note slot="end" color="danger" *ngIf="cpf.dirty && cpf.hasError('required')">
                 Obrigatório
+              </ion-note>
+              <ion-note slot="end" color="danger" *ngIf="cpf.dirty && cpf.hasError('minlength')">
+                CPF Invalido
               </ion-note>
             </ion-item>
             <ion-item>
@@ -41,6 +47,9 @@
               <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
                 Obrigatório
               </ion-note>
+              <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('minlength')">
+                Data Invalida
+              </ion-note>
             </ion-item>
             <ion-item>
               <ion-icon name="call" color="primary" slot="start"></ion-icon>
@@ -48,6 +57,9 @@
               </ion-input>
               <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('required')">
                 Obrigatório
+              </ion-note>
+              <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('minlength')">
+                Telefone Invalido
               </ion-note>
             </ion-item>
             <ion-item>
@@ -57,6 +69,9 @@
               <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
                 Obrigatório
               </ion-note>
+              <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
+                Email Invalido
+              </ion-note>
             </ion-item>
             <ion-item>
               <ion-icon name="eye-off" color="primary" slot="start"></ion-icon>
@@ -65,16 +80,14 @@
               <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
                 Obrigatório
               </ion-note>
+              <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
+                Minimo 6 Caracteres
+              </ion-note>
             </ion-item>
           </div>
           <div class="ion-padding">
             <ion-button size="medium" type="submit" expand="block" [disabled]="cadastrarProtetico.invalid"> Cadastrar
               <ion-icon slot="end" name="send"></ion-icon>
-            </ion-button>
-          </div>
-          <div class="ion-padding">
-            <ion-button color="primary" expand="block" fill="clear" (click)="botaoVoltar()">
-              Login
             </ion-button>
           </div>
         </ion-col>
