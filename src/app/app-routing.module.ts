@@ -31,7 +31,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'home-dentista/order',
+    path: 'novo-pedido',
     loadChildren: './auth/pages/novo-pedido/novo-pedido.module#NovoPedidoPageModule'
     // canActivate: [AuthGuard]
   }

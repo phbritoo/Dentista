@@ -16,8 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [SharedModule, CommonModule, FormsModule,
-    IonicModule, RouterModule.forChild(routes), ReactiveFormsModule, BrMaskerModule],
+  imports: [SharedModule, RouterModule.forChild(routes), ReactiveFormsModule, BrMaskerModule],
   declarations: [CadastroProteticoPage]
 })
-export class CadastroProteticoPageModule { }
+export class CadastroProteticoPageModule {}
