@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
-//import { User } from 'src/app/shared/user';
 import { User } from '../interfaces/user';
 
 @Component({
@@ -67,7 +66,7 @@ export class CadastroDentistaPage implements OnInit {
     try {
       const newUser = await this.authService.register(this.cadastrarDentista.value);
       await this.afs
-        .collection('GildoTesteUser')
+        .collection('Dentista')
         .doc(newUser.user.uid)
         .set(this.cadastrarDentista.value);
       // console.log('cadastrarDentista: ', this.cadastrarDentista.value);
@@ -77,8 +76,8 @@ export class CadastroDentistaPage implements OnInit {
       console.log(error.message);
     } finally {
       this.loading.dismiss();
+      this.router.navigate(['/home-dentista']);
     }
-    this.router.navigate(['/home-dentista']);
   }
 
   async presentLoading() {
