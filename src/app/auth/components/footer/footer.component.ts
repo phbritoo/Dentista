@@ -13,4 +13,7 @@ export class FooterComponent implements OnInit {
   novoPedido() {
     this.router.navigateByUrl('/novo-pedido');
   }
+  homeDentista() {
+    this.router.navigateByUrl('/home-dentista');
+  }
 }

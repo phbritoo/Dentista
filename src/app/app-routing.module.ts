@@ -22,8 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'home-dentista',
-    loadChildren: './auth/pages/home-dentista/home-dentista.module#HomeDentistaPageModule'
-    // canActivate: [AuthGuard]
+    loadChildren: './auth/pages/home-dentista/home-dentista.module#HomeDentistaPageModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'home-protetico',
@@ -32,8 +32,8 @@ const routes: Routes = [
   },
   {
     path: 'novo-pedido',
-    loadChildren: './auth/pages/novo-pedido/novo-pedido.module#NovoPedidoPageModule'
-    // canActivate: [AuthGuard]
+    loadChildren: './auth/pages/novo-pedido/novo-pedido.module#NovoPedidoPageModule',
+    canActivate: [AuthGuard]
   }
 ];
 
