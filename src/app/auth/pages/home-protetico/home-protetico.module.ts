@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { HomeProteticoPage } from './home-protetico.page';
+// chamando os componentes
+import { SharedModule } from '../../../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -19,8 +21,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
   declarations: [HomeProteticoPage]
 })
-export class HomeProteticoPageModule {}
+export class HomeProteticoPageModule { }
