@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
-import { IonicModule } from '@ionic/angular';
-
 import { HomeDentistaPage } from './home-dentista.page';
 // chamando os componentes
 import { SharedModule } from '../../../shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 const routes: Routes = [
   {
@@ -17,7 +15,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, RouterModule.forChild(routes), SharedModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SharedModule,
+    RouterModule.forChild(routes)
+  ],
   declarations: [HomeDentistaPage]
 })
-export class HomeDentistaPageModule {}
+export class HomeDentistaPageModule { }

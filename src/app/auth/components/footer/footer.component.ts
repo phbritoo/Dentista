@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   constructor(private router: Router) {}
-
   ngOnInit() {}
 
   novoPedido() {
     this.router.navigateByUrl('/novo-pedido');
+  }
+  homeDentista() {
+    this.router.navigateByUrl('/home-dentista');
   }
 }
