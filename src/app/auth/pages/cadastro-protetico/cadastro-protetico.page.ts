@@ -70,6 +70,7 @@ export class CadastroProteticoPage implements OnInit {
     } catch (error) {
       this.presentToast(error.message);
       console.log(error.message);
+      this.presentToast('Você já é cadastrado');
     } finally {
       this.loading.dismiss();
       this.router.navigate(['/home-protetico']);
