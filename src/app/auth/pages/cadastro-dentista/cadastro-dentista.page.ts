@@ -69,14 +69,14 @@ export class CadastroDentistaPage implements OnInit {
         .collection('Dentista')
         .doc(newUser.user.uid)
         .set(this.cadastrarDentista.value);
-      // console.log('cadastrarDentista: ', this.cadastrarDentista.value);
-      this.presentToast('Dentista cadastrado com sucesso!');
+      this.presentToast('<center>' + 'Bem vindo, Dr. ' + this.nome.value + '</center>');
+      this.router.navigate(['/home-dentista']);
     } catch (error) {
-      this.presentToast(error.message);
-      console.log(error.message);
+      console.dir(error);
+      this.router.navigate(['/cadastro-dentista']);
+      this.presentToast('<center>' + 'E-mail já existente' + '</center>');
     } finally {
       this.loading.dismiss();
-      this.router.navigate(['/home-dentista']);
     }
   }
 

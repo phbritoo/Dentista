@@ -66,14 +66,14 @@ export class CadastroProteticoPage implements OnInit {
         .collection('Protetico')
         .doc(newUser.user.uid)
         .set(this.cadastrarProtetico.value);
-      this.presentToast('Bem vindo ');
+      this.presentToast('<center>' + 'Bem vindo, Sr. ' + this.nome.value + '</center>');
+      this.router.navigate(['/home-protetico']);
     } catch (error) {
-      this.presentToast(error.message);
-      console.log(error.message);
-      this.presentToast('Você já é cadastrado');
+      console.dir(error);
+      this.router.navigate(['/cadastro-protetico']);
+      this.presentToast('<center>' + 'E-mail já existente' + '</center>');
     } finally {
       this.loading.dismiss();
-      this.router.navigate(['/home-protetico']);
     }
   }
 
