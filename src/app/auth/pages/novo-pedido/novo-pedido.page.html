@@ -10,7 +10,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form [formGroup]="">
+  <form [formGroup]="novoPedido" (submit)="savePedido()">
     <ion-grid>
       <ion-row color="primary" class="ion-justify-content-center">
         <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
@@ -21,20 +21,16 @@
             <ion-item>
               <ion-icon name="contact" color="primary" slot="start"></ion-icon>
               <ion-label>Protético</ion-label>
-              <ion-select ok-text="Ok" cancel-text="Cancelar">
+              <ion-select formControlName="emailProtetico" ok-text="Ok" cancel-text="Cancelar">
                 <!-- Por enquanto o cadastro esta mokado, deppois ele vai trazer do banco -->
-                <ion-select-option value="dos">DOS</ion-select-option>
-                <ion-select-option value="lunix">Linux</ion-select-option>
-                <ion-select-option value="mac7">Mac OS 7</ion-select-option>
-                <ion-select-option value="mac8">Mac OS 8</ion-select-option>
-                <ion-select-option value="win3.1">Windows 3.1</ion-select-option>
-                <ion-select-option value="win95">Windows 95</ion-select-option>
-                <ion-select-option value="win98">Windows 98</ion-select-option>
+                <ion-select-option value="tester@gmail.com">Sr Baullynho</ion-select-option>
+                <ion-select-option value="cavalcanti@teste.com">Marcello Cavalcanti</ion-select-option>
+                <ion-select-option value="albuca@gmail.com">Marcello albuca</ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item>
               <ion-icon name="flask" color="primary" slot="start"></ion-icon>
-              <ion-select ok-text="Ok" cancel-text="Cancelar" padding-start>
+              <ion-select formControlName="tipoProtese" ok-text="Ok" cancel-text="Cancelar" padding-start>
                 <!-- Por enquanto o cadastro esta mokado, deppois ele vai trazer do banco -->
                 <ion-select-option value="total">Protése Total</ion-select-option>
                 <ion-select-option value="parcial removivel">Parcial Removível</ion-select-option>

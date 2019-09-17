@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Pedido } from '../interfaces/pedido';
+import { PedidoService } from 'src/app/core/services/pedido.service';
 
 
 @Component({
@@ -11,15 +14,26 @@ import { Router } from '@angular/router';
 })
 export class HomeDentistaPage implements OnInit {
   private loading: any;
+  public pedidos = new Array<Pedido>();
+  private pedidosSubscription: Subscription;
 
   constructor(
+    private authService: AuthService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private authService: AuthService,
+    private pedidoService: PedidoService,
     private router: Router
-    ) { }
+    ) {
+    this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
+      this.pedidos = data;
+    });
+    }
 
   ngOnInit() { }
+
+  ngOnDestroy() {
+    this.pedidosSubscription.unsubscribe();
+  }
 
   async logout() {
     await this.presentLoading();
