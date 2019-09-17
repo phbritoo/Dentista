@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
     private toastCtrl: ToastController,
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
     try {
       await this.authService.login(this.formLogin.value);
     } catch (error) {
-      this.presentToast(error.message);
+      this.presentToast('<center>' + 'E-mail/Senha incorretos' + '</center>');
     } finally {
       this.loading.dismiss();
     }
