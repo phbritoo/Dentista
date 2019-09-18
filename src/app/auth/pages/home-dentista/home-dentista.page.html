@@ -1,45 +1,46 @@
 <ion-header>
-    <ion-toolbar translucent>
-        <ion-button slot="end" color="light" fill="solid" (click)="logout()">
-            <ion-icon name="log-out" size="large"></ion-icon>
-        </ion-button>
-        <ion-title>
-            <div class="text ion-text-center">Meus Pedidos</div>
-        </ion-title>
-    </ion-toolbar>
+  <ion-toolbar translucent>
+    <ion-button slot="end" color="light" fill="solid" (click)="logout()">
+      <ion-icon name="log-out" size="large"></ion-icon>
+    </ion-button>
+    <ion-title>
+      <div class="text ion-text-center">Meus Pedidos</div>
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-grid>
-        <ion-row color="primary" class="ion-justify-content-center">
-            <ion-col class="align-self-center" size-md="6" size-lg="5" size-xs="12">
-                <ion-list>
-                <ion-item-sliding *ngFor="let pedido of pedidos">
-                    <ion-item button [routerLink]="['/novo-pedido', pedido.id]">
-                        <ion-avatar slot="start">
-                            <img [src]="pedido.picture">
-                        </ion-avatar>
+  <ion-grid>
+    <ion-row color="primary" class="ion-justify-content-center">
+      <ion-col class="align-self-center" size-md="6" size-lg="5" size-xs="12">
+        <ion-list>
+          <ion-item-sliding *ngFor="let pedido of pedidos">
+            <ion-item button [routerLink]="['/novo-pedido', pedido.id]">
+              <ion-avatar slot="start">
+                <img [src]="pedido.picture" />
+              </ion-avatar>
 
-                        <ion-label>
-                            {{ pedido.tipoProtese }}
-                            <p>{{ pedido.emailProtetico }}</p>
-                            <p>{{ pedido.criadoEm | date: 'short' }}</p>
-                        </ion-label>
+              <ion-label>
+                {{ pedido.tipoProtese }}
+                <p>{{ pedido.emailProtetico }}</p>
+                <p>{{ pedido.criadoEm | date: 'short' }}</p>
+              </ion-label>
 
-                        <ion-note color="primary" slot="end" *ngIf="pedido.price">{{ pedido.price | currency: 'BRL' }}</ion-note>
-                    </ion-item>
+              <ion-note color="primary" slot="end" *ngIf="pedido.tipoProtese">{{
+                pedido.tipoProtese
+              }}</ion-note>
+            </ion-item>
 
-                    <ion-item-options side="end">
-                        <ion-item-option color="danger" (click)="deletePedido(pedido.id)">
-                            <ion-icon slot="top" name="trash"></ion-icon>
-                            Excluir
-                        </ion-item-option>
-                    </ion-item-options>
-                </ion-item-sliding>
-
-                </ion-list>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="presentAlertConfirm()">
+                <!--"deletePedido(pedido.id)"  -->
+                <ion-icon slot="top" name="trash"></ion-icon>
+                Excluir
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 <app-footer></app-footer>

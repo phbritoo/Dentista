@@ -15,13 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SharedModule,
-    RouterModule.forChild(routes)
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, SharedModule, RouterModule.forChild(routes)],
   declarations: [HomeDentistaPage]
 })
-export class HomeDentistaPageModule { }
+export class HomeDentistaPageModule {}
