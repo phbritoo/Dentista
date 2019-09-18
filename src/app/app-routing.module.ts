@@ -34,7 +34,8 @@ const routes: Routes = [
     path: 'novo-pedido',
     loadChildren: './auth/pages/novo-pedido/novo-pedido.module#NovoPedidoPageModule',
     canActivate: [AuthGuard]
-  }
+  },
+  { path: 'modal-pedido', loadChildren: './auth/pages/modal-pedido/modal-pedido.module#ModalPedidoPageModule' }
 ];
 
 @NgModule({
