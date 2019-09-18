@@ -6,11 +6,10 @@ import { Subscription } from 'rxjs';
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
 
-
 @Component({
   selector: 'app-home-dentista',
   templateUrl: './home-dentista.page.html',
-  styleUrls: ['./home-dentista.page.scss'],
+  styleUrls: ['./home-dentista.page.scss']
 })
 export class HomeDentistaPage implements OnInit {
   private loading: any;
@@ -23,13 +22,13 @@ export class HomeDentistaPage implements OnInit {
     private toastCtrl: ToastController,
     private pedidoService: PedidoService,
     private router: Router
-    ) {
+  ) {
     this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
       this.pedidos = data;
     });
-    }
+  }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.pedidosSubscription.unsubscribe();
@@ -45,10 +44,17 @@ export class HomeDentistaPage implements OnInit {
     } finally {
       this.loading.dismiss();
     }
-    // devido ao CanActivate, provavelmente
-    // não será necessário esse router
-    // Ele será automático
+    /* devido ao CanActivate, provavelmente não será necessário
+   esse router. Ele será automático. Comentar e testar depois */
     this.router.navigate(['/login']);
+  }
+
+  async deletePedido(id: string) {
+    try {
+      await this.pedidoService.deletePedido(id);
+    } catch (error) {
+      this.presentToast('Erro ao tentar deletar');
+    }
   }
 
   async presentLoading() {
@@ -60,5 +66,4 @@ export class HomeDentistaPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
-
 }
