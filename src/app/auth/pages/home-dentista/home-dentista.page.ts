@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home-dentista',
@@ -21,7 +22,8 @@ export class HomeDentistaPage implements OnInit {
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private pedidoService: PedidoService,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController
   ) {
     this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
       this.pedidos = data;
@@ -30,6 +32,10 @@ export class HomeDentistaPage implements OnInit {
 
   ngOnInit() {}
 
+  /*  quem tiver com o VS CODE atualizado, provavelmente estará vendo este warning no ngOnDestroy()
+      "Lifecycle interface OnDestroy should be implemented for method ngOnDestroy."
+      Depois da 1° release nós pararemos pra entender melhor
+      https://code-examples.net/pt/docs/angular/guide/lifecycle-hooks*/
   ngOnDestroy() {
     this.pedidosSubscription.unsubscribe();
   }
@@ -55,6 +61,36 @@ export class HomeDentistaPage implements OnInit {
     } catch (error) {
       this.presentToast('Erro ao tentar deletar');
     }
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'ATENÇÃO!',
+      message: 'Tem certeza que deseja excluir este pedido?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: blah => {
+            console.log('Confirm Cancel: blah');
+          }
+        },
+        {
+          text: 'Excluir Pedido',
+          handler: () => {
+            console.log('Confirm Cancel: blah');
+            /*Método de excluir depende da inserção do id do usuário no atributo "id" do pedido.
+            O método em pedido.service está excluindo a partir de um id inserido na hora da
+            criação. Só que na hora da criação não ta criando pedido com o Uid do usuário.
+            OBS.: fiz um teste setando o id na mão no FIREBASE e deu certo.*/
+            // this.deletePedido();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   async presentLoading() {
