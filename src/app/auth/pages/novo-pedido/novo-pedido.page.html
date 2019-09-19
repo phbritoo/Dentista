@@ -49,7 +49,7 @@
               </ion-item>
               <ion-item>
                 <ion-label>SubTipo Protese</ion-label>
-                <ion-select formControlName="subTipoProtese" (ionChange)="subTipoProteseChange($event)">
+                <ion-select formControlName="subTipoProtese">
                   <ion-select-option *ngFor="let subTipoProtese of subTipoProtesesByTipoProtese"
                     [value]="subTipoProtese">
                     {{subTipoProtese.name}}</ion-select-option>
@@ -59,8 +59,8 @@
 
 
             <ion-item>
-              <ion-label>Notes</ion-label>
-              <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
+              <ion-label>Observações</ion-label>
+              <ion-textarea formControlName="observacao" rows="6" cols="20" placeholder="Digite informações essenciais..."></ion-textarea>
             </ion-item>
           </div>
           <div class="ion-padding">
