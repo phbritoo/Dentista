@@ -1,14 +1,14 @@
-  <ion-segment>
-    <ion-segment-button (click)="novoPedido()">
-      <ion-label>Solicitar</ion-label>
-      <ion-icon name="add"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button checked (click)="homeDentista()">
-      <ion-label>Listar </ion-label>
-      <ion-icon name="list"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button>
-      <ion-label>Perfil</ion-label>
-      <ion-icon name="contact"></ion-icon>
-    </ion-segment-button>
-  </ion-segment>
+<ion-tab-bar>
+  <ion-tab-button (click)="novoPedido()">
+    <ion-label>Solicitar</ion-label>
+    <ion-icon name="add"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button checked (click)="homeDentista()">
+    <ion-label>Listar </ion-label>
+    <ion-icon name="list"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button>
+    <ion-label>Perfil</ion-label>
+    <ion-icon name="contact"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

@@ -11,9 +11,9 @@ export class FooterComponent implements OnInit {
   ngOnInit() {}
 
   novoPedido() {
-    this.router.navigateByUrl('/novo-pedido');
+    this.router.navigate(['/novo-pedido']);
   }
   homeDentista() {
-    this.router.navigateByUrl('/home-dentista');
+    this.router.navigate(['/home-dentista']);
   }
 }
