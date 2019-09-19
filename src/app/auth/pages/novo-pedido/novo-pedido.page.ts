@@ -49,16 +49,27 @@ export class NovoPedidoPage implements OnInit {
     }
 
     // select tipo de proteses
-    this.tipoProteses = this.getTiposProteses();
-    this.subTipoProteses = this.getSubTipoProteses();
-    this.tipoProteseControl = fb.control(null, Validators.required);
-    this.subTipoProtesesControl = fb.control(null, Validators.required);
-    this.subTipoProtesesControl.disable();
-    this.novoPedido = fb.group({
-      tipoProtese: this.tipoProteseControl,
-      subTipoProtese: this.subTipoProtesesControl
-    });
+
   }
+
+  // validacoes do formulario
+    private createForm(): void {
+      this.tipoProteses = this.getTiposProteses();
+      this.subTipoProteses = this.getSubTipoProteses();
+      this.tipoProteseControl = this.fb.control(null, Validators.required);
+      this.subTipoProtesesControl = this.fb.control(null, Validators.required);
+      this.subTipoProtesesControl.disable();
+      this.novoPedido = this.fb.group({
+        id: [''],
+        userId: [''],
+        emailProtetico: ['', [Validators.required]],
+        tipoProtese: ['', [Validators.required]],
+        subTipoProtese: ['', [Validators.required]],
+        picture: ['https://image.flaticon.com/icons/png/512/103/103386.png'],
+        observacao: ['', [Validators.required]],
+        criadoEm: [new Date().getTime()],
+      });
+    }
 
   // select de proteses
   tipoProteseChange(event) {
@@ -69,14 +80,6 @@ export class NovoPedidoPage implements OnInit {
     });
     this.subTipoProtesesControl.reset();
     this.subTipoProtesesControl.enable();
-  }
-
-  subTipoProteseChange(subTipoProtese: SubTipoProtese) {
-    console.log('subTipoProtese:', subTipoProtese);
-  }
-
-  submit() {
-    console.log('submit');
   }
 
   reset() {
@@ -109,8 +112,8 @@ export class NovoPedidoPage implements OnInit {
       { id: 23, name: 'Zircônia', tipoProtese: { id: 4, name: 'FIXA' } },
       { id: 24, name: 'Dissilicato de Lítio', tipoProtese: { id: 4, name: 'FIXA' } },
       { id: 25, name: 'Metálica', tipoProtese: { id: 4, name: 'FIXA' } },
-      { id: 25, name: 'Cerômero', tipoProtese: { id: 4, name: 'FIXA' } },
-      { id: 25, name: 'Resina Acrílica', tipoProtese: { id: 4, name: 'FIXA' } }
+      { id: 26, name: 'Cerômero', tipoProtese: { id: 4, name: 'FIXA' } },
+      { id: 27, name: 'Resina Acrílica', tipoProtese: { id: 4, name: 'FIXA' } }
     ];
   }
   ngOnInit(): void {
@@ -169,19 +172,5 @@ export class NovoPedidoPage implements OnInit {
     toast.present();
   }
 
-  // validacoes do formulario
-  private createForm(): void {
-    this.novoPedido = this.fb.group({
-      id: [''],
-      userId: [''],
-      emailProtetico: ['', [Validators.required]],
-      tipoProtese: ['', [Validators.required]],
-      picture: ['https://image.flaticon.com/icons/png/512/103/103386.png'],
-      criadoEm: [new Date().getTime()]
-    });
-  }
 
-  testePedido(): void {
-    console.log('novoPedido: ', this.novoPedido.value);
-  }
 }
