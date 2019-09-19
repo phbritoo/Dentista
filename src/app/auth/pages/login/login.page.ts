@@ -38,6 +38,11 @@ export class LoginPage implements OnInit {
 
     try {
       await this.authService.login(this.formLogin.value);
+      // pegando o Uid do usuário que acabou de logar e jogando no console
+      // usando o getAuth do authService (AngularFireAuth)
+      // com o Uid, temos que acessar a collection
+      const newUser = this.authService.getAuth().currentUser.uid;
+      console.log(newUser);
     } catch (error) {
       this.presentToast('<center>' + 'E-mail/Senha incorretos' + '</center>');
     } finally {
