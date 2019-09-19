@@ -60,7 +60,7 @@ export class NovoPedidoPage implements OnInit {
     this.subTipoProtesesControl.disable();
     this.novoPedido = this.fb.group({
       id: [''],
-      userId: [''],
+      userId: [this.authService.getAuth().currentUser.uid],
       emailProtetico: ['', [Validators.required]],
       tipoProtese: ['', [Validators.required]],
       subTipoProtese: ['', [Validators.required]],
@@ -141,7 +141,7 @@ export class NovoPedidoPage implements OnInit {
         await this.pedidoService.updatePedido(this.pedidoId, this.novoPedido.value);
         await this.loading.dismiss();
 
-        this.navCtrl.navigateBack('/home');
+        this.navCtrl.navigateBack('/home-dentista');
       } catch (error) {
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();
