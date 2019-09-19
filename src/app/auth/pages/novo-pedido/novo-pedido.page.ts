@@ -49,27 +49,26 @@ export class NovoPedidoPage implements OnInit {
     }
 
     // select tipo de proteses
-
   }
 
   // validacoes do formulario
-    private createForm(): void {
-      this.tipoProteses = this.getTiposProteses();
-      this.subTipoProteses = this.getSubTipoProteses();
-      this.tipoProteseControl = this.fb.control(null, Validators.required);
-      this.subTipoProtesesControl = this.fb.control(null, Validators.required);
-      this.subTipoProtesesControl.disable();
-      this.novoPedido = this.fb.group({
-        id: [''],
-        userId: [''],
-        emailProtetico: ['', [Validators.required]],
-        tipoProtese: ['', [Validators.required]],
-        subTipoProtese: ['', [Validators.required]],
-        picture: ['https://image.flaticon.com/icons/png/512/103/103386.png'],
-        observacao: ['', [Validators.required]],
-        criadoEm: [new Date().getTime()],
-      });
-    }
+  private createForm(): void {
+    this.tipoProteses = this.getTiposProteses();
+    this.subTipoProteses = this.getSubTipoProteses();
+    this.tipoProteseControl = this.fb.control(null, Validators.required);
+    this.subTipoProtesesControl = this.fb.control(null, Validators.required);
+    this.subTipoProtesesControl.disable();
+    this.novoPedido = this.fb.group({
+      id: [''],
+      userId: [''],
+      emailProtetico: ['', [Validators.required]],
+      tipoProtese: ['', [Validators.required]],
+      subTipoProtese: ['', [Validators.required]],
+      picture: ['https://image.flaticon.com/icons/png/512/103/103386.png'],
+      observacao: ['', [Validators.required]],
+      criadoEm: [new Date().getTime()]
+    });
+  }
 
   // select de proteses
   tipoProteseChange(event) {
@@ -152,8 +151,8 @@ export class NovoPedidoPage implements OnInit {
 
       try {
         await this.pedidoService.addPedido(this.novoPedido.value);
+        this.presentToast('<center>' + 'Pedido encaminhado ao Protetico ' + '</center>');
         await this.loading.dismiss();
-
         this.navCtrl.navigateBack('/home-dentista');
       } catch (error) {
         this.presentToast('Erro ao tentar salvar');
@@ -171,6 +170,4 @@ export class NovoPedidoPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
-
-
 }
