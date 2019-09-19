@@ -28,19 +28,43 @@
                 <ion-select-option value="albuca@gmail.com">Marcello albuca</ion-select-option>
               </ion-select>
             </ion-item>
-            <ion-item>
+            <!-- <ion-item>
               <ion-icon name="flask" color="primary" slot="start"></ion-icon>
               <ion-select formControlName="tipoProtese" ok-text="Ok" cancel-text="Cancelar" padding-start>
-                <!-- Por enquanto o cadastro esta mokado, deppois ele vai trazer do banco -->
                 <ion-select-option value="total">Protése Total</ion-select-option>
                 <ion-select-option value="parcial removivel">Parcial Removível</ion-select-option>
                 <ion-select-option value="sobre implante">Sobre Implante</ion-select-option>
                 <ion-select-option value="fixa">Fixa</ion-select-option>
               </ion-select>
+            </ion-item> -->
+
+            <ion-list>
+              <ion-item>
+                <ion-label>Tipo Protese</ion-label>
+                <ion-select formControlName="tipoProtese" (ionChange)="tipoProteseChange($event)">
+                  <ion-select-option *ngFor="let tipoProtese of tipoProteses" [value]="tipoProtese.id">
+                    {{tipoProtese.name}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>SubTipo Protese</ion-label>
+                <ion-select formControlName="subTipoProtese" (ionChange)="subTipoProteseChange($event)">
+                  <ion-select-option *ngFor="let subTipoProtese of subTipoProtesesByTipoProtese"
+                    [value]="subTipoProtese">
+                    {{subTipoProtese.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+
+
+            <ion-item>
+              <ion-label>Notes</ion-label>
+              <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
             </ion-item>
           </div>
           <div class="ion-padding">
-            <ion-button size="medium" type="submit" expand="block" [disabled]=""> Eviar Pedido
+            <ion-button size="medium" type="submit" expand="block" [disabled]="novoPedido.invalid"> Eviar Pedido
               <ion-icon slot="end" name="send"></ion-icon>
             </ion-button>
           </div>

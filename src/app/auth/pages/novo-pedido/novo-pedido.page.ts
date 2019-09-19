@@ -7,12 +7,27 @@ import { LoadingController, ToastController, NavController } from '@ionic/angula
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Subscription } from 'rxjs';
 
+class TipoProtese {
+  public id: number;
+  public name: string;
+}
+
+class SubTipoProtese {
+  public id: number;
+  public name: string;
+  public tipoProtese: TipoProtese;
+}
 @Component({
   selector: 'app-novo-pedido',
   templateUrl: './novo-pedido.page.html',
-  styleUrls: ['./novo-pedido.page.scss'],
+  styleUrls: ['./novo-pedido.page.scss']
 })
 export class NovoPedidoPage implements OnInit {
+  tipoProteses: TipoProtese[];
+  subTipoProteses: SubTipoProtese[];
+  subTipoProtesesByTipoProtese: SubTipoProtese[] = [];
+  tipoProteseControl: FormControl;
+  subTipoProtesesControl: FormControl;
   novoPedido: FormGroup;
   public pedido: Pedido = {};
   private pedidoId: string = null;
@@ -28,20 +43,87 @@ export class NovoPedidoPage implements OnInit {
     private toastCtrl: ToastController,
     private authService: AuthService
   ) {
-    //this.pedidoId = this.activatedRoute.snapshot.params['id'];
+    this.pedidoId = this.activatedRoute.snapshot.params.id;
+    if (this.pedidoId) {
+      this.loadPedido();
+    }
 
-    //if (this.pedidoId) this.loadPedido();
-   }
+    // select tipo de proteses
+    this.tipoProteses = this.getTiposProteses();
+    this.subTipoProteses = this.getSubTipoProteses();
+    this.tipoProteseControl = fb.control(null, Validators.required);
+    this.subTipoProtesesControl = fb.control(null, Validators.required);
+    this.subTipoProtesesControl.disable();
+    this.novoPedido = fb.group({
+      tipoProtese: this.tipoProteseControl,
+      subTipoProtese: this.subTipoProtesesControl
+    });
+  }
 
+  // select de proteses
+  tipoProteseChange(event) {
+    const tipoProtese = event.target.value;
+
+    this.subTipoProtesesByTipoProtese = this.subTipoProteses.filter(subTipoProtese => {
+      return subTipoProtese.tipoProtese.id === tipoProtese;
+    });
+    this.subTipoProtesesControl.reset();
+    this.subTipoProtesesControl.enable();
+  }
+
+  subTipoProteseChange(subTipoProtese: SubTipoProtese) {
+    console.log('subTipoProtese:', subTipoProtese);
+  }
+
+  submit() {
+    console.log('submit');
+  }
+
+  reset() {
+    this.subTipoProtesesControl.reset();
+    this.tipoProteseControl.reset();
+    this.subTipoProtesesControl.disable();
+  }
+
+  getTiposProteses(): TipoProtese[] {
+    return [
+      { id: 1, name: 'TOTAL' },
+      { id: 2, name: 'PARCIAL REMOVÍVEL' },
+      { id: 3, name: 'SOBRE IMPLANTE' },
+      { id: 4, name: 'FIXA' }
+    ];
+  }
+
+  getSubTipoProteses(): SubTipoProtese[] {
+    return [
+      { id: 10, name: 'Removível', tipoProtese: { id: 1, name: 'TOTAL' } },
+      { id: 11, name: 'Protocolo', tipoProtese: { id: 1, name: 'TOTAL' } },
+      { id: 12, name: 'Overdenture', tipoProtese: { id: 1, name: 'TOTAL' } },
+      { id: 13, name: 'Com encaixes', tipoProtese: { id: 2, name: 'PARCIAL REMOVÍVEL' } },
+      { id: 14, name: 'Convencional', tipoProtese: { id: 2, name: 'PARCIAL REMOVÍVEL' } },
+      { id: 15, name: 'Unitária', tipoProtese: { id: 3, name: 'SOBRE IMPLANTE' } },
+      { id: 16, name: 'Múltipla', tipoProtese: { id: 3, name: 'SOBRE IMPLANTE' } },
+      { id: 20, name: 'Protocolo', tipoProtese: { id: 3, name: 'SOBRE IMPLANTE' } },
+      { id: 21, name: 'Overdenture', tipoProtese: { id: 3, name: 'SOBRE IMPLANTE' } },
+      { id: 22, name: 'Metalocerâmica', tipoProtese: { id: 4, name: 'FIXA' } },
+      { id: 23, name: 'Zircônia', tipoProtese: { id: 4, name: 'FIXA' } },
+      { id: 24, name: 'Dissilicato de Lítio', tipoProtese: { id: 4, name: 'FIXA' } },
+      { id: 25, name: 'Metálica', tipoProtese: { id: 4, name: 'FIXA' } },
+      { id: 25, name: 'Cerômero', tipoProtese: { id: 4, name: 'FIXA' } },
+      { id: 25, name: 'Resina Acrílica', tipoProtese: { id: 4, name: 'FIXA' } }
+    ];
+  }
   ngOnInit(): void {
     this.createForm();
   }
 
-  ngOnDestroy(){
-    if (this.pedidoSubscription) this.pedidoSubscription.unsubscribe();
+  OnDestroy() {
+    if (this.pedidoSubscription) {
+      this.pedidoSubscription.unsubscribe();
+    }
   }
 
-  loadPedido(){
+  loadPedido() {
     this.pedidoSubscription = this.pedidoService.getPedido(this.pedidoId).subscribe(data => {
       this.pedido = data;
     });
@@ -49,9 +131,9 @@ export class NovoPedidoPage implements OnInit {
 
   async savePedido() {
     await this.presentLoading();
-    //pegando o id do usuário
+    // pegando o id do usuário
     this.pedido.userId = this.authService.getAuth().currentUser.uid;
-    //se já existir produto, atualiza. Se não existe, cria um novo produto.
+    // se já existir produto, atualiza. Se não existe, cria um novo produto.
     if (this.pedidoId) {
       try {
         await this.pedidoService.updatePedido(this.pedidoId, this.novoPedido.value);
@@ -102,5 +184,4 @@ export class NovoPedidoPage implements OnInit {
   testePedido(): void {
     console.log('novoPedido: ', this.novoPedido.value);
   }
-
 }
