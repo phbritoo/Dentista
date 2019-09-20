@@ -16,13 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SharedModule,
-    RouterModule.forChild(routes)
-  ],
+  imports: [SharedModule, RouterModule.forChild(routes)],
   declarations: [HomeProteticoPage]
 })
-export class HomeProteticoPageModule { }
+export class HomeProteticoPageModule {}

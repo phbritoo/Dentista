@@ -1,3 +1,5 @@
+import { ModalPedidoPageModule } from './auth/pages/modal-pedido/modal-pedido.module';
+import { ModalPedidoPage } from './auth/pages/modal-pedido/modal-pedido.page';
 import { BrMaskerModule } from 'br-mask';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
@@ -16,7 +18,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ModalPedidoPage],
   imports: [
     CoreModule,
     AppRoutingModule,
@@ -28,8 +30,10 @@ import { RouteReuseStrategy } from '@angular/router';
     AngularFirestoreModule,
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ModalPedidoPageModule
   ],
+  entryComponents: [ModalPedidoPage],
   providers: [
     StatusBar,
     SplashScreen,

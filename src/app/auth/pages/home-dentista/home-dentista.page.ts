@@ -1,11 +1,13 @@
+import { ModalPedidoPage } from './../modal-pedido/modal-pedido.page';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
 import { AlertController } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core';
 
 @Component({
   selector: 'app-home-dentista',
@@ -23,12 +25,37 @@ export class HomeDentistaPage implements OnInit {
     private toastCtrl: ToastController,
     private pedidoService: PedidoService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    public modalController: ModalController
   ) {
     this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
       this.pedidos = data;
     });
   }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: ModalPedidoPage
+    });
+    return await modal.present();
+  }
+  // async openModal() {
+  //   const modal: HTMLIonModalElement = await this.modalController.create({
+  //     component: ModalPedidoPage,
+  //     componentProps: {
+  //       aParameter: true,
+  //       otherParameter: new Date()
+  //     }
+  //   });
+
+  //   modal.onDidDismiss().then((detail: OverlayEventDetail) => {
+  //     if (detail !== null) {
+  //       console.log('The result:', detail.data);
+  //     }
+  //   });
+
+  //   await modal.present();
+  // }
 
   ngOnInit() {}
 
