@@ -23,38 +23,54 @@
               <ion-label>Protético</ion-label>
               <ion-select formControlName="emailProtetico" ok-text="Ok" cancel-text="Cancelar">
                 <!-- Por enquanto o cadastro esta mokado, deppois ele vai trazer do banco -->
-                <ion-select-option value="tester@gmail.com">Sr Baullynho</ion-select-option>
-                <ion-select-option value="cavalcanti@teste.com">Marcello Cavalcanti</ion-select-option>
-                <ion-select-option value="albuca@gmail.com">Marcello albuca</ion-select-option>
+                <ion-select-option value="prot01@lab.com">João Protetico</ion-select-option>
+                <ion-select-option value="prot02@lab.com">Sandra Protetica</ion-select-option>
+                <ion-select-option value="prot03@lab.com">Maria Protetica</ion-select-option>
               </ion-select>
             </ion-item>
-            <!-- <ion-item>
-              <ion-icon name="flask" color="primary" slot="start"></ion-icon>
-              <ion-select formControlName="tipoProtese" ok-text="Ok" cancel-text="Cancelar" padding-start>
-                <ion-select-option value="total">Protése Total</ion-select-option>
-                <ion-select-option value="parcial removivel">Parcial Removível</ion-select-option>
-                <ion-select-option value="sobre implante">Sobre Implante</ion-select-option>
-                <ion-select-option value="fixa">Fixa</ion-select-option>
-              </ion-select>
-            </ion-item> -->
 
             <ion-list>
+
               <ion-item>
                 <ion-label>Tipo Protese</ion-label>
-                <ion-select formControlName="tipoProtese" (ionChange)="tipoProteseChange($event)">
-                  <ion-select-option *ngFor="let tipoProtese of tipoProteses" [value]="tipoProtese.id">
-                    {{tipoProtese.name}}
-                  </ion-select-option>
+                <ion-select formControlName="tipoProtese" ok-text="Ok" cancel-text="Cancelar">
+                  <ion-select-option value='TOTAL'>TOTAL</ion-select-option>
+                  <ion-select-option value='PARCIAL REMOVÍVEL'>PARCIAL REMOVÍVEL</ion-select-option>
+                  <ion-select-option value='SOBRE IMPLANTE'>SOBRE IMPLANTE</ion-select-option>
+                  <ion-select-option value='FIXA'>FIXA</ion-select-option>
                 </ion-select>
               </ion-item>
+
               <ion-item>
                 <ion-label>SubTipo Protese</ion-label>
                 <ion-select formControlName="subTipoProtese">
-                  <ion-select-option *ngFor="let subTipoProtese of subTipoProtesesByTipoProtese"
-                    [value]="subTipoProtese">
-                    {{subTipoProtese.name}}</ion-select-option>
+                  <ion-select-option value='Com encaixes'>Com encaixes</ion-select-option>
+                  <ion-select-option value='Overdenture'>Overdenture</ion-select-option>
+                  <ion-select-option value='Convencional'>Convencional</ion-select-option>
+                  <ion-select-option value='Unitária'>Unitária</ion-select-option>
+                  <ion-select-option value='Múltipla'>Múltipla</ion-select-option>
+                  <ion-select-option value='Metalocerâmica'>Metalocerâmica</ion-select-option>
+                  <ion-select-option value='Zircônia'>Zircônia</ion-select-option>
+                  <ion-select-option value='Dissilicato de Lítio'>Dissilicato de Lítio</ion-select-option>
+                  <ion-select-option value='Metálica'>Metálica</ion-select-option>
+                  <ion-select-option value='Cerômero'>Cerômero</ion-select-option>
+                  <ion-select-option value='Resina Acrílica'>Resina Acrílica</ion-select-option>
                 </ion-select>
               </ion-item>
+
+              <ion-item>
+                <ion-label>Status do Pedido</ion-label>
+                <ion-select formControlName="status" ok-text="Ok" cancel-text="Cancelar">
+                  <ion-select-option value='NOVO PEDIDO'>NOVO PEDIDO</ion-select-option>
+                  <ion-select-option value='ACEITO PELO PROTETICO'>ACEITO PELO PROTETICO</ion-select-option>
+                  <ion-select-option value='EM FABRICAÇÃO'>EM FABRICAÇÃO</ion-select-option>
+                  <ion-select-option value='INFORMAÇÕES INSUFICIENTES'>INFORMAÇÕES INSUFICIENTES</ion-select-option>
+                  <ion-select-option value='ENVIADO PARA DENTISTA'>ENVIADO PARA DENTISTA</ion-select-option>
+                  <ion-select-option value='RECEBIDO PELO DENTISTA'>RECEBIDO PELO DENTISTA</ion-select-option>
+                  <ion-select-option value='PEDIDO CONCLUÍDO'>PEDIDO CONCLUÍDO</ion-select-option>
+                </ion-select>
+              </ion-item>
+
             </ion-list>
 
 

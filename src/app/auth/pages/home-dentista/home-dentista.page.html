@@ -22,12 +22,13 @@
 
               <ion-label (click)="openModal()">
                 {{ pedido.tipoProtese }}
+                <p>{{ pedido.subTipoProtese }}</p>
                 <p>{{ pedido.emailProtetico }}</p>
                 <p>{{ pedido.criadoEm | date: 'short' }}</p>
               </ion-label>
 
-              <ion-note color="primary" slot="end" *ngIf="pedido.tipoProtese">{{
-                pedido.tipoProtese
+              <ion-note class="status" color="primary" slot="end" *ngIf="pedido.tipoProtese">{{
+                pedido.status
               }}</ion-note>
             </ion-item>
 
