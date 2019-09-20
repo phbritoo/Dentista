@@ -22,10 +22,10 @@
               <ion-icon name="contact" color="primary" slot="start"></ion-icon>
               <ion-label>Protético</ion-label>
               <ion-select formControlName="emailProtetico" ok-text="Ok" cancel-text="Cancelar">
-                <!-- Por enquanto o cadastro esta mokado, deppois ele vai trazer do banco -->
-                <ion-select-option value="prot01@lab.com">João Protetico</ion-select-option>
-                <ion-select-option value="prot02@lab.com">Sandra Protetica</ion-select-option>
-                <ion-select-option value="prot03@lab.com">Maria Protetica</ion-select-option>
+                <!-- Container adicionado pois não é possível usar o *ngFor e o *ngIf no mesmo elemento html -->
+                <ng-container *ngFor="let user of users | async">
+                <ion-select-option *ngIf="user.isDentista == false" value={{user.email}}> {{user.nome}} </ion-select-option>
+                </ng-container>
               </ion-select>
             </ion-item>
 

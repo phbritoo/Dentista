@@ -5,7 +5,9 @@ import { PedidoService } from 'src/app/core/services/pedido.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, ToastController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { User } from '../interfaces/user';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-novo-pedido',
@@ -18,6 +20,8 @@ export class NovoPedidoPage implements OnInit {
   private pedidoId: string = null;
   private loading: any;
   private pedidoSubscription: Subscription;
+  userCollection: AngularFirestoreCollection<User>;
+  users: Observable<User[]>;
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +30,8 @@ export class NovoPedidoPage implements OnInit {
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private authService: AuthService
+    private authService: AuthService,
+    private afs: AngularFirestore
   ) {
     this.pedidoId = this.activatedRoute.snapshot.params.id;
     if (this.pedidoId) {
@@ -53,6 +58,8 @@ export class NovoPedidoPage implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.userCollection = this.afs.collection('User');
+    this.users = this.userCollection.valueChanges();
   }
 
   OnDestroy() {
