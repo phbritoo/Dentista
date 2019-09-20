@@ -62,11 +62,11 @@ export class CadastroDentistaPage implements OnInit {
 
   async register() {
     await this.presentLoading();
-
+// mudando temporariamente para o dentista ser cadastrado na coleção 'User'
     try {
       const newUser = await this.authService.register(this.cadastrarDentista.value);
       await this.afs
-        .collection('Dentista')
+        .collection('User')
         .doc(newUser.user.uid)
         .set(this.cadastrarDentista.value);
       this.presentToast('<center>' + 'Bem vindo, Dr. ' + this.nome.value + '</center>');

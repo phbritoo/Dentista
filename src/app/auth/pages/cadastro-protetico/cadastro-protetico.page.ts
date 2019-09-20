@@ -59,11 +59,11 @@ export class CadastroProteticoPage implements OnInit {
 
   async register() {
     await this.presentLoading();
-
+// mudando temporariamente para o protético ser cadastrado na coleção 'User'
     try {
       const newUser = await this.authService.register(this.cadastrarProtetico.value);
       await this.afs
-        .collection('Protetico')
+        .collection('User')
         .doc(newUser.user.uid)
         .set(this.cadastrarProtetico.value);
       this.presentToast('<center>' + 'Bem vindo, Sr. ' + this.nome.value + '</center>');

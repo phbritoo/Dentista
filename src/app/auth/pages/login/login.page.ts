@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { User } from '../interfaces/user';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -13,17 +15,22 @@ import { User } from '../interfaces/user';
 export class LoginPage implements OnInit {
   formLogin: FormGroup;
   private loading: any;
+  userCollection: AngularFirestoreCollection<User>;
+  users: Observable<User[]>;
 
   constructor(
     private fb: FormBuilder,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private afs: AngularFirestore
   ) {}
 
   ngOnInit(): void {
     this.createForm();
+    this.userCollection = this.afs.collection('User');
+    this.users = this.userCollection.valueChanges();
   }
   // validacoes do formulario
   private createForm(): void {
