@@ -3,9 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeDentistaPage } from './home-dentista.page';
 // chamando os componentes
 import { SharedModule } from '../../../shared/shared.module';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 
 const routes: Routes = [
   {
@@ -15,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, SharedModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes)],
   declarations: [HomeDentistaPage]
 })
 export class HomeDentistaPageModule {}
