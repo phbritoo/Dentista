@@ -13,54 +13,45 @@
   <form [formGroup]="novoPedido" (submit)="savePedido()">
     <ion-grid>
       <ion-row color="primary" class="ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="6" size-xs="12">
           <div class="slide-img-padding ion-text-center padding">
             <img src="assets/img/logo.png" alt="">
           </div>
           <div class="ion-padding">
-            <ion-item>
-              <ion-icon name="contact" color="primary" slot="start"></ion-icon>
-              <ion-label>Protético</ion-label>
-              <ion-select formControlName="emailProtetico" ok-text="Ok" cancel-text="Cancelar">
-                <!-- Container adicionado pois não é possível usar o *ngFor e o *ngIf no mesmo elemento html -->
-                <ng-container *ngFor="let user of users | async">
-                <ion-select-option *ngIf="user.isDentista == false" value={{user.email}}> {{user.nome}} </ion-select-option>
-                </ng-container>
-              </ion-select>
-            </ion-item>
-
             <ion-list>
-
               <ion-item>
-                <ion-label>Tipo Protese</ion-label>
-                <ion-select formControlName="tipoProtese" ok-text="Ok" cancel-text="Cancelar">
-                  <ion-select-option value='TOTAL'>TOTAL</ion-select-option>
-                  <ion-select-option value='PARCIAL REMOVÍVEL'>PARCIAL REMOVÍVEL</ion-select-option>
-                  <ion-select-option value='SOBRE IMPLANTE'>SOBRE IMPLANTE</ion-select-option>
-                  <ion-select-option value='FIXA'>FIXA</ion-select-option>
+                <ion-icon name="contact" color="primary" slot="start"></ion-icon>
+                <ion-select formControlName="emailProtetico" interface="action-sheet" [interfaceOptions]="protetico"
+                  placeholder="Protetico">
+                  <ng-container *ngFor="let user of users | async">
+                    <ion-select-option *ngIf="user.isDentista == false" value={{user.email}}> {{user.nome}}
+                    </ion-select-option>
+                  </ng-container>
                 </ion-select>
               </ion-item>
-
               <ion-item>
-                <ion-label>SubTipo Protese</ion-label>
-                <ion-select formControlName="subTipoProtese">
-                  <ion-select-option value='Com encaixes'>Com encaixes</ion-select-option>
-                  <ion-select-option value='Overdenture'>Overdenture</ion-select-option>
-                  <ion-select-option value='Convencional'>Convencional</ion-select-option>
-                  <ion-select-option value='Unitária'>Unitária</ion-select-option>
-                  <ion-select-option value='Múltipla'>Múltipla</ion-select-option>
-                  <ion-select-option value='Metalocerâmica'>Metalocerâmica</ion-select-option>
-                  <ion-select-option value='Zircônia'>Zircônia</ion-select-option>
-                  <ion-select-option value='Dissilicato de Lítio'>Dissilicato de Lítio</ion-select-option>
-                  <ion-select-option value='Metálica'>Metálica</ion-select-option>
-                  <ion-select-option value='Cerômero'>Cerômero</ion-select-option>
-                  <ion-select-option value='Resina Acrílica'>Resina Acrílica</ion-select-option>
+                <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
+                <ion-select interface="action-sheet" [interfaceOptions]="tipoProtese" placeholder="Categoria de Protese"
+                  formControlName="tipoProtese" (ionChange)="tipoProteseChange($event)">
+                  <ion-select-option *ngFor="let tipoProtese of tipoProteses" [value]="tipoProtese.id">
+                    {{tipoProtese.name}}
+                  </ion-select-option>
                 </ion-select>
               </ion-item>
-
               <ion-item>
+                <ion-icon name="flask" color="primary" slot="start"></ion-icon>
+                <ion-select interface="action-sheet" [interfaceOptions]="subTipo" placeholder="Tipo de Protese"
+                  formControlName="subTipoProtese">
+                  <ion-select-option *ngFor="let subTipoProtese of subTipoProtesesByTipoProtese"
+                    [value]="subTipoProtese">
+                    {{subTipoProtese.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+
+            <!-- <ion-item>
                 <ion-label>Status do Pedido</ion-label>
-                <ion-select formControlName="status" ok-text="Ok" cancel-text="Cancelar">
+                <ion-select formControlName="status" interface="action-sheet" placeholder="Select One">
                   <ion-select-option value='NOVO PEDIDO'>NOVO PEDIDO</ion-select-option>
                   <ion-select-option value='ACEITO PELO PROTETICO'>ACEITO PELO PROTETICO</ion-select-option>
                   <ion-select-option value='EM FABRICAÇÃO'>EM FABRICAÇÃO</ion-select-option>
@@ -69,14 +60,17 @@
                   <ion-select-option value='RECEBIDO PELO DENTISTA'>RECEBIDO PELO DENTISTA</ion-select-option>
                   <ion-select-option value='PEDIDO CONCLUÍDO'>PEDIDO CONCLUÍDO</ion-select-option>
                 </ion-select>
-              </ion-item>
-
-            </ion-list>
-
+              </ion-item> -->
+            <!-- <ion-item>
+              <ion-label>Observações</ion-label>
+              <ion-textarea formControlName="observacao" rows="6" cols="20"
+                placeholder="Digite informações essenciais..."></ion-textarea>
+            </ion-item> -->
 
             <ion-item>
-              <ion-label>Observações</ion-label>
-              <ion-textarea formControlName="observacao" rows="6" cols="20" placeholder="Digite informações essenciais..."></ion-textarea>
+              <ion-icon name="information-circle" slot="start" color="primary"></ion-icon>
+              <ion-label position="floating">Detalhes do pedido </ion-label>
+              <ion-textarea formControlName="observacao"></ion-textarea>
             </ion-item>
           </div>
           <div class="ion-padding">
