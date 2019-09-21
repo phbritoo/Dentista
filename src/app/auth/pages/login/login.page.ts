@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
   private createForm(): void {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6)]]
+      senha: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
     });
   }
 
@@ -50,17 +50,18 @@ export class LoginPage implements OnInit {
       // com o Uid, temos que acessar a collection
       const newUser = this.authService.getAuth().currentUser.uid;
       console.log(newUser);
+      // Provavelmente é aqui que iremos implementar o método
+      // para buscar o isDentista do usuário.
+      // Pode ser viável usar a lógica:
+      // Existe na coleção "Dentista"? Se sim, vai pra home-dentista
+      // senão, vai pra home-protetico
+      this.router.navigate(['/home-dentista']);
     } catch (error) {
       this.presentToast('<center>' + 'E-mail/Senha incorretos' + '</center>');
+      this.router.navigate(['/login']);
     } finally {
       this.loading.dismiss();
     }
-    // Provavelmente é aqui que iremos implementar o método
-    // para buscar o isDentista do usuário.
-    // Pode ser viável usar a lógica:
-    // Existe na coleção "Dentista"? Se sim, vai pra home-dentista
-    // senão, vai pra home-protetico
-    this.router.navigate(['/home-dentista']);
   }
 
   async presentLoading() {
@@ -81,16 +82,13 @@ export class LoginPage implements OnInit {
   get senha(): FormControl {
     return this.formLogin.get('senha') as FormControl;
   }
-  fazerLogin(): void {
-    console.log('formLogin: ', this.formLogin.value);
-  }
   cadastrarProtetico() {
-    this.router.navigateByUrl('/cadastro-protetico');
+    this.router.navigate(['/cadastro-protetico']);
   }
   cadastrarDentista() {
-    this.router.navigateByUrl('/cadastro-dentista');
+    this.router.navigate(['/cadastro-dentista']);
   }
   esqueceuSenha() {
-    this.router.navigateByUrl('/');
+    this.router.navigate(['/']);
   }
 }

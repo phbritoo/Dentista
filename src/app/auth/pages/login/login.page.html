@@ -1,10 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
     <ion-title>
-      <div class="text ion-text-center">Login</div>
+      <div class="ion-text-center">Login</div>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -31,7 +28,8 @@
             </ion-item>
             <ion-item>
               <ion-icon name="eye-off" color="primary" slot="start"></ion-icon>
-              <ion-input type="password" required formControlName="senha" placeholder="Senha"></ion-input>
+              <ion-input type="password" required formControlName="senha" maxlength="10" placeholder="Senha">
+              </ion-input>
               <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
                 Obrigatório
               </ion-note>
