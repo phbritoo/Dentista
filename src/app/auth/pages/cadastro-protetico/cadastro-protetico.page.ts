@@ -15,8 +15,6 @@ import { User } from '../interfaces/user';
 export class CadastroProteticoPage implements OnInit {
   cadastrarProtetico: FormGroup;
   public user: User = {};
-  public userLogin: User = {};
-  public userRegister: User = {};
   private loading: any;
   constructor(
     private fb: FormBuilder,
@@ -45,28 +43,15 @@ export class CadastroProteticoPage implements OnInit {
     });
   }
 
-  async login() {
-    await this.presentLoading();
-
-    try {
-      await this.authService.login(this.userLogin);
-    } catch (error) {
-      this.presentToast(error.message);
-    } finally {
-      this.loading.dismiss();
-    }
-  }
-
   async register() {
     await this.presentLoading();
-// mudando temporariamente para o protético ser cadastrado na coleção 'User'
     try {
       const newUser = await this.authService.register(this.cadastrarProtetico.value);
       await this.afs
         .collection('User')
         .doc(newUser.user.uid)
         .set(this.cadastrarProtetico.value);
-      this.presentToast('<center>' + 'Bem vindo, Sr. ' + this.nome.value + '</center>');
+      this.presentToast('<center>' + 'Bem vindo, ' + this.nome.value + '</center>');
       this.router.navigate(['/home-protetico']);
     } catch (error) {
       console.dir(error);
@@ -76,17 +61,14 @@ export class CadastroProteticoPage implements OnInit {
       this.loading.dismiss();
     }
   }
-
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
     return this.loading.present();
   }
-
   async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({ message, duration: 4000 });
+    const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
-
   // mostrar mensagem de erro no ion-note
   get email(): FormControl {
     return this.cadastrarProtetico.get('email') as FormControl;
@@ -107,17 +89,11 @@ export class CadastroProteticoPage implements OnInit {
   get telefone(): FormControl {
     return this.cadastrarProtetico.get('telefone') as FormControl;
   }
-
   // mostrar mensagem de erro no ion-note
   get data(): FormControl {
     return this.cadastrarProtetico.get('data') as FormControl;
   }
-
-  efetuarCadastroProtetico(): void {
-    console.log('cadastrarProtetico: ', this.cadastrarProtetico.value);
-  }
-
   botaoVoltar() {
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login'] );
   }
 }

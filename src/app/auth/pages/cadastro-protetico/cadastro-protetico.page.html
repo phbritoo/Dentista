@@ -19,7 +19,7 @@
           <div class="ion-padding">
             <ion-item>
               <ion-icon name="person" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="nome" placeholder="Nome" required></ion-input>
+              <ion-input type="text" formControlName="nome" maxlength="50" placeholder="Nome" required></ion-input>
               <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
                 Obrigatório
               </ion-note>
@@ -75,7 +75,7 @@
             </ion-item>
             <ion-item>
               <ion-icon name="eye-off" color="primary" slot="start"></ion-icon>
-              <ion-input type="password" formControlName="senha" placeholder="Senha">
+              <ion-input type="password" formControlName="senha" maxlength="10" placeholder="Senha">
               </ion-input>
               <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
                 Obrigatório

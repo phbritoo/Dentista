@@ -26,7 +26,7 @@ export class TelaInicialPage implements OnInit {
   ];
   // Chama a tela de login
   openLogin() {
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
   }
 
   ngOnInit() {}

@@ -15,8 +15,6 @@ import { User } from '../interfaces/user';
 export class CadastroDentistaPage implements OnInit {
   cadastrarDentista: FormGroup;
   public user: User = {};
-  public userLogin: User = {};
-  public userRegister: User = {};
   private loading: any;
 
   constructor(
@@ -48,21 +46,8 @@ export class CadastroDentistaPage implements OnInit {
     });
   }
 
-  async login() {
-    await this.presentLoading();
-
-    try {
-      await this.authService.login(this.userLogin);
-    } catch (error) {
-      this.presentToast(error.message);
-    } finally {
-      this.loading.dismiss();
-    }
-  }
-
   async register() {
     await this.presentLoading();
-// mudando temporariamente para o dentista ser cadastrado na coleção 'User'
     try {
       const newUser = await this.authService.register(this.cadastrarDentista.value);
       await this.afs
@@ -121,12 +106,7 @@ export class CadastroDentistaPage implements OnInit {
   get senha(): FormControl {
     return this.cadastrarDentista.get('senha') as FormControl;
   }
-
-  efetuarCadastroDentista(): void {
-    console.log('cadastrarDentista: ', this.cadastrarDentista.value);
-  }
-
   botaoVoltar() {
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
   }
 }

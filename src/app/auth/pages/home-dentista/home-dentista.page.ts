@@ -39,24 +39,6 @@ export class HomeDentistaPage implements OnInit {
     });
     return await modal.present();
   }
-  // async openModal() {
-  //   const modal: HTMLIonModalElement = await this.modalController.create({
-  //     component: ModalPedidoPage,
-  //     componentProps: {
-  //       aParameter: true,
-  //       otherParameter: new Date()
-  //     }
-  //   });
-
-  //   modal.onDidDismiss().then((detail: OverlayEventDetail) => {
-  //     if (detail !== null) {
-  //       console.log('The result:', detail.data);
-  //     }
-  //   });
-
-  //   await modal.present();
-  // }
-
   ngOnInit() {}
 
   /*  quem tiver com o VS CODE atualizado, provavelmente estará vendo este warning no ngOnDestroy()
@@ -72,14 +54,14 @@ export class HomeDentistaPage implements OnInit {
 
     try {
       await this.authService.logout();
+      /* devido ao CanActivate, provavelmente não será necessário
+ esse router. Ele será automático. Comentar e testar depois */
+      // this.router.navigate(['/login']);
     } catch (error) {
       console.error(error);
     } finally {
       this.loading.dismiss();
     }
-    /* devido ao CanActivate, provavelmente não será necessário
-   esse router. Ele será automático. Comentar e testar depois */
-    this.router.navigate(['/login']);
   }
 
   async deletePedido(id: string) {
