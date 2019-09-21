@@ -16,6 +16,10 @@ const routes: Routes = [
       './auth/pages/cadastro-dentista/cadastro-dentista.module#CadastroDentistaPageModule'
   },
   {
+    path: 'reset-password',
+    loadChildren: './auth/pages/reset-password/reset-password.module#ResetPasswordPageModule'
+  },
+  {
     path: 'cadastro-protetico',
     loadChildren:
       './auth/pages/cadastro-protetico/cadastro-protetico.module#CadastroProteticoPageModule'
@@ -35,7 +39,10 @@ const routes: Routes = [
     loadChildren: './auth/pages/novo-pedido/novo-pedido.module#NovoPedidoPageModule',
     canActivate: [AuthGuard]
   },
-  { path: 'modal-pedido', loadChildren: './auth/pages/modal-pedido/modal-pedido.module#ModalPedidoPageModule' }
+  {
+    path: 'modal-pedido',
+    loadChildren: './auth/pages/modal-pedido/modal-pedido.module#ModalPedidoPageModule'
+  }
 ];
 
 @NgModule({
