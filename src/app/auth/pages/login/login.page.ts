@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { User } from '../interfaces/user';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +14,10 @@ import { Observable } from 'rxjs';
 export class LoginPage implements OnInit {
   formLogin: FormGroup;
   private loading: any;
+  userCollection2: AngularFirestoreCollection<User>;
   userCollection: AngularFirestoreCollection<User>;
-  users: Observable<User[]>;
+  users: any;
+  user: User;
 
   constructor(
     private fb: FormBuilder,
@@ -25,40 +26,91 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private afs: AngularFirestore
-  ) {}
+  ) {
+    // NO MOMENTO ESTAS LINHAS COMENTADAS NÃO ESTÃO FAZENDO SENTIDO
+    // this.userCollection = afs.collection<User>('User');
+    // .snapshotChanges() retorna DocumentChangeAction[], que contém
+    // várias informações sobre "o que aconteceu" com cada mudança. Se quisermos
+    // dar um get nos dados e/ou no id temos que mexer no map operator.
+    /* this.userCollection = this.afs.collection('User');
+
+    this.userCollection
+    this.users.pipe(
+      map(changes => {
+        const data = changes.payload.data();
+        const id = changes.payload.id;
+        return { id, ...data };
+      })
+    ).subscribe(changes => {
+      console.log(changes.id);
+    });
+    console.log(this.users); */
+  }
 
   ngOnInit(): void {
     this.createForm();
-    this.userCollection = this.afs.collection('User');
-    this.users = this.userCollection.valueChanges();
+    // this.userCollection = this.afs.collection('User');
+    // this.users = this.userCollection.valueChanges();
   }
   // validacoes do formulario
   private createForm(): void {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
+      senha: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  async login() {
-    await this.presentLoading();
+  getUserById(userId: string) {
+    this.user = this.users[userId];
+    console.log(this.user.isDentista);
+  }
 
+  async login() {
+    // levanta o loading e só saia quando o método acabar
+    await this.presentLoading();
+    // cria variável "rota" booleana para ser usada dentro da estrutura condicional
+    // e receber o isDentista do usário logado
+    let rota: boolean;
+
+    // início do try catch
     try {
+      // verifica no firebase se existe esse login e senha digitado no formulário
       await this.authService.login(this.formLogin.value);
-      // pegando o Uid do usuário que acabou de logar e jogando no console
-      // usando o getAuth do authService (AngularFireAuth)
-      // com o Uid, temos que acessar a collection
+
+      // pega o Uid do usuário em Authentication que acabou de logar e jogando na constante newUser
       const newUser = this.authService.getAuth().currentUser.uid;
-      console.log(newUser);
-      // Provavelmente é aqui que iremos implementar o método
-      // para buscar o isDentista do usuário.
-      // Pode ser viável usar a lógica:
-      // Existe na coleção "Dentista"? Se sim, vai pra home-dentista
-      // senão, vai pra home-protetico
-      this.router.navigate(['/home-dentista']);
+
+      // Vale lembrar que o id da coleção (FireStore) deste usuário é igual ao Uid do Authentication do usuário logado.
+      // O id da coleção é equivalente a uma Primary Key do SQL convencional
+      // Atribui a constante userRef a referência do id documento do FireStore (cadastro do usuário logado).
+      const userRef = this.afs.collection('User').doc(newUser);
+
+      // Busca no documento específico que tenha o doc id igual ao Uid do usuário logado
+      const getDoc = userRef
+        .get()
+        .toPromise()
+        .then(doc => {
+          if (!doc.exists) {
+            console.log('Não existe documento');
+          } else {
+            rota = doc.get('isDentista');
+            console.log('Esse usuário é dentista?', rota);
+
+            // condicional que pega o booleano "rota" para redirecionar o user para home correta
+            if (rota === true) {
+              console.log('É dentista');
+              this.router.navigate(['/home-dentista']);
+            } else {
+              console.log('É Protético');
+              this.router.navigate(['/home-protetico']);
+            }
+          }
+        })
+        .catch(err => {
+          console.log('Erro ao recuperar documento', err);
+        });
     } catch (error) {
       this.presentToast('<center>' + 'E-mail/Senha incorretos' + '</center>');
-      this.router.navigate(['/login']);
     } finally {
       this.loading.dismiss();
     }
@@ -81,6 +133,9 @@ export class LoginPage implements OnInit {
   // mostrar mensagem de erro no ion-note
   get senha(): FormControl {
     return this.formLogin.get('senha') as FormControl;
+  }
+  fazerLogin(): void {
+    console.log('formLogin: ', this.formLogin.value);
   }
   cadastrarProtetico() {
     this.router.navigate(['/cadastro-protetico']);
