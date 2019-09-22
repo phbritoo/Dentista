@@ -60,11 +60,6 @@ export class LoginPage implements OnInit {
     });
   }
 
-  getUserById(userId: string) {
-    this.user = this.users[userId];
-    console.log(this.user.isDentista);
-  }
-
   async login() {
     // levanta o loading e só saia quando o método acabar
     await this.presentLoading();
@@ -86,7 +81,7 @@ export class LoginPage implements OnInit {
       const userRef = this.afs.collection('User').doc(newUser);
 
       // Busca no documento específico que tenha o doc id igual ao Uid do usuário logado
-      const getDoc = userRef
+      userRef
         .get()
         .toPromise()
         .then(doc => {

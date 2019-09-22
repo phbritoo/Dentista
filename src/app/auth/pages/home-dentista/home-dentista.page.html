@@ -15,6 +15,7 @@
         <ion-list>
           <ion-item-sliding *ngFor="let pedido of pedidos">
             <ion-item (click)="openModal()">
+                <!--  <ion-item button [routerLink]="['/modal-pedido', pedido.id]"> -->
               <ion-avatar slot="start">
                 <img [src]="pedido.picture" />
               </ion-avatar>
@@ -32,7 +33,7 @@
             </ion-item>
 
             <ion-item-options side="end">
-              <ion-item-option color="danger" (click)="deletePedido(pedido.id)"   >
+              <ion-item-option color="danger" (click)="deletePedido(pedido.id)">
                 <!--"deletePedido(pedido.id)" "presentAlertConfirm()" -->
                 <ion-icon slot="top" name="trash"></ion-icon>
                 Excluir
