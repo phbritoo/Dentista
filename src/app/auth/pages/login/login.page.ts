@@ -60,11 +60,6 @@ export class LoginPage implements OnInit {
     });
   }
 
-  getUserById(userId: string) {
-    this.user = this.users[userId];
-    console.log(this.user.isDentista);
-  }
-
   async login() {
     // levanta o loading e só saia quando o método acabar
     await this.presentLoading();
