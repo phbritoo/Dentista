@@ -76,8 +76,7 @@ export class NovoPedidoPage implements OnInit {
   // validacoes do formulario
   private createForm(): void {
     this.novoPedido = this.fb.group({
-      id: [''],
-      userId: [''],
+      userId: [this.authService.getAuth().currentUser.uid],
       emailProtetico: ['', [Validators.required]],
       tipoProtese: ['', [Validators.required]],
       subTipoProtese: ['', [Validators.required]],

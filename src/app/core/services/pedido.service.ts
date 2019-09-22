@@ -13,7 +13,7 @@ export class PedidoService {
     this.pedidosCollection = this.afs.collection<Pedido>('Pedidos');
   }
 
-  // código que permite pegar o id do produto
+  // código que permite pegar o id do pedido
   getPedidos() {
     return this.pedidosCollection.snapshotChanges().pipe(
       map(actions => {
