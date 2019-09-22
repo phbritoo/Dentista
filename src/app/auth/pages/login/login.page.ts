@@ -81,7 +81,7 @@ export class LoginPage implements OnInit {
       const userRef = this.afs.collection('User').doc(newUser);
 
       // Busca no documento específico que tenha o doc id igual ao Uid do usuário logado
-      const getDoc = userRef
+      userRef
         .get()
         .toPromise()
         .then(doc => {
