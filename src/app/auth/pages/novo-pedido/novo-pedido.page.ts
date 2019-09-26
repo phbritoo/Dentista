@@ -7,30 +7,16 @@ import { LoadingController, ToastController, NavController } from '@ionic/angula
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Subscription, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { Categoria } from '../interfaces/categoria';
+import { Tipo } from '../interfaces/tipo';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
-class TipoProtese {
-  public id: number;
-  public name: string;
-}
-
-class SubTipoProtese {
-  public id: number;
-  public name: string;
-  public tipoProtese: TipoProtese;
-}
 @Component({
   selector: 'app-novo-pedido',
   templateUrl: './novo-pedido.page.html',
   styleUrls: ['./novo-pedido.page.scss']
 })
 export class NovoPedidoPage implements OnInit {
-  tipoProteses: TipoProtese[];
-  subTipoProteses: SubTipoProtese[];
-  subTipoProtesesByTipoProtese: SubTipoProtese[] = [];
-  tipoProteseControl: FormControl;
-  subTipoProtesesControl: FormControl;
-
   novoPedido: FormGroup;
   public pedido: Pedido = {};
   private pedidoId: string = null;
@@ -38,17 +24,22 @@ export class NovoPedidoPage implements OnInit {
   private pedidoSubscription: Subscription;
   userCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
+  categoriaCollection: AngularFirestoreCollection<Categoria>;
+  tipoCollection: AngularFirestoreCollection<Tipo>;
+  categorias: Observable<Categoria[]>;
+  tipos: Observable<Tipo[]>;
 
   // titulo de cada select-option
-  protetico: any = {
+  proteticoLabel: any = {
     header: 'Selecione o Protetico'
   };
-  tipoProtese: any = {
+  categoriaLabel: any = {
     header: 'Categoria da Protese'
   };
-  subTipo: any = {
+  tipoLabel: any = {
     header: 'Tipo de Protese'
   };
+
   constructor(
     private fb: FormBuilder,
     private pedidoService: PedidoService,
@@ -63,15 +54,6 @@ export class NovoPedidoPage implements OnInit {
     if (this.pedidoId) {
       this.loadPedido();
     }
-    this.tipoProteses = this.getTiposProteses();
-    this.subTipoProteses = this.getSubTipoProteses();
-    this.tipoProteseControl = fb.control(null, Validators.required);
-    this.subTipoProtesesControl = fb.control(null, Validators.required);
-    this.subTipoProtesesControl.disable();
-    this.novoPedido = fb.group({
-      tipoProtese: this.tipoProteseControl,
-      subTipoProtese: this.subTipoProtesesControl
-    });
   }
   // validacoes do formulario
   private createForm(): void {
@@ -80,62 +62,21 @@ export class NovoPedidoPage implements OnInit {
       emailProtetico: ['', [Validators.required]],
       tipoProtese: ['', [Validators.required]],
       subTipoProtese: ['', [Validators.required]],
-      picture: ['https://image.flaticon.com/icons/png/512/103/103386.png'],
+      picture: ['https://image.flaticon.com/icons/png/512/45/45893.png'],
       observacao: ['', [Validators.required]],
       status: ['PENDENTE'],
       criadoEm: [new Date().getTime()]
     });
   }
 
-  // select de proteses
-  tipoProteseChange(event) {
-    const tipoProtese = event.target.value;
-
-    this.subTipoProtesesByTipoProtese = this.subTipoProteses.filter(subTipoProtese => {
-      return subTipoProtese.tipoProtese.id === tipoProtese;
-    });
-    this.subTipoProtesesControl.reset();
-    this.subTipoProtesesControl.enable();
-  }
-
-  reset() {
-    this.subTipoProtesesControl.reset();
-    this.tipoProteseControl.reset();
-    this.subTipoProtesesControl.disable();
-  }
-  getTiposProteses(): TipoProtese[] {
-    return [
-      { id: 1, name: 'Total' },
-      { id: 2, name: 'Parcial removível' },
-      { id: 3, name: 'Sobre implante' },
-      { id: 4, name: 'Fixa' }
-    ];
-  }
-
-  getSubTipoProteses(): SubTipoProtese[] {
-    return [
-      { id: 10, name: 'Removível', tipoProtese: { id: 1, name: 'Total' } },
-      { id: 11, name: 'Protocolo', tipoProtese: { id: 1, name: 'Total' } },
-      { id: 12, name: 'Overdenture', tipoProtese: { id: 1, name: 'Total' } },
-      { id: 13, name: 'Com encaixes', tipoProtese: { id: 2, name: 'Parcial removível' } },
-      { id: 14, name: 'Convencional', tipoProtese: { id: 2, name: 'Parcial removível' } },
-      { id: 15, name: 'Unitária', tipoProtese: { id: 3, name: 'Sobre implante' } },
-      { id: 16, name: 'Múltipla', tipoProtese: { id: 3, name: 'Sobre implante' } },
-      { id: 20, name: 'Protocolo', tipoProtese: { id: 3, name: 'Sobre implante' } },
-      { id: 21, name: 'Overdenture', tipoProtese: { id: 3, name: 'Sobre implante' } },
-      { id: 22, name: 'Metalocerâmica', tipoProtese: { id: 4, name: 'Fixa' } },
-      { id: 23, name: 'Zircônia', tipoProtese: { id: 4, name: 'Fixa' } },
-      { id: 24, name: 'Dissilicato de lítio', tipoProtese: { id: 4, name: 'Fixa' } },
-      { id: 25, name: 'Metálica', tipoProtese: { id: 4, name: 'Fixa' } },
-      { id: 25, name: 'Cerômero', tipoProtese: { id: 4, name: 'Fixa' } },
-      { id: 26, name: 'Resina acrílica', tipoProtese: { id: 4, name: 'Fixa' } }
-    ];
-  }
-
   ngOnInit(): void {
     this.createForm();
     this.userCollection = this.afs.collection('User');
     this.users = this.userCollection.valueChanges();
+    this.categoriaCollection = this.afs.collection('Categoria');
+    this.categorias = this.categoriaCollection.valueChanges();
+    this.tipoCollection = this.afs.collection('Tipo');
+    this.tipos = this.tipoCollection.valueChanges();
   }
 
   ngOnDestroy() {
