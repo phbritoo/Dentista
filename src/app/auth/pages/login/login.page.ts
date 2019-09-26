@@ -18,6 +18,8 @@ export class LoginPage implements OnInit {
   userCollection: AngularFirestoreCollection<User>;
   users: any;
   user: User;
+  passwordtype: string = 'password';
+  passwordshow: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -47,6 +49,15 @@ export class LoginPage implements OnInit {
     console.log(this.users); */
   }
 
+  tooglepassword() {
+    if (this.passwordshow) {
+      this.passwordshow = false;
+      this.passwordtype = 'password';
+    } else {
+      this.passwordshow = true;
+      this.passwordtype = 'text';
+    }
+  }
   ngOnInit(): void {
     this.createForm();
     // this.userCollection = this.afs.collection('User');
