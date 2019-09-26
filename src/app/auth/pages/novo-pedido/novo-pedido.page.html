@@ -21,8 +21,8 @@
             <ion-list>
               <ion-item>
                 <ion-icon name="contact" color="primary" slot="start"></ion-icon>
-                <ion-select formControlName="emailProtetico" interface="action-sheet" [interfaceOptions]="protetico"
-                  placeholder="Protetico">
+                <ion-select formControlName="emailProtetico" interface="action-sheet"
+                  [interfaceOptions]="proteticoLabel" placeholder="Protetico">
                   <ng-container *ngFor="let user of users | async">
                     <ion-select-option *ngIf="user.isDentista == false" value={{user.email}}> {{user.nome}}
                     </ion-select-option>
@@ -31,41 +31,23 @@
               </ion-item>
               <ion-item>
                 <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
-                <ion-select interface="action-sheet" [interfaceOptions]="tipoProtese" placeholder="Categoria de Protese"
-                  formControlName="tipoProtese" (ionChange)="tipoProteseChange($event)">
-                  <ion-select-option *ngFor="let tipoProtese of tipoProteses" [value]="tipoProtese.id">
-                    {{tipoProtese.name}}
+                <ion-select interface="action-sheet" [interfaceOptions]="categoriaLabel"
+                  placeholder="Categoria de Protese" formControlName="tipoProtese">
+                  <!--(ionChange)="tipoProteseChange($event)"-->
+                  <ion-select-option *ngFor="let categoria of categorias | async" value={{categoria.nome}}>
+                    {{categoria.nome}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
               <ion-item>
                 <ion-icon name="flask" color="primary" slot="start"></ion-icon>
-                <ion-select interface="action-sheet" [interfaceOptions]="subTipo" placeholder="Tipo de Protese"
+                <ion-select interface="action-sheet" [interfaceOptions]="tipoLabel" placeholder="Tipo de Protese"
                   formControlName="subTipoProtese">
-                  <ion-select-option *ngFor="let subTipoProtese of subTipoProtesesByTipoProtese"
-                    [value]="subTipoProtese">
-                    {{subTipoProtese.name}}</ion-select-option>
+                  <ion-select-option *ngFor="let tipo of tipos | async" value={{tipo.nome}}>
+                    {{tipo.nome}}</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-list>
-
-            <!-- <ion-item>
-                <ion-label>Status do Pedido</ion-label>
-                <ion-select formControlName="status" interface="action-sheet" placeholder="Select One">
-                  <ion-select-option value='NOVO PEDIDO'>NOVO PEDIDO</ion-select-option>
-                  <ion-select-option value='ACEITO PELO PROTETICO'>ACEITO PELO PROTETICO</ion-select-option>
-                  <ion-select-option value='EM FABRICAÇÃO'>EM FABRICAÇÃO</ion-select-option>
-                  <ion-select-option value='INFORMAÇÕES INSUFICIENTES'>INFORMAÇÕES INSUFICIENTES</ion-select-option>
-                  <ion-select-option value='ENVIADO PARA DENTISTA'>ENVIADO PARA DENTISTA</ion-select-option>
-                  <ion-select-option value='RECEBIDO PELO DENTISTA'>RECEBIDO PELO DENTISTA</ion-select-option>
-                  <ion-select-option value='PEDIDO CONCLUÍDO'>PEDIDO CONCLUÍDO</ion-select-option>
-                </ion-select>
-              </ion-item> -->
-            <!-- <ion-item>
-              <ion-label>Observações</ion-label>
-              <ion-textarea formControlName="observacao" rows="6" cols="20"
-                placeholder="Digite informações essenciais..."></ion-textarea>
-            </ion-item> -->
 
             <ion-item>
               <ion-icon name="information-circle" slot="start" color="primary"></ion-icon>
