@@ -27,8 +27,8 @@
               </ion-note>
             </ion-item>
             <ion-item>
-              <ion-icon name="eye-off" color="primary" slot="start"></ion-icon>
-              <ion-input type="password" required formControlName="senha" maxlength="10" placeholder="Senha">
+              <ion-icon name="eye-off" color="primary" slot="start" (click)="tooglepassword()"></ion-icon>
+              <ion-input [type]="passwordtype" required formControlName="senha" maxlength="10" placeholder="Senha">
               </ion-input>
               <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
                 Obrigatório
