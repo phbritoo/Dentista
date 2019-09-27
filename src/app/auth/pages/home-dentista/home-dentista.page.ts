@@ -72,7 +72,7 @@ export class HomeDentistaPage implements OnInit {
     }
   }
 
-  async presentAlertConfirm() {
+  async presentAlertConfirm(id: string) {
     const alert = await this.alertController.create({
       header: 'ATENÇÃO!',
       message: 'Tem certeza que deseja excluir este pedido?',
@@ -82,18 +82,16 @@ export class HomeDentistaPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: blah => {
-            console.log('Confirm Cancel: blah');
+            console.log('Ação cancelada pelo usuário');
+            this.presentToast('Ação cancelada!');
           }
         },
         {
           text: 'Excluir Pedido',
           handler: () => {
-            console.log('Confirm Cancel: blah');
-            /*Método de excluir depende da inserção do id do usuário no atributo "id" do pedido.
-            O método em pedido.service está excluindo a partir de um id inserido na hora da
-            criação. Só que na hora da criação não ta criando pedido com o Uid do usuário.
-            OBS.: fiz um teste setando o id na mão no FIREBASE e deu certo.*/
-            // this.deletePedido();
+            console.log('Pedido Exluído do Firebase');
+            this.deletePedido(id);
+            this.presentToast('O pedido ' + id + 'foi excluído com sucesso');
           }
         }
       ]

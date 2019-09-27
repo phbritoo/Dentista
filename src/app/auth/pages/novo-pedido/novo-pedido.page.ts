@@ -62,7 +62,7 @@ export class NovoPedidoPage implements OnInit {
       emailProtetico: ['', [Validators.required]],
       tipoProtese: ['', [Validators.required]],
       subTipoProtese: ['', [Validators.required]],
-      picture: ['https://image.flaticon.com/icons/png/512/45/45893.png'],
+      picture: ['https://icon-library.net/images/tooth-icon-png/tooth-icon-png-28.jpg'],
       observacao: ['', [Validators.required]],
       status: ['PENDENTE'],
       criadoEm: [new Date().getTime()]
