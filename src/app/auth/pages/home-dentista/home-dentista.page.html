@@ -33,8 +33,7 @@
             </ion-item>
 
             <ion-item-options side="end">
-              <ion-item-option color="danger" (click)="deletePedido(pedido.id)">
-                <!--"deletePedido(pedido.id)" "presentAlertConfirm()" -->
+              <ion-item-option color="danger" (click)="presentAlertConfirm(pedido.id)">
                 <ion-icon slot="top" name="trash"></ion-icon>
                 Excluir
               </ion-item-option>
