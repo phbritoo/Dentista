@@ -109,4 +109,8 @@ export class HomeDentistaPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
+
+  ionViewDidLeave() {
+    this.router.navigate(['/login']);
+  }
 }
