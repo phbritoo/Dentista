@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { NavController, MenuController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tela-inicial.page.scss']
 })
 export class TelaInicialPage implements OnInit {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public alertCtrl: AlertController
+  ) {}
 
   // coleção de imagens e títulos
   slides = [
@@ -29,5 +35,11 @@ export class TelaInicialPage implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  ngOnInit() {}
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
+
+  ngOnInit() {
+    this.menuCtrl.enable(false);
+  }
 }

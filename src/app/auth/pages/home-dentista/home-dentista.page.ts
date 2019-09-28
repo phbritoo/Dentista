@@ -122,9 +122,10 @@ export class HomeDentistaPage implements OnInit {
     toast.present();
   }
 
-  ionViewDidLeave() {
-    this.router.navigate(['/login']);
-  }
+  /*Comentado devido a bugs  */
+  // ionViewDidLeave() {
+  //   this.router.navigate(['/login']);
+  // }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);

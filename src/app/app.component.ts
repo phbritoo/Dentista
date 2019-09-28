@@ -5,6 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { Pages } from './auth/pages/interfaces/pages';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { User } from './auth/pages/interfaces/user';
+
 
 @Component({
   selector: 'app-root',
@@ -14,6 +17,7 @@ import { Pages } from './auth/pages/interfaces/pages';
 export class AppComponent implements OnDestroy {
   backButtonSubscription;
   @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
+  user: User;
 
   public appPages: Array<Pages>;
 
@@ -23,7 +27,9 @@ export class AppComponent implements OnDestroy {
     public alertController: AlertController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private authService: AuthService,
+
   ) {
     this.appPages = [
       {
@@ -106,6 +112,6 @@ export class AppComponent implements OnDestroy {
   }
 
   logout() {
-    this.navCtrl.navigateRoot('/');
+    this.authService.logout();
   }
 }
