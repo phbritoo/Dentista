@@ -11,7 +11,9 @@ export class HomeProteticoPage implements OnInit {
 
   ngOnInit() {}
 
-  ionViewDidLeave() {
-    this.router.navigate(['/login']);
-  }
+  /*Comentado devido a bugs  */
+
+  // ionViewDidLeave() {
+  //   this.router.navigate(['/login']);
+  // }
 }
