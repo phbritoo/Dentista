@@ -16,6 +16,7 @@ export class CadastroProteticoPage implements OnInit {
   cadastrarProtetico: FormGroup;
   public user: User = {};
   private loading: any;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -29,6 +30,11 @@ export class CadastroProteticoPage implements OnInit {
   ngOnInit(): void {
     this.createForm();
   }
+
+  ionViewDidLeave() {
+    this.createForm();
+  }
+
   // validacoes do formulario
   private createForm(): void {
     this.cadastrarProtetico = this.fb.group({
@@ -47,11 +53,13 @@ export class CadastroProteticoPage implements OnInit {
     await this.presentLoading();
     try {
       const newUser = await this.authService.register(this.cadastrarProtetico.value);
+
       await this.afs
         .collection('User')
         .doc(newUser.user.uid)
         .set(this.cadastrarProtetico.value);
       this.presentToast('<center>' + 'Bem vindo, ' + this.nome.value + '</center>');
+
       this.router.navigate(['/home-protetico']);
     } catch (error) {
       console.dir(error);
@@ -94,6 +102,6 @@ export class CadastroProteticoPage implements OnInit {
     return this.cadastrarProtetico.get('data') as FormControl;
   }
   botaoVoltar() {
-    this.router.navigate(['/login'] );
+    this.router.navigate(['/login']);
   }
 }

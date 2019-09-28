@@ -30,7 +30,9 @@ export class CadastroDentistaPage implements OnInit {
   ngOnInit(): void {
     this.createForm();
   }
-
+  ionViewDidLeave() {
+    this.createForm();
+  }
   // validacoes do formulario
   private createForm(): void {
     this.cadastrarDentista = this.fb.group({
