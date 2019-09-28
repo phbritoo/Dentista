@@ -16,6 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { BrowserModule } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RouteReuseStrategy } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, ModalPedidoPage],
@@ -31,7 +32,8 @@ import { RouteReuseStrategy } from '@angular/router';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    ModalPedidoPageModule
+    ModalPedidoPageModule,
+    NgbModule.forRoot()
   ],
   entryComponents: [ModalPedidoPage],
   providers: [
