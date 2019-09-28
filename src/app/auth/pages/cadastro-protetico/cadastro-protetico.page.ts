@@ -17,6 +17,12 @@ export class CadastroProteticoPage implements OnInit {
   public user: User = {};
   private loading: any;
 
+  dateChanged(date) {
+    this.cadastrarProtetico.patchValue({
+      data: date.detail.value.substring(0, 10)
+    });
+  }
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -43,7 +49,7 @@ export class CadastroProteticoPage implements OnInit {
       nome: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      data: ['', [Validators.required, Validators.minLength(10)]],
+      data: ['', [Validators.required]],
       criadoEm: [new Date().getTime()],
       isDentista: [false]
     });
