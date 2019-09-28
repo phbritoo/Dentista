@@ -18,6 +18,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
   styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit {
+  tipoUsuario: boolean;
   formLogin: FormGroup;
   private loading: any;
   userCollection2: AngularFirestoreCollection<User>;
@@ -80,12 +81,15 @@ export class LoginPage implements OnInit {
     });
   }
 
+  getTipoUsuario() {
+    return this.tipoUsuario;
+  }
+
   async login() {
     // levanta o loading e só saia quando o método acabar
     await this.presentLoading();
-    // cria variável "rota" booleana para ser usada dentro da estrutura condicional
+    // cria variável "tipoUsuario" booleana para ser usada dentro da estrutura condicional
     // e receber o isDentista do usário logado
-    let rota: boolean;
 
     // início do try catch
     try {
@@ -108,11 +112,11 @@ export class LoginPage implements OnInit {
           if (!doc.exists) {
             console.log('Não existe documento');
           } else {
-            rota = doc.get('isDentista');
-            console.log('Esse usuário é dentista?', rota);
+            this.tipoUsuario = doc.get('isDentista');
+            console.log('Esse usuário é dentista?', this.tipoUsuario);
 
-            // condicional que pega o booleano "rota" para redirecionar o user para home correta
-            if (rota === true) {
+            // condicional que pega o booleano "tipoUsuario" para redirecionar o user para home correta
+            if (this.tipoUsuario === true) {
               console.log('É dentista');
               this.router.navigate(['/home-dentista']);
             } else {
