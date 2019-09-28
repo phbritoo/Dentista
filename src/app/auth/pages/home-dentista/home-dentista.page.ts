@@ -1,7 +1,14 @@
 import { ModalPedidoPage } from './../modal-pedido/modal-pedido.page';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ToastController, LoadingController, ModalController } from '@ionic/angular';
+import {
+  ToastController,
+  LoadingController,
+  ModalController,
+  NavController,
+  MenuController,
+  PopoverController
+} from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Pedido } from '../interfaces/pedido';
@@ -20,6 +27,11 @@ export class HomeDentistaPage implements OnInit {
   private pedidosSubscription: Subscription;
 
   constructor(
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public popoverCtrl: PopoverController,
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
@@ -112,5 +124,9 @@ export class HomeDentistaPage implements OnInit {
 
   ionViewDidLeave() {
     this.router.navigate(['/login']);
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
   }
 }

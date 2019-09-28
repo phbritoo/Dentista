@@ -2,7 +2,13 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ToastController, LoadingController } from '@ionic/angular';
+import {
+  ToastController,
+  LoadingController,
+  NavController,
+  MenuController,
+  AlertController
+} from '@ionic/angular';
 import { User } from '../interfaces/user';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
@@ -27,6 +33,9 @@ export class LoginPage implements OnInit {
     private toastCtrl: ToastController,
     private authService: AuthService,
     private router: Router,
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public alertCtrl: AlertController,
     private afs: AngularFirestore
   ) {
     // NO MOMENTO ESTAS LINHAS COMENTADAS NÃO ESTÃO FAZENDO SENTIDO
@@ -151,5 +160,11 @@ export class LoginPage implements OnInit {
   }
   esqueceuSenha() {
     this.router.navigate(['/']);
+  }
+
+  // menu
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 }
