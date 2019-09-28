@@ -4,7 +4,6 @@
       <ion-back-button defaultHref="/home-dentista"></ion-back-button>
     </ion-buttons>
     <ion-title>
-
       <div class="text ion-text-center">Solicitação de Protese</div>
     </ion-title>
   </ion-toolbar>
@@ -15,36 +14,53 @@
       <ion-row color="primary" class="ion-justify-content-center">
         <ion-col class="ion-align-self-center" size-md="6" size-lg="6" size-xs="12">
           <div class="slide-img-padding ion-text-center padding">
-            <img src="assets/img/logo.png" alt="">
+            <img src="assets/img/logo.png" alt="" />
           </div>
           <div class="ion-padding">
             <ion-list>
               <ion-item>
                 <ion-icon name="contact" color="primary" slot="start"></ion-icon>
-                <ion-select formControlName="emailProtetico" interface="action-sheet"
-                  [interfaceOptions]="proteticoLabel" placeholder="Protetico">
+                <ion-select
+                  formControlName="emailProtetico"
+                  interface="action-sheet"
+                  [interfaceOptions]="proteticoLabel"
+                  placeholder="Protetico"
+                >
                   <ng-container *ngFor="let user of users | async">
-                    <ion-select-option *ngIf="user.isDentista == false" value={{user.email}}> {{user.nome}}
+                    <ion-select-option *ngIf="user.isDentista == false" value="{{ user.email }}">
+                      {{ user.nome }}
                     </ion-select-option>
                   </ng-container>
                 </ion-select>
               </ion-item>
               <ion-item>
                 <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
-                <ion-select interface="action-sheet" [interfaceOptions]="categoriaLabel"
-                  placeholder="Categoria de Protese" formControlName="tipoProtese">
+                <ion-select
+                  interface="action-sheet"
+                  [interfaceOptions]="categoriaLabel"
+                  placeholder="Categoria de Protese"
+                  formControlName="tipoProtese"
+                >
                   <!--(ionChange)="tipoProteseChange($event)"-->
-                  <ion-select-option *ngFor="let categoria of categorias | async" value={{categoria.nome}}>
-                    {{categoria.nome}}
+                  <ion-select-option
+                    *ngFor="let categoria of categorias | async"
+                    value="{{ categoria.nome }}"
+                  >
+                    {{ categoria.nome }}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
               <ion-item>
                 <ion-icon name="flask" color="primary" slot="start"></ion-icon>
-                <ion-select interface="action-sheet" [interfaceOptions]="tipoLabel" placeholder="Tipo de Protese"
-                  formControlName="subTipoProtese">
-                  <ion-select-option *ngFor="let tipo of tipos | async" value={{tipo.nome}}>
-                    {{tipo.nome}}</ion-select-option>
+                <ion-select
+                  interface="action-sheet"
+                  [interfaceOptions]="tipoLabel"
+                  placeholder="Tipo de Protese"
+                  formControlName="subTipoProtese"
+                >
+                  <ion-select-option *ngFor="let tipo of tipos | async" value="{{ tipo.nome }}">
+                    {{ tipo.nome }}</ion-select-option
+                  >
                 </ion-select>
               </ion-item>
             </ion-list>
@@ -56,7 +72,8 @@
             </ion-item>
           </div>
           <div class="ion-padding">
-            <ion-button size="medium" type="submit" expand="block" [disabled]="novoPedido.invalid"> Eviar Pedido
+            <ion-button size="medium" type="submit" expand="block" [disabled]="novoPedido.invalid">
+              Eviar Pedido
               <ion-icon slot="end" name="send"></ion-icon>
             </ion-button>
           </div>
@@ -65,4 +82,3 @@
     </ion-grid>
   </form>
 </ion-content>
-<app-footer></app-footer>
