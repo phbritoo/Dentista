@@ -17,6 +17,11 @@ export class CadastroDentistaPage implements OnInit {
   public user: User = {};
   private loading: any;
 
+  dateChanged(date) {
+    this.cadastrarDentista.patchValue({
+      data: date.detail.value.substring(0, 10)
+    });
+  }
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -41,7 +46,7 @@ export class CadastroDentistaPage implements OnInit {
       nome: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      data: ['', [Validators.required, Validators.minLength(10)]],
+      data: ['', [Validators.required]],
       cro: ['', [Validators.required, Validators.minLength(4)]],
       criadoEm: [new Date().getTime()],
       isDentista: [true]
@@ -57,6 +62,7 @@ export class CadastroDentistaPage implements OnInit {
         .doc(newUser.user.uid)
         .set(this.cadastrarDentista.value);
       this.presentToast('<center>' + 'Bem vindo, Dr. ' + this.nome.value + '</center>');
+      console.log(this.cadastrarDentista.value);
       this.router.navigate(['/home-dentista']);
     } catch (error) {
       console.dir(error);

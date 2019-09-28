@@ -57,15 +57,8 @@
 
             <ion-item>
               <ion-icon name="calendar" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" formControlName="data" placeholder="Data de Nascimento"
-                [brmasker]="{mask: '00/00/0000', len:10, type:'num'}" required>
-              </ion-input>
-              <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
-                Obrigatório
-              </ion-note>
-              <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('minlength')">
-                Data Invalida
-              </ion-note>
+              <ion-datetime formControlName="data" placeholder="Data de Nascimento" displayFormat="DD/M/YYYY" min="1940" max="2010" value="2000-06-17T11:06Z"
+                (ionChange)="dateChanged($event)"></ion-datetime>
             </ion-item>
 
             <ion-item>
