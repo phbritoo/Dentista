@@ -1,26 +1,16 @@
 <ion-content>
+
   <body class="login-blue">
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <!-- Tabs Titles -->
-
-        <!-- Icon -->
         <div class="fadeIn first">
-          <!-- <img src="assets/img/logo.png" id="icon" alt="User Icon" /> -->
-          <h1 margin>Login Protolab</h1>
+          <h2 margin>Login Protolab</h2>
         </div>
-
         <!-- Login Form -->
         <form [formGroup]="formLogin" (submit)="login()">
-          <ion-item margin>
-            <!-- <ion-icon name="mail-open" color="primary" slot="start"></ion-icon> -->
-            <ion-input
-              type="email"
-              class="fadeIn second margin"
-              formControlName="email"
-              placeholder="E-mail"
-              required
-            >
+          <ion-item>
+            <ion-input type="email" class="fadeIn second" formControlName="email" placeholder="E-mail" required
+              padding-bottom>
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
@@ -29,60 +19,30 @@
           <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
             E-mail Inválido
           </ion-note>
-          <ion-item margin>
-            <!-- <ion-icon name="eye-off" color="primary" slot="start" (click)="tooglepassword()"></ion-icon> -->
-            <ion-input
-              [type]="passwordtype"
-              class="fadeIn third"
-              required
-              formControlName="senha"
-              maxlength="10"
-              placeholder="Senha"
-            >
+          <ion-item>
+            <ion-input [type]="passwordtype" class="fadeIn third" required formControlName="senha" maxlength="10"
+              placeholder="Senha" padding>
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
             Obrigatório
           </ion-note>
           <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
-            Minimo 6 Caracteres
+            Mínimo 6 Caracteres
           </ion-note>
-
-          <input
-            type="submit"
-            class="fadeIn fourth"
-            value="Fazer Login"
-            [disabled]="formLogin.invalid"
-            margin
-          />
+          <div class="ion-padding-top">
+            <input type="submit" class="fadeIn fourth" value="Fazer Login" [disabled]="formLogin.invalid" />
+          </div>
+          <!-- <a class="underlineHover" color="primary" expand="block" fill="clear" (click)="esqueceuSenha()">
+            Esqueceu a senha?
+          </a> -->
         </form>
         <div class="ion-padding">
-          <ion-button
-            class="underlineHover"
-            color="primary"
-            expand="block"
-            fill="clear"
-            (click)="cadastrarProtetico()"
-          >
+          <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarProtetico()">
             Cadastrar Protetico
           </ion-button>
-          <ion-button
-            class="underlineHover"
-            color="primary"
-            expand="block"
-            fill="clear"
-            (click)="cadastrarDentista()"
-          >
+          <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarDentista()">
             Cadastrar Dentista
-          </ion-button>
-          <ion-button
-            class="underlineHover"
-            color="primary"
-            expand="block"
-            fill="clear"
-            (click)="esqueceuSenha()"
-          >
-            Esqueceu a senha?
           </ion-button>
         </div>
       </div>
