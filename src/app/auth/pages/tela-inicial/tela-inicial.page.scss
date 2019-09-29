@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed');
+
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes shadow-pulse-big
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 70px rgba(0, 0, 0, 0);
+  }
+}
+
 ion-slide {
   display: block;
 }
@@ -13,7 +35,15 @@ h3 {
 }
 
 .btn-primary {
-  height: 60px;
+  width: 150px;
+  height: 80px;
+  font: 13px/130px 'Barlow Semi Condensed', sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  background: rgba(30, 144, 255, 0.6);
+  border-radius: 50%;
+  animation: shadow-pulse 0.8s infinite;
 }
 
 img {
@@ -23,3 +53,9 @@ img {
 .logo img {
   max-width: 100px;
 }
+
+.wrapper
+{
+  padding: 20px;
+}
+
