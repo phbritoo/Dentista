@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
   userCollection: AngularFirestoreCollection<User>;
   users: any;
   user: User;
-  passwordtype: string = 'password';
+  passwordtype = 'password';
   passwordshow: boolean;
 
   constructor(
