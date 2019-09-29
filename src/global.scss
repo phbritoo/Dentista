@@ -10,21 +10,20 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import '~@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
-
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
 
 .icon-7em {
   font-size: 100px;
@@ -49,11 +48,11 @@ ion-item {
 }
 
 .bg-light {
-  background-color: var(--ion-color-light);
+  background-color: var(--ion-color-primary);
 }
 
 .bg-dark {
-  background-color: var(--ion-color-dark);
+  background-color: var(--ion-color-primary);
 }
 
 .bg-primary {
@@ -61,19 +60,19 @@ ion-item {
 }
 
 .bg-secondary {
-  background-color: var(--ion-color-secondary);
+  background-color: var(--ion-color-primary);
 }
 
 .bg-tertiary {
-  background-color: var(--ion-color-tertiary);
+  background-color: var(--ion-color-primary);
 }
 
 .bg-profile {
-  background-image: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary))
+  background-image: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary));
 }
 
 .bg-main {
-  background-image: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+  background-image: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light));
 }
 
 // Helpers //
@@ -91,7 +90,7 @@ ion-item {
 }
 
 .text08 {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .text1 {
@@ -123,13 +122,12 @@ ion-item {
 }
 
 .text-dark {
-  color: var(--ion-color-dark);
+  color: var(--ion-color-primary);
 }
 
 // menu //
 // Menu user profile
 ion-toolbar.user-profile {
-
   .user-avatar {
     width: 68px;
     height: 68px;
@@ -143,20 +141,24 @@ ion-toolbar.user-profile {
 // Custom toolbar (overriding Shadow DOM)
 ion-toolbar {
   &.ion-color-primary {
-    --ion-color-base: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary)) !important;
+    --ion-color-base: linear-gradient(
+      135deg,
+      var(--ion-color-primary),
+      var(--ion-color-primary)
+    ) !important;
   }
 }
 
 // Android card shadow
 ion-card {
   &.sc-ion-card-md-h {
-    box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb), .24);
+    box-shadow: 0 2px 4px rgba(var(--ion-color-primary-rgb), 0.24);
   }
 }
 
 // style for auth pages
 .auth-page {
-  background-image: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+  background-image: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary));
 
   .grid {
     padding: 0;
@@ -167,7 +169,6 @@ ion-card {
   }
 
   .btn-group {
-
     .button-ios,
     .button-md {
       border-radius: 0;
@@ -190,7 +191,7 @@ ion-card {
       height: 60px;
       margin: 20px auto 8px;
       border-radius: 10%;
-      background: url("/assets/img/ionic4start-ico.png") no-repeat;
+      background: url('/assets/img/ionic4start-ico.png') no-repeat;
       background-size: 100%;
     }
 
@@ -212,7 +213,7 @@ ion-card {
 
         ion-label {
           font-size: 1em;
-          color: var(--ion-color-light);
+          color: var(--ion-color-primary);
         }
 
         input {
@@ -221,7 +222,6 @@ ion-card {
       }
     }
   }
-
 }
 
 // Custom Menu styles (overriding Shadow DOM)
@@ -229,7 +229,11 @@ ion-menu {
   ion-header {
     ion-toolbar {
       &.ion-color-dark {
-        --ion-color-base: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary)) !important;
+        --ion-color-base: linear-gradient(
+          135deg,
+          var(--ion-color-primary),
+          var(--ion-color-primary)
+        ) !important;
       }
     }
   }
