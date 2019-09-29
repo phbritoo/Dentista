@@ -67,17 +67,13 @@
 
           <ion-item>
             <ion-icon name="calendar" slot="start"></ion-icon>
-            <ion-datetime formControlName="data" placeholder="Data de Nascimento" displayFormat="DD/M/YYYY" min="1940"
-              max="2010" value="2000-06-17T11:06Z" (ionChange)="dateChanged($event)" class="fadeIn six" padding-bottom>
+            <ion-datetime formControlName="data" placeholder="Data de Nascimento" displayFormat="DD/MM/YYYY" min="1940"
+              max="2010" (ionChange)="dateChanged($event)" class="fadeIn six" padding-bottom>
             </ion-datetime>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
             Obrigatório
           </ion-note>
-          <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('minlength')">
-            Data Inválida
-          </ion-note>
-
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
             <ion-input type="email" formControlName="email" placeholder="E-mail" class="fadeIn seven" padding-bottom>
