@@ -4,7 +4,9 @@
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <div class="fadeIn first">
-          <h2 margin>Login Protolab</h2>
+          <h2 margin>
+            Login Protolab
+          </h2>
         </div>
         <!-- Login Form -->
         <form [formGroup]="formLogin" (submit)="login()">
@@ -23,6 +25,9 @@
             <ion-input [type]="passwordtype" class="fadeIn third" required formControlName="senha" maxlength="10"
               placeholder="Senha" padding>
             </ion-input>
+            <ion-button (click)="abrirPrompt()">
+              <ion-icon name="help-circle"></ion-icon>
+            </ion-button>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
             Obrigatório
@@ -31,7 +36,7 @@
             Mínimo 6 Caracteres
           </ion-note>
           <div class="ion-padding-top">
-            <input type="submit" class="fadeIn fourth" value="Fazer Login" [disabled]="formLogin.invalid" />
+            <input type="submit" class="fadeIn fourth" value="Login" [disabled]="formLogin.invalid" />
           </div>
           <!-- <a class="underlineHover" color="primary" expand="block" fill="clear" (click)="esqueceuSenha()">
             Esqueceu a senha?
