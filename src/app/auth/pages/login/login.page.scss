@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   height: 100vh;
 }
 
@@ -25,8 +25,6 @@ h2 {
   margin: 40px 8px 10px 8px;
   color: #cccccc;
 }
-
-
 
 /* STRUCTURE */
 
@@ -63,8 +61,6 @@ h2 {
   border-radius: 0 0 10px 10px;
 }
 
-
-
 /* TABS */
 
 h2.inactive {
@@ -76,13 +72,11 @@ h2.active {
   border-bottom: 2px solid #5fbae9;
 }
 
-
-
 /* FORM TYPOGRAPHY*/
 
-input[type=button],
-input[type=submit],
-input[type=reset] {
+input[type='button'],
+input[type='submit'],
+input[type='reset'] {
   background-color: #56baed;
   border: none;
   color: white;
@@ -104,15 +98,15 @@ input[type=reset] {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover,
-input[type=submit]:hover,
-input[type=reset]:hover {
+input[type='button']:hover,
+input[type='submit']:hover,
+input[type='reset']:hover {
   background-color: #39ace7;
 }
 
-input[type=button]:active,
-input[type=submit]:active,
-input[type=reset]:active {
+input[type='button']:active,
+input[type='submit']:active,
+input[type='reset']:active {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -120,7 +114,7 @@ input[type=reset]:active {
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type='text'] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -141,16 +135,14 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type='text']:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder {
+input[type='text']:placeholder {
   color: #cccccc;
 }
-
-
 
 /* ANIMATIONS */
 
@@ -270,7 +262,7 @@ input[type=text]:placeholder {
   width: 0;
   height: 2px;
   background-color: #56baed;
-  content: "";
+  content: '';
   transition: width 0.2s;
 }
 
@@ -283,7 +275,7 @@ input[type=text]:placeholder {
 }
 
 h1 {
-  color: #60a0ff;
+  color: #000000;
 }
 
 /* OTHERS */
@@ -297,5 +289,5 @@ h1 {
 }
 
 .login-blue {
-  background: linear-gradient(145deg, #2196F3, #3F51B5);
+  background: linear-gradient(145deg, #2196f3, #3f51b5);
 }
