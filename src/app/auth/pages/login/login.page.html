@@ -3,6 +3,9 @@
   <body class="login-blue">
     <div class="wrapper fadeInDown">
       <div id="formContent">
+        <div class="slide-img-padding ion-text-center" margin>
+          <img src="assets/img/logo.png" alt="">
+        </div>
         <div class="fadeIn first">
           <h2 margin>
             Login Protolab
@@ -11,6 +14,7 @@
         <!-- Login Form -->
         <form [formGroup]="formLogin" (submit)="login()">
           <ion-item>
+            <ion-icon name="at" slot="start"></ion-icon>
             <ion-input type="email" class="fadeIn second" formControlName="email" placeholder="E-mail" required
               padding-bottom>
             </ion-input>
@@ -22,6 +26,7 @@
             E-mail Inválido
           </ion-note>
           <ion-item>
+            <ion-icon name="lock" slot="start"></ion-icon>
             <ion-input [type]="passwordtype" class="fadeIn third" required formControlName="senha" maxlength="10"
               placeholder="Senha" padding>
             </ion-input>
