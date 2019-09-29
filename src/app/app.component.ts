@@ -8,7 +8,6 @@ import { Pages } from './auth/pages/interfaces/pages';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from './auth/pages/interfaces/user';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -28,28 +27,33 @@ export class AppComponent implements OnDestroy {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public navCtrl: NavController,
-    private authService: AuthService,
-
+    private authService: AuthService
   ) {
     this.appPages = [
       {
-        title: 'Home',
+        title: 'Meus Pedidos',
         url: '/home-dentista',
-        direct: 'root',
-        icon: 'home'
+        // direct: 'root',
+        icon: 'md-list-box'
       },
       {
-        title: 'About',
+        title: 'Novo Pedido',
         url: '/novo-pedido',
-        direct: 'forward',
-        icon: 'information-circle-outline'
+        // direct: 'forward',
+        icon: 'md-add-circle-outline'
       },
 
       {
-        title: 'App Settings',
-        url: '/home-protetico',
-        direct: 'forward',
-        icon: 'cog'
+        title: 'Pedidos Concluídos',
+        url: '/home-dentista',
+        // direct: 'forward',
+        icon: 'md-checkbox-outline'
+      },
+      {
+        title: 'Pedidos Pendentes',
+        url: '/home-dentista',
+        // direct: 'forward',
+        icon: 'clock'
       }
     ];
     this.initializeApp();
