@@ -171,4 +171,28 @@ export class LoginPage implements OnInit {
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
+
+  // ALERT DE ESQEUCEU A SENHA
+  async abrirPrompt() {
+    let alert = await this.alertCtrl.create({
+      header: 'Esqueceu a senha?',
+      inputs: [
+        {
+          name: 'E-mail',
+          type: 'email',
+          placeholder: 'Informe seu email'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Enviar',
+          handler: data => {
+            console.log('Seja bem vindo fulano de tal!', data);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }
