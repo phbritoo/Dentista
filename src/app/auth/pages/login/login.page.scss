@@ -1,4 +1,17 @@
 /* BASIC */
+img {
+  max-width: 250px;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.logo img {
+  max-width: 100px;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
 
 html {
   background-color: #56baed;
