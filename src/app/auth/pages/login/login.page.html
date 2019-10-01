@@ -15,7 +15,7 @@
         <form [formGroup]="formLogin" (submit)="login()">
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
-            <ion-input type="email" class="fadeIn second" formControlName="email" placeholder="E-mail" required
+            <ion-input type="email" class="fadeIn second" clearInput formControlName="email" placeholder="E-mail"
               padding-bottom>
             </ion-input>
           </ion-item>
@@ -27,7 +27,7 @@
           </ion-note>
           <ion-item>
             <ion-icon name="lock" slot="start"></ion-icon>
-            <ion-input [type]="passwordtype" class="fadeIn third" required formControlName="senha" maxlength="10"
+            <ion-input [type]="passwordtype" class="fadeIn third" clearInput formControlName="senha" maxlength="10"
               placeholder="Senha" padding>
             </ion-input>
             <ion-button (click)="abrirPrompt()">
@@ -37,9 +37,9 @@
           <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
             Obrigatório
           </ion-note>
-          <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
+          <!-- <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
             Mínimo 6 Caracteres
-          </ion-note>
+          </ion-note> -->
           <div class="ion-padding-top">
             <input type="submit" class="fadeIn fourth" value="Login" [disabled]="formLogin.invalid" />
           </div>
