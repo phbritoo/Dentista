@@ -1,5 +1,4 @@
 <ion-content>
-
   <body class="login-blue">
     <div class="wrapper fadeInDown">
       <div id="formContent">
@@ -14,8 +13,8 @@
 
           <ion-item>
             <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" class="fadeIn second" formControlName="nome" maxlength="50" placeholder="Nome"
-              required padding-bottom>
+            <ion-input type="text" class="fadeIn second" clearInput formControlName="nome" maxlength="50" placeholder="Nome"
+             padding-bottom>
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
@@ -26,7 +25,7 @@
           </ion-note>
           <ion-item>
             <ion-icon name="finger-print" slot="start"></ion-icon>
-            <ion-input type="text" formControlName="cpf" placeholder="CPF" class="fadeIn third"
+            <ion-input type="tel" formControlName="cpf" clearInput placeholder="CPF" class="fadeIn third"
               [brmasker]="{mask: '999.999.999-99', len:14, type:'num', userCaracters: true}" padding-bottom>
             </ion-input>
           </ion-item>
@@ -39,7 +38,7 @@
 
           <ion-item>
             <ion-icon name="phone-portrait" slot="start"></ion-icon>
-            <ion-input type="text" formControlName="telefone" placeholder="Telefone" [brmasker]="{phone: true}"
+            <ion-input type="tel" formControlName="telefone" clearInput placeholder="Telefone" [brmasker]="{phone: true}"
               class="fadeIn five" padding-bottom>
             </ion-input>
           </ion-item>
@@ -52,7 +51,7 @@
 
           <ion-item>
             <ion-icon name="calendar" slot="start"></ion-icon>
-            <ion-datetime formControlName="data" placeholder="Data de Nascimento" displayFormat="DD/MM/YYYY" min="1940"
+            <ion-datetime formControlName="data" placeholder="Data de Nascimento" clearInput displayFormat="DD/MM/YYYY" min="1940"
               max="2010" (ionChange)="dateChanged($event)" class="fadeIn six" padding-bottom>
             </ion-datetime>
           </ion-item>
@@ -61,7 +60,7 @@
           </ion-note>
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
-            <ion-input type="email" formControlName="email" placeholder="E-mail" class="fadeIn seven" padding-bottom>
+            <ion-input type="email" formControlName="email" clearInput placeholder="E-mail" class="fadeIn seven" padding-bottom>
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
@@ -73,7 +72,7 @@
 
           <ion-item>
             <ion-icon name="lock" slot="start"></ion-icon>
-            <ion-input type="password" maxlength="10" formControlName="senha" placeholder="Senha" class="fadeIn eight"
+            <ion-input type="password" maxlength="10" formControlName="senha" clearInput placeholder="Senha" class="fadeIn eight"
               padding-bottom>
             </ion-input>
           </ion-item>
