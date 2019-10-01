@@ -156,18 +156,8 @@ export class LoginPage implements OnInit {
   fazerLogin(): void {
     console.log('formLogin: ', this.formLogin.value);
   }
-  cadastrarProtetico() {
-    this.router.navigate(['/cadastro-protetico']);
-  }
-  cadastrarDentista() {
-    this.router.navigate(['/cadastro-dentista']);
-  }
-  esqueceuSenha() {
-    this.router.navigate(['/']);
-  }
 
   // menu
-
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
@@ -188,6 +178,29 @@ export class LoginPage implements OnInit {
           text: 'Enviar',
           handler: data => {
             console.log('Seja bem vindo fulano de tal!', data);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  // ALERT DE CADASTRO
+  async cadastro() {
+    let alert = await this.alertCtrl.create({
+      header: 'Cadastrar um ...',
+      buttons: [
+        {
+          text: 'Denitsta',
+          handler: data => {
+            this.router.navigate(['/cadastro-dentista']);
+          }
+        },
+        {
+          text: 'Protético',
+          handler: data => {
+            this.router.navigate(['/cadastro-protetico']);
           }
         }
       ]
