@@ -187,25 +187,34 @@ export class LoginPage implements OnInit {
   }
 
   // ALERT DE CADASTRO
-  async cadastro() {
-    let alert = await this.alertCtrl.create({
-      header: 'Cadastrar um ...',
-      buttons: [
-        {
-          text: 'Denitsta',
-          handler: data => {
-            this.router.navigate(['/cadastro-dentista']);
-          }
-        },
-        {
-          text: 'Protético',
-          handler: data => {
-            this.router.navigate(['/cadastro-protetico']);
-          }
-        }
-      ]
-    });
+  // async cadastro() {
+  //   let alert = await this.alertCtrl.create({
+  //     header: 'Cadastrar um ...',
+  //     buttons: [
+  //       {
+  //         text: 'Denitsta',
+  //         handler: data => {
+  //           this.router.navigate(['/cadastro-dentista']);
+  //         }
+  //       },
+  //       {
+  //         text: 'Protético',
+  //         handler: data => {
+  //           this.router.navigate(['/cadastro-protetico']);
+  //         }
+  //       }
+  //     ]
+  //   });
 
-    await alert.present();
+  //   await alert.present();
+  // }
+  cadastrarProtetico() {
+    this.router.navigate(['/cadastro-protetico']);
+  }
+  cadastrarDentista() {
+    this.router.navigate(['/cadastro-dentista']);
+  }
+  esqueceuSenha() {
+    this.router.navigate(['/']);
   }
 }
