@@ -164,6 +164,8 @@ export class LoginPage implements OnInit {
 
   // ALERT DE ESQEUCEU A SENHA
   // Redefinição de senha implementada e funcional, posteriormente será realizado melhorias
+  // Foi implementado o botão de cancelar caso o usuario precise desistir
+ // Hoje não esta sendo validado se o email e valido e esta com bug caso seja digitado qualquer caracter no text
   async abrirPrompt() {
     const alert = await this.alertCtrl.create({
       header: 'Esqueceu a senha?',
@@ -176,20 +178,29 @@ export class LoginPage implements OnInit {
       ],
       buttons: [
         {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: blah => {
+            console.log('Ação cancelada');
+          }
+        },
+        {
           text: 'Enviar',
           handler: data => {
-            try {
+            if (!data.input) {
+              this.presentToast(
+                '<center>' + 'E-mail inválido ou Não cadastrado na base' + '</center>'
+              );
+              console.log('Nada será enviado');
+            } else {
               this.authService.resetPassword(data.input);
               this.presentToast(
                 '<center>' +
                   'O link para redefinição de senha será enviado para seu e-mail.' +
                   '</center>'
               );
-            } catch (error) {
-              this.presentToast(
-                '<center>' + 'E-mail inválido ou Não cadastrado na base' + '</center>'
-              );
-              console.log(error);
+              console.log('Envio com sucesso');
             }
           }
         }
