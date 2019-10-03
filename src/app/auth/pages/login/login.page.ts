@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import {
@@ -141,7 +141,7 @@ export class LoginPage implements OnInit {
   }
 
   async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    const toast = await this.toastCtrl.create({ message, duration: 3000 });
     toast.present();
   }
 
@@ -163,12 +163,13 @@ export class LoginPage implements OnInit {
   }
 
   // ALERT DE ESQEUCEU A SENHA
+  // Redefinição de senha implementada e funcional, posteriormente será realizado melhorias
   async abrirPrompt() {
-    let alert = await this.alertCtrl.create({
+    const alert = await this.alertCtrl.create({
       header: 'Esqueceu a senha?',
       inputs: [
         {
-          name: 'E-mail',
+          name: 'input',
           type: 'email',
           placeholder: 'Informe seu email'
         }
@@ -177,7 +178,19 @@ export class LoginPage implements OnInit {
         {
           text: 'Enviar',
           handler: data => {
-            console.log('Seja bem vindo fulano de tal!', data);
+            try {
+              this.authService.resetPassword(data.input);
+              this.presentToast(
+                '<center>' +
+                  'O link para redefinição de senha será enviado para seu e-mail.' +
+                  '</center>'
+              );
+            } catch (error) {
+              this.presentToast(
+                '<center>' + 'E-mail inválido ou Não cadastrado na base' + '</center>'
+              );
+              console.log(error);
+            }
           }
         }
       ]
