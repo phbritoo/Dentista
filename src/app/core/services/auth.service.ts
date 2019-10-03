@@ -27,6 +27,9 @@ export class AuthService {
   }
   // Implementacao do metrodo esqueci a senha
   resetPassword(email: string) {
-    this.afa.auth.sendPasswordResetEmail(email);
+    this.afa.auth.sendPasswordResetEmail(email.toString().trim());
+
+    // .then(() => console.log('email enviado'))
+    // .catch(error => console.log(error));
   }
 }
