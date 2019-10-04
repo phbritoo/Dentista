@@ -14,13 +14,14 @@
       <ion-col class="align-self-center" size-md="6" size-lg="5" size-xs="12">
         <ion-list>
           <ion-item-sliding *ngFor="let pedido of pedidos">
-            <ion-item (click)="openModal()">
+            <!-- <ion-item (click)="openModal()"> -->
+            <ion-item>
               <!--  <ion-item button [routerLink]="['/modal-pedido', pedido.id]"> -->
               <ion-avatar slot="start">
                 <img [src]="pedido.picture" />
               </ion-avatar>
-
-              <ion-label (click)="openModal()">
+              <!-- <ion-label (click)="openModal()"> -->
+              <ion-label>
                 {{ pedido.tipoProtese }}
                 <p>{{ pedido.subTipoProtese }}</p>
                 <p>{{ pedido.emailProtetico }}</p>
