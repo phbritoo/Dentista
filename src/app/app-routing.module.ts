@@ -42,7 +42,8 @@ const routes: Routes = [
   {
     path: 'modal-pedido',
     loadChildren: './auth/pages/modal-pedido/modal-pedido.module#ModalPedidoPageModule'
-  }
+  },  { path: 'popup-menu', loadChildren: './auth/pages/popup-menu/popup-menu.module#PopupMenuPageModule' }
+
 ];
 
 @NgModule({
