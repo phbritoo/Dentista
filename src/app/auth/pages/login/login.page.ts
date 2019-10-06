@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import {
@@ -36,7 +36,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     public navCtrl: NavController,
     public menuCtrl: MenuController,
-    public alertCtrl: AlertController,
+    private alertCtrl: AlertController,
+    private zone: NgZone,
     private afs: AngularFirestore
   ) {
     // NO MOMENTO ESTAS LINHAS COMENTADAS NÃO ESTÃO FAZENDO SENTIDO
@@ -165,7 +166,7 @@ export class LoginPage implements OnInit {
   // ALERT DE ESQEUCEU A SENHA
   // Redefinição de senha implementada e funcional, posteriormente será realizado melhorias
   // Foi implementado o botão de cancelar caso o usuario precise desistir
- // Hoje não esta sendo validado se o email e valido e esta com bug caso seja digitado qualquer caracter no text
+  // Hoje não esta sendo validado se o email e valido e esta com bug caso seja digitado qualquer caracter no text
   async abrirPrompt() {
     const alert = await this.alertCtrl.create({
       header: 'Esqueceu a senha?',
@@ -211,34 +212,36 @@ export class LoginPage implements OnInit {
   }
 
   // ALERT DE CADASTRO
-  // async cadastro() {
-  //   let alert = await this.alertCtrl.create({
-  //     header: 'Cadastrar um ...',
-  //     buttons: [
-  //       {
-  //         text: 'Denitsta',
-  //         handler: data => {
-  //           this.router.navigate(['/cadastro-dentista']);
-  //         }
-  //       },
-  //       {
-  //         text: 'Protético',
-  //         handler: data => {
-  //           this.router.navigate(['/cadastro-protetico']);
-  //         }
-  //       }
-  //     ]
-  //   });
+  async cadastro() {
+    const alert = await this.alertCtrl.create({
+      header: 'Cadastrar um ...',
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'Dentista',
+          handler: () => {
+            this.zone.run(async () => {
+              await this.navCtrl.navigateForward('/cadastro-dentista');
+            });
+          }
+        },
+        {
+          text: 'Protético',
+          handler: () => {
+            this.zone.run(async () => {
+              await this.navCtrl.navigateForward('/cadastro-protetico');
+            });
+          }
+        }
+      ]
+    });
 
-  //   await alert.present();
+    await alert.present();
+  }
+  // cadastrarProtetico() {
+  //   this.router.navigate(['/cadastro-protetico']);
   // }
-  cadastrarProtetico() {
-    this.router.navigate(['/cadastro-protetico']);
-  }
-  cadastrarDentista() {
-    this.router.navigate(['/cadastro-dentista']);
-  }
-  esqueceuSenha() {
-    this.router.navigate(['/']);
-  }
+  // cadastrarDentista() {
+  //   this.router.navigate(['/cadastro-dentista']);
+  // }
 }
