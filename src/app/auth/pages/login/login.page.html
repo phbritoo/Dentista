@@ -13,7 +13,8 @@
         <form [formGroup]="formLogin" (submit)="login()">
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
-            <ion-input type="email" class="fadeIn second ion-padding-bottom" clearInput formControlName="email" placeholder="E-mail">
+            <ion-input type="email" class="fadeIn second ion-padding-bottom" clearInput formControlName="email"
+              placeholder="E-mail">
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
@@ -24,8 +25,8 @@
           </ion-note>
           <ion-item>
             <ion-icon name="lock" slot="start"></ion-icon>
-            <ion-input [type]="passwordtype" class="fadeIn third ion-padding" clearInput formControlName="senha" maxlength="10"
-              placeholder="Senha">
+            <ion-input [type]="passwordtype" class="fadeIn third ion-padding" clearInput formControlName="senha"
+              maxlength="10" placeholder="Senha">
             </ion-input>
             <ion-button (click)="abrirPrompt()">
               <ion-icon name="help-circle"></ion-icon>
@@ -45,16 +46,16 @@
           </a> -->
         </form>
         <div class="ion-padding">
-          <!-- <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastro()">
+          <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastro()">
             Cadastre-se
-          </ion-button> -->
-          <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarProtetico()">
+          </ion-button>
+          <!-- <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarProtetico()">
             Cadastrar Protetico
           </ion-button>
 
           <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarDentista()">
             Cadastrar Dentista
-          </ion-button>
+          </ion-button> -->
         </div>
       </div>
     </div>

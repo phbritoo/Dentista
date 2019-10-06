@@ -21,9 +21,9 @@
           <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
             Obrigatório
           </ion-note>
-          <!-- <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('minlength')">
-            Mínimo 5 Caracteres
-          </ion-note> -->
+          <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('minlength')">
+            Mínimo 3 Caracteres
+          </ion-note>
           <ion-item>
             <ion-icon name="finger-print" slot="start"></ion-icon>
             <ion-input type="tel" formControlName="cpf" clearInput placeholder="CPF"
