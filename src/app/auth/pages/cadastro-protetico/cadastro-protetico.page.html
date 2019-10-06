@@ -1,58 +1,60 @@
 <ion-content>
+
   <body class="login-blue">
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <div class="slide-img-padding ion-text-center" margin>
+        <div class="slide-img-padding ion-text-center ion-margin">
           <img src="assets/img/logo.png" alt="">
         </div>
         <div class="fadeIn first">
-          <h2 margin> Cadastro Protético </h2>
+          <h2 class="ion-margin"> Cadastro Protético </h2>
         </div>
         <!-- Login Form -->
         <form [formGroup]="cadastrarProtetico" (submit)="register()">
 
           <ion-item>
             <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" class="fadeIn second" clearInput formControlName="nome" maxlength="50" placeholder="Nome"
-             padding-bottom>
+            <ion-input type="text" class="fadeIn second ion-padding-bottom" clearInput formControlName="nome"
+              maxlength="50" placeholder="Nome">
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
             Obrigatório
           </ion-note>
-          <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('minlength')">
+          <!-- <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('minlength')">
             Mínimo 5 Caracteres
-          </ion-note>
+          </ion-note> -->
           <ion-item>
             <ion-icon name="finger-print" slot="start"></ion-icon>
-            <ion-input type="tel" formControlName="cpf" clearInput placeholder="CPF" class="fadeIn third"
-              [brmasker]="{mask: '999.999.999-99', len:14, type:'num', userCaracters: true}" padding-bottom>
+            <ion-input type="tel" formControlName="cpf" clearInput placeholder="CPF"
+              class="fadeIn third ion-padding-bottom"
+              [brmasker]="{mask: '999.999.999-99', len:14, type:'num', userCaracters: true}">
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="cpf.dirty && cpf.hasError('required')">
             Obrigatório
           </ion-note>
-          <ion-note slot="end" color="danger" *ngIf="cpf.dirty && cpf.hasError('minlength')">
+          <!-- <ion-note slot="end" color="danger" *ngIf="cpf.dirty && cpf.hasError('minlength')">
             CPF Inválido
-          </ion-note>
+          </ion-note> -->
 
           <ion-item>
             <ion-icon name="phone-portrait" slot="start"></ion-icon>
-            <ion-input type="tel" formControlName="telefone" clearInput placeholder="Telefone" [brmasker]="{phone: true}"
-              class="fadeIn five" padding-bottom>
+            <ion-input type="tel" formControlName="telefone" clearInput placeholder="Telefone"
+              [brmasker]="{phone: true}" class="fadeIn five ion-padding-bottom">
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('required')">
             Obrigatório
           </ion-note>
-          <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('minlength')">
+          <!-- <ion-note slot="end" color="danger" *ngIf="telefone.dirty && telefone.hasError('minlength')">
             Telefone Inválido
-          </ion-note>
+          </ion-note> -->
 
           <ion-item>
             <ion-icon name="calendar" slot="start"></ion-icon>
-            <ion-datetime formControlName="data" placeholder="Data de Nascimento" clearInput displayFormat="DD/MM/YYYY" min="1940"
-              max="2010" (ionChange)="dateChanged($event)" class="fadeIn six" padding-bottom>
+            <ion-datetime formControlName="data" placeholder="Data de Nascimento" clearInput displayFormat="DD/MM/YYYY"
+              min="1940" max="2010" (ionChange)="dateChanged($event)" class="fadeIn six ion-padding-bottom">
             </ion-datetime>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
@@ -60,7 +62,8 @@
           </ion-note>
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
-            <ion-input type="email" formControlName="email" clearInput placeholder="E-mail" class="fadeIn seven" padding-bottom>
+            <ion-input type="email" formControlName="email" clearInput placeholder="E-mail"
+              class="fadeIn seven ion-padding-bottom">
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
@@ -72,8 +75,8 @@
 
           <ion-item>
             <ion-icon name="lock" slot="start"></ion-icon>
-            <ion-input type="password" maxlength="10" formControlName="senha" clearInput placeholder="Senha" class="fadeIn eight"
-              padding-bottom>
+            <ion-input type="password" maxlength="10" formControlName="senha" clearInput placeholder="Senha"
+              class="fadeIn eight ion-padding-bottom">
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">

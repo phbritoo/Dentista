@@ -21,6 +21,7 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  overflow: auto;
 }
 
 a {
@@ -57,7 +58,7 @@ h2 {
   border-radius: 10px 10px 10px 10px;
   background: #fff;
   padding: 30px;
-  width: 90%;
+  width: 110%;
   max-width: 450px;
   position: relative;
   padding: 0px;
