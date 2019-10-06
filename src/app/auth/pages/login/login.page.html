@@ -1,27 +1,19 @@
 <ion-content>
+
   <body class="login-blue">
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <div class="slide-img-padding ion-text-center" margin>
+        <div class="slide-img-padding ion-text-center ion-margin">
           <img src="assets/img/logo.png" alt="" />
         </div>
         <div class="fadeIn first">
-          <h2 margin>
-            Login Protolab
-          </h2>
+          <h2 class="ion-margin"> Login </h2>
         </div>
         <!-- Login Form -->
         <form [formGroup]="formLogin" (submit)="login()">
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
-            <ion-input
-              type="email"
-              class="fadeIn second"
-              clearInput
-              formControlName="email"
-              placeholder="E-mail"
-              padding-bottom
-            >
+            <ion-input type="email" class="fadeIn second ion-padding-bottom" clearInput formControlName="email" placeholder="E-mail">
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
@@ -32,15 +24,8 @@
           </ion-note>
           <ion-item>
             <ion-icon name="lock" slot="start"></ion-icon>
-            <ion-input
-              [type]="passwordtype"
-              class="fadeIn third"
-              clearInput
-              formControlName="senha"
-              maxlength="10"
-              placeholder="Senha"
-              padding
-            >
+            <ion-input [type]="passwordtype" class="fadeIn third ion-padding" clearInput formControlName="senha" maxlength="10"
+              placeholder="Senha">
             </ion-input>
             <ion-button (click)="abrirPrompt()">
               <ion-icon name="help-circle"></ion-icon>
@@ -53,12 +38,7 @@
             Mínimo 6 Caracteres
           </ion-note> -->
           <div class="ion-padding-top">
-            <input
-              type="submit"
-              class="fadeIn fourth"
-              value="Login"
-              [disabled]="formLogin.invalid"
-            />
+            <input type="submit" class="fadeIn fourth" value="Login" [disabled]="formLogin.invalid" />
           </div>
           <!-- <a class="underlineHover" color="primary" expand="block" fill="clear" (click)="esqueceuSenha()">
             Esqueceu a senha?
@@ -68,23 +48,11 @@
           <!-- <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastro()">
             Cadastre-se
           </ion-button> -->
-          <ion-button
-            class="underlineHover"
-            color="primary"
-            expand="block"
-            fill="clear"
-            (click)="cadastrarProtetico()"
-          >
+          <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarProtetico()">
             Cadastrar Protetico
           </ion-button>
 
-          <ion-button
-            class="underlineHover"
-            color="primary"
-            expand="block"
-            fill="clear"
-            (click)="cadastrarDentista()"
-          >
+          <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarDentista()">
             Cadastrar Dentista
           </ion-button>
         </div>

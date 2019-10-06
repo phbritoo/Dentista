@@ -43,7 +43,7 @@ export class CadastroDentistaPage implements OnInit {
     this.cadastrarDentista = this.fb.group({
       telefone: ['', [Validators.required, Validators.minLength(15)]],
       cpf: ['', [Validators.required, Validators.minLength(14)]],
-      nome: ['', [Validators.required, Validators.minLength(5)]],
+      nome: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       data: ['', [Validators.required]],
@@ -51,6 +51,37 @@ export class CadastroDentistaPage implements OnInit {
       criadoEm: [new Date().getTime()],
       isDentista: [true]
     });
+  }
+  // mostrar mensagem de erro no ion-note
+  get nome(): FormControl {
+    return this.cadastrarDentista.get('nome') as FormControl;
+  }
+
+  // mostrar mensagem de erro no ion-note
+  get cpf(): FormControl {
+    return this.cadastrarDentista.get('cpf') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get cro(): FormControl {
+    return this.cadastrarDentista.get('cro') as FormControl;
+  }
+
+  // mostrar mensagem de erro no ion-note
+  get data(): FormControl {
+    return this.cadastrarDentista.get('data') as FormControl;
+  }
+
+  // mostrar mensagem de erro no ion-note
+  get telefone(): FormControl {
+    return this.cadastrarDentista.get('telefone') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get email(): FormControl {
+    return this.cadastrarDentista.get('email') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get senha(): FormControl {
+    return this.cadastrarDentista.get('senha') as FormControl;
   }
 
   async register() {
@@ -83,37 +114,6 @@ export class CadastroDentistaPage implements OnInit {
     toast.present();
   }
 
-  // mostrar mensagem de erro no ion-note
-  get nome(): FormControl {
-    return this.cadastrarDentista.get('nome') as FormControl;
-  }
-
-  // mostrar mensagem de erro no ion-note
-  get cpf(): FormControl {
-    return this.cadastrarDentista.get('cpf') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get cro(): FormControl {
-    return this.cadastrarDentista.get('cro') as FormControl;
-  }
-
-  // mostrar mensagem de erro no ion-note
-  get data(): FormControl {
-    return this.cadastrarDentista.get('data') as FormControl;
-  }
-
-  // mostrar mensagem de erro no ion-note
-  get telefone(): FormControl {
-    return this.cadastrarDentista.get('telefone') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get email(): FormControl {
-    return this.cadastrarDentista.get('email') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get senha(): FormControl {
-    return this.cadastrarDentista.get('senha') as FormControl;
-  }
   botaoVoltar() {
     this.router.navigate(['/login']);
   }

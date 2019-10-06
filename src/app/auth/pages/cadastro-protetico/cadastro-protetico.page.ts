@@ -46,7 +46,7 @@ export class CadastroProteticoPage implements OnInit {
     this.cadastrarProtetico = this.fb.group({
       telefone: ['', [Validators.required, Validators.minLength(15)]],
       cpf: ['', [Validators.required, Validators.minLength(14)]],
-      nome: ['', [Validators.required, Validators.minLength(5)]],
+      nome: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       data: ['', [Validators.required]],
@@ -54,7 +54,30 @@ export class CadastroProteticoPage implements OnInit {
       isDentista: [false]
     });
   }
-
+  // mostrar mensagem de erro no ion-note
+  get email(): FormControl {
+    return this.cadastrarProtetico.get('email') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get senha(): FormControl {
+    return this.cadastrarProtetico.get('senha') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get nome(): FormControl {
+    return this.cadastrarProtetico.get('nome') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get cpf(): FormControl {
+    return this.cadastrarProtetico.get('cpf') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get telefone(): FormControl {
+    return this.cadastrarProtetico.get('telefone') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
+  get data(): FormControl {
+    return this.cadastrarProtetico.get('data') as FormControl;
+  }
   async register() {
     await this.presentLoading();
     try {
@@ -83,30 +106,7 @@ export class CadastroProteticoPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
-  // mostrar mensagem de erro no ion-note
-  get email(): FormControl {
-    return this.cadastrarProtetico.get('email') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get senha(): FormControl {
-    return this.cadastrarProtetico.get('senha') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get nome(): FormControl {
-    return this.cadastrarProtetico.get('nome') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get cpf(): FormControl {
-    return this.cadastrarProtetico.get('cpf') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get telefone(): FormControl {
-    return this.cadastrarProtetico.get('telefone') as FormControl;
-  }
-  // mostrar mensagem de erro no ion-note
-  get data(): FormControl {
-    return this.cadastrarProtetico.get('data') as FormControl;
-  }
+
   botaoVoltar() {
     this.router.navigate(['/login']);
   }
