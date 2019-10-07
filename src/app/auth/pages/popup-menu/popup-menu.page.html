@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>popup-menu</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" class="animated fadeInDown">
+  <ion-fab-button (click)="togglePopupMenu()">
+    <ion-ripple-effect></ion-ripple-effect>
+    <ion-icon name="apps"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
-<ion-content>
-
-</ion-content>
+<div class="popup-menu">
+  <div class="popup-menu-overlay" [ngClass]="{ in: openMenu }"></div>
+  <div class="popup-menu-panel" [ngClass]="{ in: openMenu }">
+    <div class="popup-menu-item">
+      <ion-icon
+        name="md-add"
+        slot="middle"
+        size="large"
+        routerLink="/novo-pedido"
+        routerDirection="root"
+      ></ion-icon>
+      <span>Novo Pedido</span>
+    </div>
+  </div>
+</div>

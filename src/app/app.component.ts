@@ -36,12 +36,12 @@ export class AppComponent implements OnDestroy {
         // direct: 'root',
         icon: 'md-list-box'
       },
-      {
-        title: 'Novo Pedido',
-        url: '/novo-pedido',
-        // direct: 'forward',
-        icon: 'md-add-circle-outline'
-      },
+      // {
+      //   title: 'Novo Pedido',
+      //   url: '/novo-pedido',
+      //   // direct: 'forward',
+      //   icon: 'md-add-circle-outline'
+      // },
 
       {
         title: 'Pedidos Concluídos',
