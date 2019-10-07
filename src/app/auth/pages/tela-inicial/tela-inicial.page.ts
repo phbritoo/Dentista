@@ -19,7 +19,7 @@ export class TelaInicialPage implements OnInit {
   slides = [
     {
       img: 'assets/img/dentista.png',
-      titulo: 'ProtoLAB é essencial pra você<br>profissional da odontologia'
+      titulo: 'ProtoLAB é essencial para você<br>profissional da odontologia'
     },
     {
       img: 'assets/img/protese.png',
