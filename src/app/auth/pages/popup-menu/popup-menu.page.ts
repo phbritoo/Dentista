@@ -4,14 +4,16 @@ import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-popup-menu',
   templateUrl: './popup-menu.page.html',
-  styleUrls: ['./popup-menu.page.scss'],
+  styleUrls: ['./popup-menu.page.scss']
 })
 export class PopupMenuPage implements OnInit {
-  openMenu: Boolean = false;
+  openMenu = false;
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  togglePopupMenu() {
+    return (this.openMenu = !this.openMenu);
   }
-
 }

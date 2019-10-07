@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeDentistaPage } from './home-dentista.page';
 // chamando os componentes
 import { SharedModule } from '../../../shared/shared.module';
+import { PopupMenuPage } from '../popup-menu/popup-menu.page';
 
 const routes: Routes = [
   {
@@ -13,6 +14,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [SharedModule, RouterModule.forChild(routes)],
-  declarations: [HomeDentistaPage]
+  declarations: [HomeDentistaPage, PopupMenuPage]
 })
 export class HomeDentistaPageModule {}
