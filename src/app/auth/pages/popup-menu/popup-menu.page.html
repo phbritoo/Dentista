@@ -1,4 +1,4 @@
-<ion-fab vertical="bottom" horizontal="center" slot="fixed" class="animated fadeInDown">
+<!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="animated fadeInDown">
   <ion-fab-button (click)="togglePopupMenu()">
     <ion-ripple-effect></ion-ripple-effect>
     <ion-icon name="apps"></ion-icon>
@@ -19,4 +19,22 @@
       <span>Novo Pedido</span>
     </div>
   </div>
-</div>
+</div> -->
+
+<ion-fab vertical="bottom" horizontal="end">
+  <ion-fab-button>
+    <ion-icon name="apps"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+  </ion-fab-list>
+  <ion-fab-list side="start">
+    <ion-fab-button>
+      <ion-icon name="log-out" (click)="logout()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+  <ion-fab-list side="top">
+    <ion-fab-button>
+      <ion-icon name="add" (click)="togglePopupMenu()" color="primary"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
