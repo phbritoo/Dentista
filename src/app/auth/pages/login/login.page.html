@@ -38,9 +38,6 @@
               placeholder="Senha"
             >
             </ion-input>
-            <ion-button (click)="abrirPrompt()">
-              <ion-icon name="help-circle"></ion-icon>
-            </ion-button>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
             Obrigatório
@@ -56,9 +53,7 @@
               [disabled]="formLogin.invalid"
             />
           </div>
-          <!-- <a class="underlineHover" color="primary" expand="block" fill="clear" (click)="esqueceuSenha()">
-            Esqueceu a senha?
-          </a> -->
+            <ion-text color="primary" expand="block" fill="clear" (click)="abrirPrompt()">Esqueceu a senha?</ion-text>
         </form>
         <div class="ion-padding">
           <ion-button
