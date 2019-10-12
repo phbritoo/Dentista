@@ -1,6 +1,7 @@
+import { User } from './../interfaces/user';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, NgZone } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, EmailValidator } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import {
   ToastController,
@@ -9,8 +10,8 @@ import {
   MenuController,
   AlertController
 } from '@ionic/angular';
-import { User } from '../interfaces/user';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { regExpEscape } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-login',
@@ -167,25 +168,18 @@ export class LoginPage implements OnInit {
   // Redefinição de senha implementada e funcional, posteriormente será realizado melhorias
   // Foi implementado o botão de cancelar caso o usuario precise desistir
   // Hoje não esta sendo validado se o email e valido e esta com bug caso seja digitado qualquer caracter no text
+
   async abrirPrompt() {
     const alert = await this.alertCtrl.create({
       header: 'Esqueceu a senha?',
+      animated: true,
       inputs: [
         {
           name: 'input',
-          type: 'email',
           placeholder: 'Informe seu email'
         }
       ],
       buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: blah => {
-            console.log('Ação cancelada');
-          }
-        },
         {
           text: 'Enviar',
           handler: data => {
@@ -215,7 +209,6 @@ export class LoginPage implements OnInit {
   async cadastro() {
     const alert = await this.alertCtrl.create({
       header: 'Cadastrar um ...',
-      backdropDismiss: false,
       buttons: [
         {
           text: 'Dentista',
