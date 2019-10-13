@@ -65,6 +65,7 @@ export class NovoPedidoPage implements OnInit {
       picture: ['https://icon-library.net/images/tooth-icon-png/tooth-icon-png-28.jpg'],
       observacao: ['', [Validators.required]],
       status: ['PENDENTE'],
+      paciente: ['', [Validators.required]],
       criadoEm: [new Date().getTime()]
     });
   }

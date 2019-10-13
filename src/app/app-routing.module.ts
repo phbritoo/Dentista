@@ -46,6 +46,16 @@ const routes: Routes = [
   {
     path: 'popup-menu',
     loadChildren: './auth/pages/popup-menu/popup-menu.module#PopupMenuPageModule'
+  },
+  {
+    path: 'perfil-dentista',
+    loadChildren: './auth/pages/perfil-dentista/perfil-dentista.module#PerfilDentistaPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'perfil-protetico',
+    loadChildren: './auth/pages/perfil-protetico/perfil-protetico.module#PerfilProteticoPageModule',
+    canActivate: [AuthGuard]
   }
 ];
 
