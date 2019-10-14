@@ -59,7 +59,7 @@ export class NovoPedidoPage implements OnInit, OnDestroy {
   private createForm(): void {
     this.novoPedido = this.fb.group({
       idDentista: [this.authService.getAuth().currentUser.uid],
-      emailProtetico: ['', [Validators.required]],
+      nomeProtetico: ['', [Validators.required]],
       tipoProtese: ['', [Validators.required]],
       subTipoProtese: ['', [Validators.required]],
       picture: ['https://icon-library.net/images/tooth-icon-png/tooth-icon-png-28.jpg'],

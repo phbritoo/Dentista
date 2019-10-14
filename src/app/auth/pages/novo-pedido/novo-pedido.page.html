@@ -35,10 +35,10 @@
               maxlength="50" placeholder="Nome do Paciente">
             </ion-input>
 
-            <ion-select formControlName="emailProtetico" class="fadeIn second ion-padding-bottom"
+            <ion-select formControlName="nomeProtetico" class="fadeIn second ion-padding-bottom"
               interface="action-sheet" [interfaceOptions]="proteticoLabel" placeholder="Protetico">
               <ng-container *ngFor="let user of users | async">
-                <ion-select-option *ngIf="user.isDentista == false" value="{{ user.email }}">
+                <ion-select-option *ngIf="user.isDentista == false" value="{{ user.nome }}">
                   {{ user.nome }}
                 </ion-select-option>
               </ng-container>
