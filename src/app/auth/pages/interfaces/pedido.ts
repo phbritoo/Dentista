@@ -2,7 +2,7 @@ export interface Pedido {
   id?: string;
   idDentista?: string;
   // nomeDentista?: string; // implementar quando conseguir dar o get do nome na collection
-  emailProtetico?: string;
+  nomeProtetico?: string;
   nomePaciente?: string;
   tipoProtese?: string;
   subTipoProtese?: string;
