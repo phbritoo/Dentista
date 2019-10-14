@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
@@ -16,7 +16,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
   templateUrl: './novo-pedido.page.html',
   styleUrls: ['./novo-pedido.page.scss']
 })
-export class NovoPedidoPage implements OnInit {
+export class NovoPedidoPage implements OnInit, OnDestroy {
   novoPedido: FormGroup;
   public pedido: Pedido = {};
   private pedidoId: string = null;
@@ -58,14 +58,14 @@ export class NovoPedidoPage implements OnInit {
   // validacoes do formulario
   private createForm(): void {
     this.novoPedido = this.fb.group({
-      userId: [this.authService.getAuth().currentUser.uid],
+      idDentista: [this.authService.getAuth().currentUser.uid],
       emailProtetico: ['', [Validators.required]],
       tipoProtese: ['', [Validators.required]],
       subTipoProtese: ['', [Validators.required]],
       picture: ['https://icon-library.net/images/tooth-icon-png/tooth-icon-png-28.jpg'],
       observacao: ['', [Validators.required]],
       status: ['PENDENTE'],
-      paciente: ['', [Validators.required]],
+      nomePaciente: ['', [Validators.required]],
       criadoEm: [new Date().getTime()]
     });
   }
@@ -95,7 +95,7 @@ export class NovoPedidoPage implements OnInit {
   async savePedido() {
     await this.presentLoading();
     // pegando o id do usuário
-    this.pedido.userId = this.authService.getAuth().currentUser.uid;
+    this.pedido.idDentista = this.authService.getAuth().currentUser.uid;
     // se já existir produto, atualiza. Se não existe, cria um novo produto.
     if (this.pedidoId) {
       try {
