@@ -1,3 +1,4 @@
+import { regExpEscape } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { User } from './../interfaces/user';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, NgZone } from '@angular/core';
@@ -11,7 +12,6 @@ import {
   AlertController
 } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { regExpEscape } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-login',
@@ -183,7 +183,10 @@ export class LoginPage implements OnInit {
         {
           text: 'Enviar',
           handler: data => {
-            if (!data.input) {
+            // Essa porra ai foi chata dms pra fazer na moral estilei valendo pq em nenhum lugar tem aula de alert controlle.
+            // tslint:disable-next-line:max-line-length
+            const regexpNumber: RegExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            if (!regexpNumber.test(data.input)) {
               this.presentToast(
                 '<center>' + 'E-mail inválido ou Não cadastrado na base' + '</center>'
               );
