@@ -30,11 +30,6 @@
           <ion-item>
             <ion-icon name="contact" color="primary" slot="start">
             </ion-icon>
-
-            <ion-input type="text" class="fadeIn second ion-padding-bottom" clearInput formControlName="nomePaciente"
-              maxlength="50" placeholder="Nome do Paciente">
-            </ion-input>
-
             <ion-select formControlName="emailProtetico" class="fadeIn second ion-padding-bottom"
               interface="action-sheet" [interfaceOptions]="proteticoLabel" placeholder="Protetico">
               <ng-container *ngFor="let user of users | async">
