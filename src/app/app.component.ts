@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { Pages } from './auth/pages/interfaces/pages';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { User } from './auth/pages/interfaces/user';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +15,7 @@ import { User } from './auth/pages/interfaces/user';
 export class AppComponent implements OnDestroy {
   backButtonSubscription;
   @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
-  user: User;
+  user: firebase.User;
 
   public appPages: Array<Pages>;
 
@@ -64,6 +63,7 @@ export class AppComponent implements OnDestroy {
       this.statusBar.styleDefault();
       this.backButtonEvent();
       this.splashScreen.hide();
+      this.authService.authState$.subscribe(user => (this.user = user));
     });
   }
 

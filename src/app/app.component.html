@@ -9,7 +9,9 @@
             </ion-avatar>
             <ion-label>
               <ion-text color="light">
-                <h1><strong>Nome Dentista</strong></h1>
+                <h1>
+                  <strong *ngIf="user">{{ user.displayName }}</strong>
+                </h1>
               </ion-text>
               <ion-text color="ligth">
                 <h3>
