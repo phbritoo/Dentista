@@ -45,11 +45,8 @@ export class HomeDentistaPage implements OnInit {
     });
   }
 
-  async openModal() {
-    const modal = await this.modalController.create({
-      component: ModalPedidoPage
-    });
-    return await modal.present();
+  openModal() {
+    this.router.navigate(['/editar-pedido']);
   }
   ngOnInit() {}
 
