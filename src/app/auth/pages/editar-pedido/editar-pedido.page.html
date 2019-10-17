@@ -1,0 +1,112 @@
+<!-- <ion-header>
+  <ion-toolbar translucent>
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="text ion-text-center">Numero do Pedido XXXXXX</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+
+  <body class="login-blue">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <div class="fadeIn first">
+          <h2 class="ion-margin"> Pedido XXXX</h2>
+        </div>
+        <!-- <form [formGroup]="novoPedido" (submit)="savePedido()"> -->
+        <form>
+
+          <ion-item>
+            <ion-icon name="person" color="primary" slot="start">
+            </ion-icon>
+            <!-- <ion-input type="text" class="fadeIn second ion-padding" clearInput formControlName="nomePaciente"
+              maxlength="50" placeholder="Nome do Paciente"> -->
+            <ion-input type="text" class="fadeIn second ion-padding" clearInput maxlength="50" readonly>
+              nomePaciente
+            </ion-input>
+          </ion-item>
+
+          <!-- <ion-item>
+            <ion-icon name="contact" color="primary" slot="start">
+            </ion-icon>
+
+            <ion-select formControlName="nomeProtetico" class="fadeIn second ion-padding-bottom"
+              interface="action-sheet" [interfaceOptions]="proteticoLabel" placeholder="Protetico">
+              <ng-container *ngFor="let user of users | async">
+                <ion-select-option *ngIf="user.isDentista == false" value="{{ user.nome }}">
+                  {{ user.nome }}
+                </ion-select-option>
+              </ng-container>
+            </ion-select>
+          </ion-item> -->
+          <ion-item>
+            <ion-icon name="contact" color="primary" slot="start"></ion-icon>
+            <ion-label>Protetico</ion-label>
+            <ion-select multiple="false" disabled="true">
+              <ion-select-option value="peperoni" selected>Protetico numero 1</ion-select-option>
+              <ion-select-option value="hawaii">Hawaii</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <!-- <ion-item>
+            <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
+            <ion-select interface="action-sheet" class="fadeIn third ion-padding-bottom"
+              [interfaceOptions]="categoriaLabel" placeholder="Categoria de Protese" formControlName="tipoProtese"> -->
+          <!--(ionChange)="tipoProteseChange($event)"-->
+          <!-- <ion-select-option *ngFor="let categoria of categorias | async" value="{{ categoria.nome }}">
+                {{ categoria.nome }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>-->
+          <ion-item>
+            <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
+            <ion-label>Protese</ion-label>
+            <ion-select multiple="false" disabled="true">
+              <ion-select-option value="peperoni" selected>Protese 12</ion-select-option>
+              <ion-select-option value="hawaii">Hawaii</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <!-- <ion-item>
+            <ion-icon name="flask" color="primary" slot="start"></ion-icon>
+            <ion-select interface="action-sheet" class="fadeIn five ion-padding-bottom" [interfaceOptions]="tipoLabel"
+              placeholder="Tipo de Protese" formControlName="subTipoProtese">
+              <ion-select-option *ngFor="let tipo of tipos | async" value="{{ tipo.nome }}">
+                {{ tipo.nome }}</ion-select-option>
+            </ion-select>
+          </ion-item> -->
+          <ion-item>
+            <ion-icon name="flask" color="primary" slot="start"></ion-icon>
+            <ion-label>Tipo de Protese</ion-label>
+            <ion-select multiple="false" disabled="true">
+              <ion-select-option value="peperoni" selected>Tipo de protese 12</ion-select-option>
+              <ion-select-option value="hawaii">Hawaii</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="information-circle" slot="start" color="primary"></ion-icon>
+            <ion-label position="floating" class="fadeIn six ion-padding-bottom"></ion-label>
+            <!-- <ion-textarea formControlName="observacao" maxlength="50" clearInput class="fadeIn six ion-padding-bottom"> -->
+            <ion-textarea maxlength="50" clearInput class="fadeIn six ion-padding-bottom" readonly>
+              dente 01 + dente 02
+            </ion-textarea>
+          </ion-item>
+          <div class="ion-padding-top">
+            <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" [disabled]="novoPedido.invalid" /> -->
+            <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" />
+            <input type="button" class="fadeIn seven" value="Cancelar" (click)="cancelar()" /> -->
+
+            <button type="button" class="btn btn-primary fadeIn seven ion-margin">Editar</button>
+            <button type="button" class="btn btn-secondary fadeIn seven" (click)="cancelar()">Voltar</button>
+            <button type="button" class="btn btn-primary  fadeIn ten btn-lg btn-block" disabled="true">Salvar
+              Alteracoes</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</ion-content>

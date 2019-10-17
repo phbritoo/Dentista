@@ -56,6 +56,11 @@ const routes: Routes = [
     path: 'perfil-protetico',
     loadChildren: './auth/pages/perfil-protetico/perfil-protetico.module#PerfilProteticoPageModule',
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'editar-pedido',
+    loadChildren: './auth/pages/editar-pedido/editar-pedido.module#EditarPedidoPageModule',
+    canActivate: [AuthGuard]
   }
 ];
 
