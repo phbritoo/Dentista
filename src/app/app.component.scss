@@ -1,6 +1,15 @@
 :host {
   ion-content {
     --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary));
+    // --background:linear-gradient(145deg, #2196f3, #3f51b5);;
+    
+  }
+
+  .split-pane-side{
+    min-width: 270px;
+    max-width: 22%;
+    border:none!important;
+    
   }
 
   ion-list {
