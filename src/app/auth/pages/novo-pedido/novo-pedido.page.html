@@ -1,20 +1,13 @@
-<ion-header>
-  <ion-toolbar translucent>
-    <ion-buttons slot="start">
-      <ion-menu-button color="secondary"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      <div class="text ion-text-center">Solicitação de Protese</div>
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
 
+<ion-content>
   <body class="login-blue">
+      <ion-buttons slot="start">
+          <ion-menu-button color="primary"></ion-menu-button>
+        </ion-buttons>
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <div class="slide-img-padding ion-text-center ion-margin">
-          <img src="assets/img/logo.png" alt="">
+          <div class="fadeIn first">
+          <h2 class="ion-margin"> Solicitar Protése</h2>
         </div>
         <!-- Login Form -->
         <form [formGroup]="novoPedido" (submit)="savePedido()">

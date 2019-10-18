@@ -20,7 +20,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 
 export class EditarPedidoPage implements OnInit {
   editarPedido: FormGroup;
-  valor = "Editar";
   public pedido: Pedido = {};
   private pedidoId: string = null;
   private loading: any;
@@ -154,7 +153,6 @@ export class EditarPedidoPage implements OnInit {
   document.getElementById('enviar').classList.add('aparecer');
   document.getElementById('enviar').classList.add('ion-margin');
   document.getElementById('editar').classList.remove('aparecer');
-  this.valor = "Enviar";
        
   }
 }
