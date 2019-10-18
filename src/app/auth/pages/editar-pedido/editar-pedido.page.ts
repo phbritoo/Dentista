@@ -17,8 +17,10 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
   templateUrl: './editar-pedido.page.html',
   styleUrls: ['./editar-pedido.page.scss']
 })
+
 export class EditarPedidoPage implements OnInit {
   editarPedido: FormGroup;
+  valor = "Editar";
   public pedido: Pedido = {};
   private pedidoId: string = null;
   private loading: any;
@@ -80,6 +82,8 @@ export class EditarPedidoPage implements OnInit {
     this.categorias = this.categoriaCollection.valueChanges();
     this.tipoCollection = this.afs.collection('Tipo');
     this.tipos = this.tipoCollection.valueChanges();
+
+    this.editarPedido.disable();
   }
 
   ngOnDestroy() {
@@ -136,5 +140,14 @@ export class EditarPedidoPage implements OnInit {
 
   cancelar() {
     this.router.navigate(['/home-dentista']);
+  }
+  editar(){
+   this.editarPedido.enable();
+  //  this.editarPedido.controls.nomePaciente.enable();
+
+  this.valor = "Enviar";
+   
+
+    
   }
 }

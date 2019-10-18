@@ -15,7 +15,7 @@
             <!-- <ion-input type="text" class="fadeIn second ion-padding" clearInput formControlName="nomePaciente"
               maxlength="50" placeholder="Nome do Paciente"> -->
             <ion-input type="text" class="fadeIn second ion-padding" clearInput maxlength="50"
-              formControlName="nomePaciente">
+              formControlName="nomePaciente" >
               nomePaciente
             </ion-input>
           </ion-item>
@@ -36,7 +36,7 @@
           <ion-item>
             <ion-icon name="contact" color="primary" slot="start"></ion-icon>
             <ion-label>Protetico</ion-label>
-            <ion-select formControlName="nomeProtetico" multiple="false">
+            <ion-select formControlName="nomeProtetico" multiple="false" >
               <ion-select-option value="peperoni" selected>Protetico numero 1</ion-select-option>
               <ion-select-option value="hawaii">Hawaii</ion-select-option>
             </ion-select>
@@ -54,7 +54,7 @@
           <ion-item>
             <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
             <ion-label>Protese</ion-label>
-            <ion-select multiple="false" formControlName="tipoProtese">
+            <ion-select multiple="false" formControlName="tipoProtese" >
               <ion-select-option value="peperoni" selected>Protese 12</ion-select-option>
               <ion-select-option value="hawaii">Hawaii</ion-select-option>
             </ion-select>
@@ -71,7 +71,7 @@
           <ion-item>
             <ion-icon name="flask" color="primary" slot="start"></ion-icon>
             <ion-label>Tipo de Protese</ion-label>
-            <ion-select multiple="false" formControlName="subTipoProtese">
+            <ion-select multiple="false" formControlName="subTipoProtese" >
               <ion-select-option value="peperoni" selected>Tipo de protese 12</ion-select-option>
               <ion-select-option value="hawaii">Hawaii</ion-select-option>
             </ion-select>
@@ -86,13 +86,12 @@
             </ion-textarea>
           </ion-item>
           <div class="ion-padding-top">
-            <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" [disabled]="novoPedido.invalid" /> -->
+            <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" []="novoPedido.invalid" /> -->
             <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" />
             <input type="button" class="fadeIn seven" value="Cancelar" (click)="cancelar()" /> -->
-
-            <button type="button" class="btn btn-primary fadeIn seven ion-margin">Editar</button>
+            
+            <button type="button" class="btn btn-primary fadeIn seven ion-margin" (click)="editar()">{{ valor }}<ion-icon name="information-circle"></ion-icon></button>
             <button type="button" class="btn btn-secondary fadeIn seven" (click)="cancelar()">Voltar</button>
-            <input type="submit" class="fadeIn seven" value="Fazer Pedido" />
 
           </div>
         </form>
