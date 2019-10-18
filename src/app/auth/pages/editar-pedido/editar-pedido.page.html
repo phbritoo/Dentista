@@ -90,9 +90,11 @@
             <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" />
             <input type="button" class="fadeIn seven" value="Cancelar" (click)="cancelar()" /> -->
             
-            <button type="button" class="btn btn-primary fadeIn seven ion-margin" (click)="editar()">{{ valor }}<ion-icon name="information-circle"></ion-icon></button>
+              <button type="button" class="btn btn-primary fadeIn seven btn-login" id="editar" (click)="editar()">{{ valor }}</button>
+              <button type="button" class="btn btn-primary fadeIn primary btn-login" id="enviar">Enviar</button>
+            
             <button type="button" class="btn btn-secondary fadeIn seven" (click)="cancelar()">Voltar</button>
-
+            
           </div>
         </form>
       </div>

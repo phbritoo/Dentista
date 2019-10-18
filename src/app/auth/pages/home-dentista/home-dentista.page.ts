@@ -45,7 +45,8 @@ export class HomeDentistaPage implements OnInit {
     });
   }
 
-  openModal() {
+  //
+  editarPedido() {
     this.router.navigate(['/editar-pedido']);
   }
   ngOnInit() {}
