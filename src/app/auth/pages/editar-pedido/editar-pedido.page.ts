@@ -83,6 +83,10 @@ export class EditarPedidoPage implements OnInit {
     this.tipoCollection = this.afs.collection('Tipo');
     this.tipos = this.tipoCollection.valueChanges();
 
+    // funcao para o botao enivar sumir, funcao esta no css
+    document.getElementById('editar').classList.add('aparecer');
+    document.getElementById('editar').classList.add('ion-margin');
+
     this.editarPedido.disable();
   }
 
@@ -140,14 +144,17 @@ export class EditarPedidoPage implements OnInit {
 
   cancelar() {
     this.router.navigate(['/home-dentista']);
+    this.editarPedido.disable();
   }
   editar(){
    this.editarPedido.enable();
   //  this.editarPedido.controls.nomePaciente.enable();
 
+  // funcao para o botao enivar sumir, funcao esta no css
+  document.getElementById('enviar').classList.add('aparecer');
+  document.getElementById('enviar').classList.add('ion-margin');
+  document.getElementById('editar').classList.remove('aparecer');
   this.valor = "Enviar";
-   
-
-    
+       
   }
 }

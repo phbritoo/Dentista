@@ -11,7 +11,7 @@
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
             <ion-input type="email" class="fadeIn second ion-padding-bottom" clearInput formControlName="email"
-              placeholder="E-mail">
+              placeholder="E-mail" inputmode="email" autofocus="true">
             </ion-input>
           </ion-item>
           <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
