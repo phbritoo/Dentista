@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { Pages } from './auth/pages/interfaces/pages';
 import { AuthService } from 'src/app/core/services/auth.service';
 
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,6 +18,17 @@ export class AppComponent implements OnDestroy {
   backButtonSubscription;
   @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
   user: firebase.User;
+  email;
+  nome;
+  uid;
+
+  mainuser: AngularFirestoreDocument;
+  sub;
+  cpf: string;
+  cro: string;
+  data: string;
+  isDentista: string;
+  telefone: string;
 
   public appPages: Array<Pages>;
 
@@ -26,7 +39,8 @@ export class AppComponent implements OnDestroy {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public navCtrl: NavController,
-    private authService: AuthService
+    private authService: AuthService,
+    private afs: AngularFirestore
   ) {
     this.appPages = [
       {
@@ -63,7 +77,32 @@ export class AppComponent implements OnDestroy {
       this.statusBar.styleDefault();
       this.backButtonEvent();
       this.splashScreen.hide();
-      this.authService.authState$.subscribe(user => (this.user = user));
+      this.authService.authState$.subscribe(user => {
+        this.user = user;
+        this.email = user.email;
+        this.nome = user.displayName;
+        this.uid = user.uid;
+
+        // console.log(this.email);
+        // console.log(this.nome);
+        // console.log(this.uid);
+
+        this.mainuser = this.afs.doc('User/' + this.uid);
+
+        // Carregando os dados do usuário logado
+        this.sub = this.mainuser.valueChanges().subscribe(event => {
+          this.cpf = event.cpf;
+          this.cro = event.cro;
+          this.data = event.data;
+          this.isDentista = event.isDentista;
+          this.telefone = event.telefone;
+          console.log(this.cpf);
+          console.log(this.cro);
+          console.log(this.data);
+          console.log(this.isDentista);
+          console.log(this.telefone);
+        });
+      });
     });
   }
 
@@ -112,7 +151,7 @@ export class AppComponent implements OnDestroy {
   // vamos mudar
 
   goToEditProgile() {
-    this.navCtrl.navigateForward('perfil-dentista');
+    this.navCtrl.navigateForward('edit-profile');
   }
 
   logout() {
