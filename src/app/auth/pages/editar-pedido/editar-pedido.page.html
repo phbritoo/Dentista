@@ -7,7 +7,8 @@
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <div class="fadeIn first">
-          <h2 class="ion-margin"> Pedido </h2>
+          <!-- <i class="fa fa-arrow-left fa-2x mx-4 icone"></i> -->
+          <h2 class="ion-margin pedido"> Pedido </h2>
         </div>
         <!-- <form [formGroup]="novoPedido" (submit)="savePedido()"> -->
         <form [formGroup]="editarPedido" (submit)="atualizarPedido()">
@@ -93,8 +94,8 @@
             <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" />
             <input type="button" class="fadeIn seven" value="Cancelar" (click)="cancelar()" /> -->
 
-            <button type="button" class="btn btn-primary fadeIn seven btn-login" id="editar"
-              (click)="editar()">Editar</button>
+            <button type="button" class="btn btn-primary fadeIn seven btn-login" id="editar" (click)="editar()">Editar
+              <i class="fa fa-pencil ion-padding-right"></i> </button>
             <button type="button" class="btn btn-primary fadeIn primary btn-login" id="enviar">Enviar</button>
 
             <button type="button" class="btn btn-secondary fadeIn seven" (click)="cancelar()">Voltar</button>
