@@ -40,12 +40,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'modal-pedido',
-    loadChildren: './auth/pages/modal-pedido/modal-pedido.module#ModalPedidoPageModule'
-  },
-  {
     path: 'popup-menu',
-    loadChildren: './auth/pages/popup-menu/popup-menu.module#PopupMenuPageModule'
+    loadChildren: './auth/pages/popup-menu/popup-menu.module#PopupMenuPageModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'perfil-dentista',

@@ -1,5 +1,3 @@
-import { ModalPedidoPageModule } from './auth/pages/modal-pedido/modal-pedido.module';
-import { ModalPedidoPage } from './auth/pages/modal-pedido/modal-pedido.page';
 import { BrMaskerModule } from 'br-mask';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
@@ -19,7 +17,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AppComponent, ModalPedidoPage],
+  declarations: [AppComponent],
   imports: [
     CoreModule,
     AppRoutingModule,
@@ -32,10 +30,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    ModalPedidoPageModule,
     NgbModule.forRoot()
   ],
-  entryComponents: [ModalPedidoPage],
+  entryComponents: [],
   providers: [
     StatusBar,
     SplashScreen,

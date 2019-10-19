@@ -1,4 +1,3 @@
-import { ModalPedidoPage } from './../modal-pedido/modal-pedido.page';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import {
