@@ -1,9 +1,71 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>perfilDentista</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<div id="formContent">
+  <div class="slide-img-padding ion-text-center ion-margin">
+  <div class="text-center">
 
-</ion-content>
+<form [formGroup]="atualizarDentista" >
+  <!--link pra upload-->
+  <ion-avatar>
+      <img src="https://www.hotelmoreto.com/uploads/testimonials/2f8c38b0c7ef0e101671959549633db409d8edc1.png" >
+    </ion-avatar>
+
+<ion-item >
+  <ion-icon name="person" slot="start"></ion-icon>
+    <ion-input type="text"  maxlength="50" clearInput formControlName="nome" placeholder="Nome">
+    </ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-icon name="finger-print" slot="start"></ion-icon>
+    <ion-input type="tel" placeholder="CPF" clearInput formControlName="cpf"
+      [brmasker]="{mask: '999.999.999-99', len:14, type:'num', userCaracters: true}">
+    </ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-icon name="md-medkit" slot="start"></ion-icon>
+    <ion-input type="text" minlength="4" placeholder="CRO" clearInput formControlName="cro"
+      [brmasker]="{mask: '000000/00', len:9}" >
+    </ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-icon name="phone-portrait" slot="start"></ion-icon>
+    <ion-input type="tel" placeholder="Telefone" clearInput formControlName="telefone" [brmasker]="{phone: true}">
+    </ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-icon name="calendar" slot="start"></ion-icon>
+    <ion-datetime placeholder="Data de Nascimento" formControlName="data" (ionChange)="dateChanged($event)" clearInput displayFormat="DD/MM/YYYY" min="1940"
+      max="2010">
+    </ion-datetime>
+</ion-item>
+
+<ion-item>
+  <ion-icon name="at" slot="start"></ion-icon>
+    <ion-input type="email" clearInput formControlName="email" placeholder="E-mail">
+    </ion-input>
+<!--
+    <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
+      Email Inválido
+    </ion-note>-->
+</ion-item>
+
+<ion-item>
+  <ion-icon name="lock" slot="start"></ion-icon>
+    <ion-input type="password" clearInput  formControlName="senha" maxlength="10" placeholder="Senha">
+    </ion-input>
+    <!--
+    <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')" >
+      Mínimo 6 Caracteres
+    </ion-note>-->
+</ion-item>
+<ion-button type="submit" >Atualizar</ion-button>
+
+</form>
+
+</div>
+</div>
+</div>
+
