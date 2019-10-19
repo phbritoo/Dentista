@@ -150,7 +150,7 @@ export class AppComponent implements OnDestroy {
   // vamos mudar
 
   goToEditProgile() {
-    this.navCtrl.navigateForward('edit-profile');
+    this.navCtrl.navigateForward('perfil-dentista');
   }
 
   logout() {
