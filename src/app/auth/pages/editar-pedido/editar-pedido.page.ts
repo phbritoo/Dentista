@@ -17,7 +17,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
   templateUrl: './editar-pedido.page.html',
   styleUrls: ['./editar-pedido.page.scss']
 })
-
 export class EditarPedidoPage implements OnInit {
   editarPedido: FormGroup;
   public pedido: Pedido = {};
@@ -145,14 +144,13 @@ export class EditarPedidoPage implements OnInit {
     this.router.navigate(['/home-dentista']);
     this.editarPedido.disable();
   }
-  editar(){
-   this.editarPedido.enable();
-  //  this.editarPedido.controls.nomePaciente.enable();
+  editar() {
+    this.editarPedido.enable();
+    //  this.editarPedido.controls.nomePaciente.enable();
 
-  // funcao para o botao enivar sumir, funcao esta no css
-  document.getElementById('enviar').classList.add('aparecer');
-  document.getElementById('enviar').classList.add('ion-margin');
-  document.getElementById('editar').classList.remove('aparecer');
-       
+    // funcao para o botao enivar sumir, funcao esta no css
+    document.getElementById('enviar').classList.add('aparecer');
+    document.getElementById('enviar').classList.add('ion-margin');
+    document.getElementById('editar').classList.remove('aparecer');
   }
 }
