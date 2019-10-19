@@ -87,9 +87,8 @@ export class AppComponent implements OnDestroy {
         // console.log(this.nome);
         // console.log(this.uid);
 
-        this.mainuser = this.afs.doc('User/' + this.uid);
-
         // Carregando os dados do usuário logado
+        this.mainuser = this.afs.doc('User/' + this.uid);
         this.sub = this.mainuser.valueChanges().subscribe(event => {
           this.cpf = event.cpf;
           this.cro = event.cro;
