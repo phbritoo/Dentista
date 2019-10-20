@@ -2,53 +2,59 @@
 
   <body class="login-blue">
     <ion-buttons slot="start">
-      <ion-menu-button color="primary"></ion-menu-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <form [formGroup]="atualizarDentista">
-          <div class="preview text-center fadeIn.first">
-            <!-- <img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image"
-              width="200" height="200" /> -->
+          <div class="fadeIn first componente">
+            <i class="fa fa-arrow-left fa-lg mx-4 texto-cor icone" (click)="cancelar()"></i>
             <img class="preview-img" width="100" height="100"
               src="https://www.hotelmoreto.com/uploads/testimonials/2f8c38b0c7ef0e101671959549633db409d8edc1.png">
 
           </div>
+          <!-- <div class="preview text-center fadeIn.first"> -->
+          <!-- <img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image"
+              width="200" height="200" /> -->
+          <!-- <img class="preview-img" width="100" height="100"
+              src="https://www.hotelmoreto.com/uploads/testimonials/2f8c38b0c7ef0e101671959549633db409d8edc1.png">
+
+          </div> -->
           <ion-item>
-            <ion-icon name="person" color="primary" slot="start"></ion-icon>
+            <ion-icon name="person" slot="start"></ion-icon>
             <ion-input type="text" maxlength="50" class="fadeIn second" clearInput formControlName="nome"
               placeholder="Nome">
             </ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-icon name="finger-print" color="primary" slot="start"></ion-icon>
+            <ion-icon name="finger-print" slot="start"></ion-icon>
             <ion-input type="tel" class="fadeIn third" clearInput formControlName="cpf">
             </ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-icon name="md-medkit" color="primary" slot="start"></ion-icon>
+            <ion-icon name="md-medkit" slot="start"></ion-icon>
             <ion-input type="text" class="fadeIn fourth" minlength="4" formControlName="cro">
             </ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-icon name="phone-portrait" color="primary" slot="start"></ion-icon>
+            <ion-icon name="phone-portrait" slot="start"></ion-icon>
             <ion-input type="tel" placeholder="Telefone" class="fadeIn five" clearInput formControlName="telefone"
               [brmasker]="{phone: true}">
             </ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-icon name="calendar" color="primary" slot="start"></ion-icon>
+            <ion-icon name="calendar" slot="start"></ion-icon>
             <ion-datetime placeholder="Data de Nascimento" class="fadeIn six" formControlName="data"
               (ionChange)="dateChanged($event)" clearInput displayFormat="DD/MM/YYYY" min="1940" max="2010">
             </ion-datetime>
           </ion-item>
 
           <ion-item>
-            <ion-icon name="at" color="primary" slot="start"></ion-icon>
+            <ion-icon name="at" slot="start"></ion-icon>
             <ion-input type="email" clearInput formControlName="email" class="fadeIn seven" placeholder="E-mail">
             </ion-input>
             <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
@@ -57,7 +63,7 @@
           </ion-item>
 
           <ion-item>
-            <ion-icon name="lock" color="primary" slot="start"></ion-icon>
+            <ion-icon name="lock" slot="start"></ion-icon>
             <ion-input type="password" clearInput formControlName="senha" class="fadeIn eight" maxlength="10"
               placeholder="Senha">
             </ion-input>
@@ -68,16 +74,9 @@
           </ion-item>
           <!-- <ion-button type="submit">Atualizar</ion-button> -->
           <div class="ion-padding-top ">
-            <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" []="novoPedido.invalid" /> -->
-            <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" />
-            <input type="button" class="fadeIn seven" value="Cancelar" (click)="cancelar()" /> -->
-
-            <button type="button" class="btn btn-primary fadeIn nine btn-atualizar" id="atualizar">
-              Atualizar
-            </button>
-            <!-- <button type="button" class="btn btn-primary fadeIn primary btn-login" id="enviar">Enviar</button> -->
-            <button type="button" class="btn btn-secondary fadeIn nine btn-atualizar" (click)="cancelar()">Voltar
-            </button>
+            <button type="submit" class="btn btn-info fadeIn seven btn-login ">Atualizar Perfil
+              &nbsp;
+              <i class="fa fa-check ion-padding-right"></i> </button>
           </div>
         </form>
       </div>
