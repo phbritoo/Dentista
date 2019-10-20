@@ -2,17 +2,16 @@
 
   <body class="login-blue">
     <ion-buttons slot="start">
-      <ion-menu-button color="primary"></ion-menu-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <div class="fadeIn first componente">
-          <i class="fa fa-arrow-left fa-lg mx-4 texto-cor" (click)="cancelar()"></i>
-          <h2 class="texto-cor"> Fazer Pedido </h2>
+          <i class="fa fa-arrow-left fa-lg mx-4 texto-cor icone" (click)="cancelar()"></i>
+          <h2 class="texto-cor"> Solicitar Pedido </h2>
         </div>
         <!-- Login Form -->
         <form [formGroup]="novoPedido" (submit)="savePedido()">
-
           <ion-item>
             <ion-icon name="person" slot="start">
             </ion-icon>
@@ -100,7 +99,6 @@
               Fazer Pedido &nbsp; <i class="fa fa-pencil ion-padding-right"></i>
             </button> -->
           </div>
-
         </form>
       </div>
     </div>

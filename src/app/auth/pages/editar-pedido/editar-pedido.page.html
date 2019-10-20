@@ -2,12 +2,12 @@
 
   <body class="login-blue">
     <ion-buttons slot="start">
-      <ion-menu-button color="primary"></ion-menu-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <div class="fadeIn first componente">
-          <i class="fa fa-arrow-left fa-lg mx-4 texto-cor" (click)="cancelar()"></i>
+          <i class="fa fa-arrow-left fa-lg mx-4 texto-cor icone" (click)="cancelar()"></i>
           <h2 class="texto-cor"> Pedido </h2>
         </div>
         <!-- <div class="fadeIn first heading-desc">
@@ -94,17 +94,11 @@
             </ion-textarea>
           </ion-item>
           <div class="ion-padding-top">
-            <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" []="novoPedido.invalid" /> -->
-            <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" />
-            <input type="button" class="fadeIn seven" value="Cancelar" (click)="cancelar()" /> -->
-
-            <button type="button" class="btn btn-info fadeIn seven btn-login" id="editar" (click)="editar()">Editar
+            <button type="button" class="btn btn-info fadeIn seven btn-login " id="editar" (click)="editar()">Alterar
               &nbsp;
               <i class="fa fa-pencil ion-padding-right"></i> </button>
-            <button type="button" class="btn fadeIn primary btn-login" id="enviar"> Enviar &nbsp; <i
-                class="fa fa-angle-double-right ion-padding-right"></i></button>
-
-            <!-- <button type="button" class="btn btn-secondary fadeIn seven" (click)="cancelar()">Voltar</button> -->
+            <button type="button" class="btn fadeIn primary btn-login" id="enviar"> Atualizar &nbsp; <i
+                class="fa fa-check ion-padding-right"></i></button>
 
           </div>
         </form>

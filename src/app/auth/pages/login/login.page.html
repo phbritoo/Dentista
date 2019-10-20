@@ -33,21 +33,18 @@
             Mínimo 6 Caracteres
           </ion-note> -->
           <div class="ion-padding-top">
-            <input type="submit" class="fadeIn fourth" value="Login" [disabled]="formLogin.invalid" />
+            <!-- <input type="submit" class="fadeIn fourth" value="Login" [disabled]="formLogin.invalid" /> -->
+            <button type="submit" class="btn btn-info fadeIn fourth btn-login" [disabled]="formLogin.invalid">entrar
+              &nbsp;
+              <i class="fa fa-sign-in ion-padding-right"></i> </button>
           </div>
-          <ion-button color="primary" expand="block" fill="clear" (click)="abrirPrompt()">Esqueceu a senha?</ion-button>
+          <ion-button color="primary" expand="block" fill="clear" (click)="abrirPrompt()">Esqueceu sua senha?
+          </ion-button>
         </form>
         <div class="ion-padding">
           <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastro()">
             Cadastre-se
           </ion-button>
-          <!-- <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarProtetico()">
-            Cadastrar Protetico
-          </ion-button>
-
-          <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastrarDentista()">
-            Cadastrar Dentista
-          </ion-button> -->
         </div>
       </div>
     </div>
