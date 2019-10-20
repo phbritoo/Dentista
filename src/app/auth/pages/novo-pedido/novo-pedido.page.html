@@ -6,14 +6,15 @@
     </ion-buttons>
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <div class="fadeIn first">
-          <h2 class="ion-margin"> Solicitar Prótese</h2>
+        <div class="fadeIn first componente">
+          <i class="fa fa-arrow-left fa-lg mx-4 texto-cor" (click)="cancelar()"></i>
+          <h2 class="texto-cor"> Fazer Pedido </h2>
         </div>
         <!-- Login Form -->
         <form [formGroup]="novoPedido" (submit)="savePedido()">
 
           <ion-item>
-            <ion-icon name="person" color="primary" slot="start">
+            <ion-icon name="person" slot="start">
             </ion-icon>
             <ion-input type="text" class="fadeIn second ion-padding" clearInput formControlName="nomePaciente"
               maxlength="50" placeholder="Nome do Paciente">
@@ -21,7 +22,7 @@
           </ion-item>
 
           <ion-item>
-            <ion-icon name="contact" color="primary" slot="start">
+            <ion-icon name="contact" slot="start">
             </ion-icon>
 
             <ion-select formControlName="nomeProtetico" class="fadeIn second ion-padding-bottom"
@@ -40,7 +41,7 @@
             Mínimo 3 Caracteres
           </ion-note> -->
           <ion-item>
-            <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
+            <ion-icon name="beaker" slot="start"></ion-icon>
             <!-- <ion-input type="tel" formControlName="cpf" clearInput placeholder="CPF"
               class="fadeIn third ion-padding-bottom"
               [brmasker]="{mask: '999.999.999-99', len:14, type:'num', userCaracters: true}">
@@ -61,7 +62,7 @@
           </ion-note> -->
 
           <ion-item>
-            <ion-icon name="flask" color="primary" slot="start"></ion-icon>
+            <ion-icon name="flask" slot="start"></ion-icon>
             <!-- <ion-input type="tel" formControlName="telefone" clearInput placeholder="Telefone"
               [brmasker]="{phone: true}" class="fadeIn five ion-padding-bottom">
             </ion-input> -->
@@ -79,7 +80,7 @@
           </ion-note> -->
 
           <ion-item>
-            <ion-icon name="information-circle" slot="start" color="primary"></ion-icon>
+            <ion-icon name="information-circle" slot="start"></ion-icon>
             <ion-label position="floating" class="fadeIn six ion-padding-bottom">Detalhes do pedido </ion-label>
             <ion-textarea formControlName="observacao" maxlength="50" clearInput class="fadeIn six ion-padding-bottom">
             </ion-textarea>
@@ -93,11 +94,13 @@
               class="fadeIn seven ion-padding-bottom">
             </ion-input>
           </ion-item> -->
-
-
           <div class="ion-padding-top">
             <input type="submit" class="fadeIn seven" value="Fazer Pedido" [disabled]="novoPedido.invalid" />
+            <!-- <button type="submit" class="btn btn-info fadeIn seven btn-login" [disabled]="novoPedido.invalid">
+              Fazer Pedido &nbsp; <i class="fa fa-pencil ion-padding-right"></i>
+            </button> -->
           </div>
+
         </form>
       </div>
     </div>
