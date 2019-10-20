@@ -6,15 +6,19 @@
     </ion-buttons>
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <div class="fadeIn first">
-          <!-- <i class="fa fa-arrow-left fa-2x mx-4 icone"></i> -->
-          <h2 class="ion-margin pedido"> Pedido </h2>
+        <div class="fadeIn first componente">
+          <i class="fa fa-arrow-left fa-lg mx-4 texto-cor" (click)="cancelar()"></i>
+          <h2 class="texto-cor"> Pedido </h2>
         </div>
+        <!-- <div class="fadeIn first heading-desc">
+          <button type="button" class="pull-left" (click)="cancelar()"> <i class="fa fa-arrow-left icone"></i></button>
+          <h2 class="ion-margin pedido1"> Pedido </h2>
+        </div> -->
         <!-- <form [formGroup]="novoPedido" (submit)="savePedido()"> -->
         <form [formGroup]="editarPedido" (submit)="atualizarPedido()">
 
           <ion-item>
-            <ion-icon name="person" color="primary" slot="start">
+            <ion-icon name="person" slot="start">
             </ion-icon>
             <!-- <ion-input type="text" class="fadeIn second ion-padding" clearInput formControlName="nomePaciente"
               maxlength="50" placeholder="Nome do Paciente"> -->
@@ -25,7 +29,7 @@
           </ion-item>
 
           <!-- <ion-item>
-            <ion-icon name="contact" color="primary" slot="start">
+            <ion-icon name="contact"  slot="start">
             </ion-icon>
 
             <ion-select formControlName="nomeProtetico" class="fadeIn second ion-padding-bottom"
@@ -38,7 +42,7 @@
             </ion-select>
           </ion-item> -->
           <ion-item>
-            <ion-icon name="contact" color="primary" slot="start"></ion-icon>
+            <ion-icon name="contact" slot="start"></ion-icon>
             <ion-label>Protetico</ion-label>
             <ion-select formControlName="nomeProtetico" multiple="false">
               <ion-select-option value="peperoni" selected>Protetico numero 1</ion-select-option>
@@ -46,7 +50,7 @@
             </ion-select>
           </ion-item>
           <!-- <ion-item>
-            <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
+            <ion-icon name="beaker" slot="start" ></ion-icon>
             <ion-select interface="action-sheet" class="fadeIn third ion-padding-bottom"
               [interfaceOptions]="categoriaLabel" placeholder="Categoria de Protese" formControlName="tipoProtese"> -->
           <!--(ionChange)="tipoProteseChange($event)"-->
@@ -56,7 +60,7 @@
             </ion-select>
           </ion-item>-->
           <ion-item>
-            <ion-icon name="beaker" slot="start" color="primary"></ion-icon>
+            <ion-icon name="beaker" slot="start"></ion-icon>
             <ion-label>Protese</ion-label>
             <ion-select multiple="false" formControlName="tipoProtese">
               <ion-select-option value="peperoni" selected>Protese 12</ion-select-option>
@@ -65,7 +69,7 @@
           </ion-item>
 
           <!-- <ion-item>
-            <ion-icon name="flask" color="primary" slot="start"></ion-icon>
+            <ion-icon name="flask"  slot="start"></ion-icon>
             <ion-select interface="action-sheet" class="fadeIn five ion-padding-bottom" [interfaceOptions]="tipoLabel"
               placeholder="Tipo de Protese" formControlName="subTipoProtese">
               <ion-select-option *ngFor="let tipo of tipos | async" value="{{ tipo.nome }}">
@@ -73,7 +77,7 @@
             </ion-select>
           </ion-item> -->
           <ion-item>
-            <ion-icon name="flask" color="primary" slot="start"></ion-icon>
+            <ion-icon name="flask" slot="start"></ion-icon>
             <ion-label>Tipo de Protese</ion-label>
             <ion-select multiple="false" formControlName="subTipoProtese">
               <ion-select-option value="peperoni" selected>Tipo de protese 12</ion-select-option>
@@ -82,7 +86,7 @@
           </ion-item>
 
           <ion-item>
-            <ion-icon name="information-circle" slot="start" color="primary"></ion-icon>
+            <ion-icon name="information-circle" slot="start"></ion-icon>
             <ion-label position="floating" class="fadeIn six ion-padding-bottom"></ion-label>
             <!-- <ion-textarea formControlName="observacao" maxlength="50" clearInput class="fadeIn six ion-padding-bottom"> -->
             <ion-textarea maxlength="50" clearInput class="fadeIn six ion-padding-bottom" formControlName="observacao">
@@ -94,11 +98,13 @@
             <!-- <input type="submit" class="fadeIn seven" value="Fazer Pedido" />
             <input type="button" class="fadeIn seven" value="Cancelar" (click)="cancelar()" /> -->
 
-            <button type="button" class="btn btn-primary fadeIn seven btn-login" id="editar" (click)="editar()">Editar
+            <button type="button" class="btn btn-info fadeIn seven btn-login" id="editar" (click)="editar()">Editar
+              &nbsp;
               <i class="fa fa-pencil ion-padding-right"></i> </button>
-            <button type="button" class="btn btn-primary fadeIn primary btn-login" id="enviar">Enviar</button>
+            <button type="button" class="btn fadeIn primary btn-login" id="enviar"> Enviar &nbsp; <i
+                class="fa fa-angle-double-right ion-padding-right"></i></button>
 
-            <button type="button" class="btn btn-secondary fadeIn seven" (click)="cancelar()">Voltar</button>
+            <!-- <button type="button" class="btn btn-secondary fadeIn seven" (click)="cancelar()">Voltar</button> -->
 
           </div>
         </form>

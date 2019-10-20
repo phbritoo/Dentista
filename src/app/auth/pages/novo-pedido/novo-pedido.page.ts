@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, ToastController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Subscription, Observable } from 'rxjs';
@@ -48,7 +48,8 @@ export class NovoPedidoPage implements OnInit, OnDestroy {
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private authService: AuthService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private router: Router,
   ) {
     this.pedidoId = this.activatedRoute.snapshot.params.id;
     if (this.pedidoId) {
@@ -130,5 +131,8 @@ export class NovoPedidoPage implements OnInit, OnDestroy {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
+  }
+  cancelar() {
+    this.router.navigate(['/home-dentista']);
   }
 }
