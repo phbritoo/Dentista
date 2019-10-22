@@ -3,7 +3,7 @@
   <body class="login-blue">
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <div class="slide-img-padding ion-text-center ion-margin">
+        <div class="fadeIn firts slide-img-padding ion-text-center ion-margin">
           <img src="assets/img/logo.png" alt="" />
         </div>
         <!-- Login Form -->
@@ -14,10 +14,12 @@
               placeholder="E-mail" inputmode="email" autofocus="true">
             </ion-input>
           </ion-item>
-          <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
+          <ion-note slot="end" color="danger" *ngIf="email.dirty &&
+            email.hasError('required')">
             Obrigatório
           </ion-note>
-          <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
+          <ion-note slot="end" color="danger" *ngIf="email.dirty &&
+            email.hasError('email')">
             E-mail Inválido
           </ion-note>
           <ion-item>
@@ -26,7 +28,8 @@
               maxlength="10" placeholder="Senha">
             </ion-input>
           </ion-item>
-          <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('required')">
+          <ion-note slot="end" color="danger" *ngIf="senha.dirty &&
+            senha.hasError('required')">
             Obrigatório
           </ion-note>
           <!-- <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
@@ -38,13 +41,18 @@
               &nbsp;
               <i class="fa fa-sign-in ion-padding-right"></i> </button>
           </div>
-          <ion-button color="primary" expand="block" fill="clear" (click)="abrirPrompt()">Esqueceu sua senha?
-          </ion-button>
         </form>
         <div class="ion-padding">
-          <ion-button class="underlineHover" color="primary" expand="block" fill="clear" (click)="cadastro()">
+          <ion-button class="underlineHover fadeIn five" color="primary" expand="block" fill="clear"
+            (click)="cadastro()">
             Cadastre-se
           </ion-button>
+        </div>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a class="underlineHover fadeIn six" href="javascript:void(0);" (click)="abrirPrompt()">Esqueceu sua
+            senha?</a>
         </div>
       </div>
     </div>
