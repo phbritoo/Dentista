@@ -3,11 +3,13 @@
   <body class="login-blue">
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <div class="slide-img-padding ion-text-center ion-margin">
+        <div class="fadeIn first componente">
+          <a href="javascript:void(0);" (click)="botaoVoltar()"> <i
+              class="fa fa-arrow-left fa-lg mx-4 texto-cor icone"></i></a>
           <img src="assets/img/logo.png" alt="">
         </div>
         <div class="fadeIn first">
-          <h2 class="ion-margin"> Cadastro Protético </h2>
+          <h2 class="ion-margin">Protético </h2>
         </div>
         <!-- Login Form -->
         <form [formGroup]="cadastrarProtetico" (submit)="register()">
@@ -87,15 +89,12 @@
           </ion-note>
 
           <div class="ion-padding-top">
-            <input type="submit" class="fadeIn nine" value="Cadastrar" [disabled]="cadastrarProtetico.invalid" />
+            <button type="submit" class="btn btn-info fadeIn nine btn-login" [disabled]="cadastrarProtetico.invalid">
+              Cadastrar &nbsp;
+              <i class="fa fa-sign-in ion-padding-right"></i>
+            </button>
           </div>
         </form>
-        <div class="ion-padding">
-          <ion-button class="underlineHover fadeIn ten" color="primary" expand="block" fill="clear"
-            (click)="botaoVoltar()">
-            Login
-          </ion-button>
-        </div>
       </div>
     </div>
   </body>
