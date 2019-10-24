@@ -49,7 +49,7 @@ export class NovoPedidoPage implements OnInit, OnDestroy {
     private toastCtrl: ToastController,
     private authService: AuthService,
     private afs: AngularFirestore,
-    private router: Router,
+    private router: Router
   ) {
     this.pedidoId = this.activatedRoute.snapshot.params.id;
     if (this.pedidoId) {
@@ -113,6 +113,7 @@ export class NovoPedidoPage implements OnInit, OnDestroy {
 
       try {
         await this.pedidoService.addPedido(this.novoPedido.value);
+        // console.log(this.novoPedido.value);
         this.presentToast('<center>' + 'Pedido encaminhado ao Protetico ' + '</center>');
         await this.loading.dismiss();
         this.navCtrl.navigateBack('/home-dentista');

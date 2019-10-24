@@ -17,7 +17,8 @@
           <ion-item>
             <ion-icon name="person" slot="start">
             </ion-icon>
-            <ion-input type="text" class="fadeIn second ion-padding" clearInput formControlName="nomePaciente"
+            <ion-input type="text" class="fadeIn second ion-padding" clearInput
+              formControlName="nomePaciente"
               maxlength="50" placeholder="Nome do Paciente">
             </ion-input>
           </ion-item>
@@ -26,21 +27,27 @@
             <ion-icon name="contact" slot="start">
             </ion-icon>
 
-            <ion-select formControlName="nomeProtetico" class="fadeIn second ion-padding-bottom" interface="popover"
+            <ion-select formControlName="nomeProtetico" class="fadeIn second
+              ion-padding-bottom" interface="popover"
               [interfaceOptions]="proteticoLabel" placeholder="Protetico">
               <ng-container *ngFor="let user of users | async">
-                <ion-select-option *ngIf="user.isDentista == false" value="{{ user.nome }}">
-                  {{ user.nome }}
-                </ion-select-option>
+                <span *ngIf="user.isDentista == false">
+                  <ion-select-option value="{{ user.nome }} && {{
+                    user.telefone }}">
+                    {{ user.nome }}
+                  </ion-select-option>
+                </span>
               </ng-container>
             </ion-select>
           </ion-item>
           <ion-item>
             <ion-icon name="beaker" slot="start"></ion-icon>
-            <ion-select class="fadeIn third ion-padding-bottom" interface="popover" [interfaceOptions]="categoriaLabel"
+            <ion-select class="fadeIn third ion-padding-bottom"
+              interface="popover" [interfaceOptions]="categoriaLabel"
               placeholder="Categoria de Protese" formControlName="tipoProtese">
               <!--(ionChange)="tipoProteseChange($event)"-->
-              <ion-select-option *ngFor="let categoria of categorias | async" value="{{ categoria.nome }}">
+              <ion-select-option *ngFor="let categoria of categorias | async"
+                value="{{ categoria.nome }}">
                 {{ categoria.nome }}
               </ion-select-option>
             </ion-select>
@@ -48,20 +55,25 @@
 
           <ion-item>
             <ion-icon name="flask" slot="start"></ion-icon>
-            <ion-select class="fadeIn five ion-padding-bottom" interface="popover" [interfaceOptions]="tipoLabel"
+            <ion-select class="fadeIn five ion-padding-bottom"
+              interface="popover" [interfaceOptions]="tipoLabel"
               placeholder="Tipo de Protese" formControlName="subTipoProtese">
-              <ion-select-option *ngFor="let tipo of tipos | async" value="{{ tipo.nome }}">
+              <ion-select-option *ngFor="let tipo of tipos | async" value="{{
+                tipo.nome }}">
                 {{ tipo.nome }}</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
             <ion-icon name="information-circle" slot="start"></ion-icon>
-            <ion-label position="floating" class="fadeIn six ion-padding-bottom">Detalhes do pedido </ion-label>
-            <ion-textarea formControlName="observacao" maxlength="50" clearInput class="fadeIn six ion-padding-bottom">
+            <ion-label position="floating" class="fadeIn six
+              ion-padding-bottom">Detalhes do pedido </ion-label>
+            <ion-textarea formControlName="observacao" maxlength="50" clearInput
+              class="fadeIn six ion-padding-bottom">
             </ion-textarea>
           </ion-item>
           <div class="ion-padding-top">
-            <button type="submit" class="btn btn-info fadeIn seven" [disabled]="novoPedido.invalid">Enviar pedido
+            <button type="submit" class="btn btn-info fadeIn seven"
+              [disabled]="novoPedido.invalid">Enviar pedido
               &nbsp;
               <i class="fa fa-sign-in ion-padding-right"></i> </button>
           </div>
