@@ -97,28 +97,15 @@ export class HomeProteticoPage implements OnInit, OnDestroy, AfterViewInit {
   async presentAlertConfirm(id: string) {
     const alert = await this.alertController.create({
       header: 'ATENÇÃO!',
-      message: 'Tem certeza que deseja excluir este pedido?',
+      message: 'Apenas dentistas pode excluir pedidos',
       buttons: [
         {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: blah => {
-            console.log('Ação cancelada pelo usuário');
-            this.presentToast('<center>' + 'Ação cancelada!' + '</center>');
-          }
+          text: 'Ok',
+          role: 'ok',
+          cssClass: 'secondary'
         },
-        {
-          text: 'Excluir Pedido',
-          handler: () => {
-            console.log('Pedido Exluído do Firebase');
-            this.deletePedido(id);
-            this.presentToast('O pedido foi excluído com sucesso');
-          }
-        }
       ]
     });
-
     await alert.present();
   }
 
