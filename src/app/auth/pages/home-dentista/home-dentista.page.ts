@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import {
   ToastController,
@@ -20,10 +20,11 @@ import { OverlayEventDetail } from '@ionic/core';
   templateUrl: './home-dentista.page.html',
   styleUrls: ['./home-dentista.page.scss']
 })
-export class HomeDentistaPage implements OnInit {
+export class HomeDentistaPage implements OnInit, OnDestroy {
   private loading: any;
   public pedidos = new Array<Pedido>();
   private pedidosSubscription: Subscription;
+  public userLogado: any;
 
   constructor(
     public navCtrl: NavController,
@@ -41,6 +42,8 @@ export class HomeDentistaPage implements OnInit {
   ) {
     this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
       this.pedidos = data;
+
+      this.userLogado = this.authService.getAuth().currentUser.uid;
     });
   }
 

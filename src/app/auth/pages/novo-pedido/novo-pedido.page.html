@@ -32,8 +32,7 @@
               [interfaceOptions]="proteticoLabel" placeholder="Protetico">
               <ng-container *ngFor="let user of users | async">
                 <span *ngIf="user.isDentista == false">
-                  <ion-select-option value="{{ user.nome }} && {{
-                    user.telefone }}">
+                  <ion-select-option value="{{ user.nome }}">
                     {{ user.nome }}
                   </ion-select-option>
                 </span>
