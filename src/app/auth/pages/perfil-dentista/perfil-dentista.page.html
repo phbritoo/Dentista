@@ -6,7 +6,7 @@
     </ion-buttons>
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <form [formGroup]="atualizarDentista">
+        <form [formGroup]="atualizarDentista" (submit)="update()">
           <div class="fadeIn first componente">
             <a href="javascript:void(0);" class="icone" (click)="cancelar()">
               <i class="fa fa-arrow-left fa-lg mx-4 texto-cor"></i>
@@ -16,55 +16,44 @@
           </div>
           <ion-item>
             <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" maxlength="50" class="fadeIn second" clearInput formControlName="nome"
-              placeholder="Nome">
+            <ion-input type="text" maxlength="50" class="fadeIn second" [(ngModel)]="nome"
+              [ngModelOptions]="{standalone: true}">
             </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-icon name="finger-print" slot="start"></ion-icon>
             <ion-input type="tel" class="fadeIn third" clearInput formControlName="cpf">
+              {{ cpf }}
             </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-icon name="md-medkit" slot="start"></ion-icon>
             <ion-input type="text" class="fadeIn fourth" minlength="4" formControlName="cro">
+              {{ cro }}
             </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-icon name="phone-portrait" slot="start"></ion-icon>
-            <ion-input type="tel" placeholder="Telefone" class="fadeIn five" clearInput formControlName="telefone"
-              [brmasker]="{phone: true}">
+            <ion-input type="tel" class="fadeIn five" clearInput formControlName="telefone" [brmasker]="{phone: true}">
+              {{ telefone }}
             </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-icon name="calendar" slot="start"></ion-icon>
-            <ion-datetime placeholder="Data de Nascimento" class="fadeIn six" formControlName="data"
-              (ionChange)="dateChanged($event)" clearInput displayFormat="DD/MM/YYYY" min="1940" max="2010">
-            </ion-datetime>
+            <ion-input clearInput formControlName="data" class="fadeIn seven">
+              {{ data }}
+            </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
-            <ion-input type="email" clearInput formControlName="email" class="fadeIn seven" placeholder="E-mail">
+            <ion-input type="email" clearInput formControlName="email" class="fadeIn seven">
+              {{ email }}
             </ion-input>
-            <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">
-              Email Inválido
-            </ion-note>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name="lock" slot="start"></ion-icon>
-            <ion-input type="password" clearInput formControlName="senha" class="fadeIn eight" maxlength="10"
-              placeholder="Senha">
-            </ion-input>
-
-            <ion-note slot="end" color="danger" *ngIf="senha.dirty && senha.hasError('minlength')">
-              Mínimo 6 Caracteres
-            </ion-note>
           </ion-item>
           <!-- <ion-button type="submit">Atualizar</ion-button> -->
           <div class="ion-padding-top ">

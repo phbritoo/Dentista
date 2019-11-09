@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Platform} from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import {
   ToastController,
   LoadingController,
@@ -42,20 +42,20 @@ export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
     private alertController: AlertController,
     public modalController: ModalController,
     private platform: Platform
-    ) {
+  ) {
     this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
       this.pedidos = data;
 
       this.platform = platform;
-
 
       this.userLogado = this.authService.getAuth().currentUser.uid;
     });
   }
 
   //
-  editarPedido() {
-    this.router.navigate(['/editar-pedido']);
+  editarPedido(id: string) {
+    this.router.navigate(['/editar-pedido/' + id.split('/')[0]]);
+    console.log(id);
   }
   ngOnInit() {}
 
