@@ -14,7 +14,6 @@ import { Subscription } from 'rxjs';
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
 import { AlertController } from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core';
 
 @Component({
   selector: 'app-home-dentista',
