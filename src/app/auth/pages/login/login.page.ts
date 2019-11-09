@@ -121,9 +121,14 @@ export class LoginPage implements OnInit {
             if (this.tipoUsuario === true) {
               console.log('É dentista');
               this.router.navigate(['/home-dentista']);
-            } else {
+            }
+            if (this.tipoUsuario === false) {
               console.log('É Protético');
               this.router.navigate(['/home-protetico']);
+            }
+            if (this.tipoUsuario === null) {
+              console.log('tipoUsuario null');
+              this.router.navigate(['/login']);
             }
           }
         })
