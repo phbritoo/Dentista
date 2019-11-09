@@ -16,7 +16,7 @@
           </div>
           <ion-item>
             <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" maxlength="50" class="fadeIn second" [(ngModel)]="nome"
+            <ion-input type="text" maxlength="50" class="fadeIn second" [(ngModel)]="nome" clearInput
               [ngModelOptions]="{standalone: true}">
             </ion-input>
           </ion-item>
@@ -37,9 +37,12 @@
 
           <ion-item>
             <ion-icon name="phone-portrait" slot="start"></ion-icon>
-            <ion-input type="tel" class="fadeIn five" clearInput formControlName="telefone" [brmasker]="{phone: true}">
-              {{ telefone }}
+            <ion-input type="tel" class="fadeIn five" clearInput [brmasker]="{phone: true}" [(ngModel)]="telefone"
+              [ngModelOptions]="{standalone: true}">
             </ion-input>
+            <ion-note slot="end" color="danger" *ngIf="phone.dirty && phone.hasError('required')">
+              Obrigatório
+            </ion-note>
           </ion-item>
 
           <ion-item>

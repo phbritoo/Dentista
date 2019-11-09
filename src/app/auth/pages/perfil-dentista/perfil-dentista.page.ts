@@ -66,6 +66,8 @@ export class PerfilDentistaPage implements OnInit {
     this.createForm();
     this.atualizarDentista.controls.cpf.disable();
     this.atualizarDentista.controls.cro.disable();
+    this.atualizarDentista.controls.data.disable();
+    this.atualizarDentista.controls.email.disable();
   }
   ionViewDidLeave() {
     this.createForm();
@@ -74,25 +76,31 @@ export class PerfilDentistaPage implements OnInit {
   private createForm(): void {
     this.atualizarDentista = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
-      cpf: [{ value: '', disabled: true }],
-      cro: [{ value: '', disabled: true }],
+      cpf: ['', [Validators.required]],
+      cro: ['', [Validators.required]],
+      // cro: [{ value: '' }],
       telefone: ['', [Validators.required, Validators.minLength(15)]],
-      data: [{ value: '', disabled: true }],
-      email: [{ value: '', disabled: true }],
+      data: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       criadoEm: [new Date().getTime()],
       isDentista: [true]
     });
+  }
+  // mostrar mensagem de erro no ion-note
+  get phone(): FormControl {
+    return this.atualizarDentista.get('telefone') as FormControl;
   }
 
   async update() {
     try {
       await this.mainuser.update({
-        nome: this.nome
+        nome: this.nome,
+        telefone: this.telefone
       });
     } catch (error) {
       return await this.presentToast('<center>' + 'error' + '</center>');
     }
-    await this.presentToast('<center>' + 'atualizado' + '</center>');
+    await this.presentToast('<center>' + 'Perfil Atualizado com sucesso!' + '</center>');
     console.log(this.nome);
   }
 
