@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Platform } from '@ionic/angular';
 import {
   ToastController,
   LoadingController,
@@ -13,18 +14,18 @@ import { Subscription } from 'rxjs';
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
 import { AlertController } from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core';
 
 @Component({
   selector: 'app-home-dentista',
   templateUrl: './home-dentista.page.html',
   styleUrls: ['./home-dentista.page.scss']
 })
-export class HomeDentistaPage implements OnInit, OnDestroy {
+export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
   private loading: any;
   public pedidos = new Array<Pedido>();
   private pedidosSubscription: Subscription;
   public userLogado: any;
+  backButtonSubscription;
 
   constructor(
     public navCtrl: NavController,
@@ -38,20 +39,30 @@ export class HomeDentistaPage implements OnInit, OnDestroy {
     private pedidoService: PedidoService,
     private router: Router,
     private alertController: AlertController,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private platform: Platform
   ) {
     this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
       this.pedidos = data;
+
+      this.platform = platform;
 
       this.userLogado = this.authService.getAuth().currentUser.uid;
     });
   }
 
   //
-  editarPedido() {
-    this.router.navigate(['/editar-pedido']);
+  editarPedido(id: string) {
+    this.router.navigate(['/editar-pedido/' + id.split('/')[0]]);
+    console.log(id);
   }
   ngOnInit() {}
+
+  ngAfterViewInit() {
+    this.backButtonSubscription = this.platform.backButton.subscribe(() => {
+      navigator['app'].exitApp();
+    });
+  }
 
   /*  quem tiver com o VS CODE atualizado, provavelmente estará vendo este warning no ngOnDestroy()
       "Lifecycle interface OnDestroy should be implemented for method ngOnDestroy."
@@ -59,6 +70,7 @@ export class HomeDentistaPage implements OnInit, OnDestroy {
       https://code-examples.net/pt/docs/angular/guide/lifecycle-hooks*/
   ngOnDestroy() {
     this.pedidosSubscription.unsubscribe();
+    this.backButtonSubscription.unsubscribe();
   }
 
   async logout() {
@@ -95,7 +107,7 @@ export class HomeDentistaPage implements OnInit, OnDestroy {
           cssClass: 'secondary',
           handler: blah => {
             console.log('Ação cancelada pelo usuário');
-            this.presentToast('Ação cancelada!');
+            this.presentToast('<center>' + 'Ação cancelada!' + '</center>');
           }
         },
         {
@@ -103,7 +115,7 @@ export class HomeDentistaPage implements OnInit, OnDestroy {
           handler: () => {
             console.log('Pedido Exluído do Firebase');
             this.deletePedido(id);
-            this.presentToast('O pedido ' + id + 'foi excluído com sucesso');
+            this.presentToast('O pedido foi excluído com sucesso');
           }
         }
       ]

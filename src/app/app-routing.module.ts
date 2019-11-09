@@ -55,7 +55,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'editar-pedido',
+    path: 'editar-pedido/:id',
     loadChildren: './auth/pages/editar-pedido/editar-pedido.module#EditarPedidoPageModule',
     canActivate: [AuthGuard]
   }

@@ -13,7 +13,6 @@ import { IonicModule } from '@ionic/angular';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ReactiveFormsModule,
     BrMaskerModule,
     IonicModule,
     FooterComponent,
