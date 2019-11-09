@@ -14,33 +14,33 @@
       <ion-col class="align-self-center" size-md="6" size-lg="6" size-xs="12">
         <ion-list>
           <ng-container *ngFor="let pedido of pedidos">
-          <ion-item-sliding *ngIf="pedido.idDentista == userLogado">
-            <!-- <ion-item (click)="openModal()"> -->
-            <ion-item>
-              <!--  <ion-item button [routerLink]="['/modal-pedido', pedido.id]"> -->
-              <ion-avatar slot="start">
-                <img [src]="pedido.picture" />
-              </ion-avatar>
-              <!-- <ion-label (click)="openModal()"> -->
-              <ion-label (click)="editarPedido()">
-                {{ pedido.tipoProtese }}
-                <p>{{ pedido.subTipoProtese }}</p>
-                <p>{{ pedido.nomeProtetico }}</p>
-                <p>{{ pedido.criadoEm | date: 'short' }}</p>
-              </ion-label>
+            <ion-item-sliding *ngIf="pedido.idDentista == userLogado">
+              <!-- <ion-item (click)="openModal()"> -->
+              <ion-item>
+                <!--  <ion-item button [routerLink]="['/modal-pedido', pedido.id]"> -->
+                <ion-avatar slot="start">
+                  <img [src]="pedido.picture" />
+                </ion-avatar>
+                <!-- <ion-label (click)="openModal()"> -->
+                <ion-label (click)="editarPedido(pedido.id)">
+                  {{ pedido.tipoProtese }}
+                  <p>{{ pedido.subTipoProtese }}</p>
+                  <p>{{ pedido.nomeProtetico }}</p>
+                  <p>{{ pedido.criadoEm | date: 'short' }}</p>
+                </ion-label>
 
-              <ion-note class="status" color="primary" slot="end" *ngIf="pedido.tipoProtese">{{
+                <ion-note class="status" color="primary" slot="end" *ngIf="pedido.tipoProtese">{{
                 pedido.status
               }}</ion-note>
-            </ion-item>
+              </ion-item>
 
-            <ion-item-options side="end">
-              <ion-item-option color="danger" (click)="presentAlertConfirm(pedido.id)">
-                <ion-icon slot="top" name="trash"></ion-icon>
-                Excluir
-              </ion-item-option>
-            </ion-item-options>
-          </ion-item-sliding>
+              <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="presentAlertConfirm(pedido.id)">
+                  <ion-icon slot="top" name="trash"></ion-icon>
+                  Excluir
+                </ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding>
           </ng-container>
         </ion-list>
       </ion-col>
