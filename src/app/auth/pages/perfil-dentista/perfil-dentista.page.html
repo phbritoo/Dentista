@@ -16,10 +16,16 @@
           </div>
           <ion-item>
             <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" maxlength="50" class="fadeIn second" [(ngModel)]="nome" clearInput
+            <ion-input type="text" minlength="3" maxlength="50" class="fadeIn second" [(ngModel)]="nome" clearInput
               [ngModelOptions]="{standalone: true}">
             </ion-input>
           </ion-item>
+          <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('required')">
+            Obrigatório
+          </ion-note>
+          <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('minlength')">
+            Mínimo 3 Caracteres
+          </ion-note>
 
           <ion-item>
             <ion-icon name="finger-print" slot="start"></ion-icon>
@@ -37,13 +43,14 @@
 
           <ion-item>
             <ion-icon name="phone-portrait" slot="start"></ion-icon>
-            <ion-input type="tel" class="fadeIn five" clearInput [brmasker]="{phone: true}" [(ngModel)]="telefone"
+            <ion-input type="tel" minlength="15" maxlength="15" class="fadeIn five" clearInput [brmasker]="{phone: true}" [(ngModel)]="telefone"
               [ngModelOptions]="{standalone: true}">
             </ion-input>
-            <ion-note slot="end" color="danger" *ngIf="phone.dirty && phone.hasError('required')">
-              Obrigatório
-            </ion-note>
           </ion-item>
+          <ion-note slot="end" color="danger" *ngIf="phone.dirty && phone.hasError('required')">
+            Obrigatório
+          </ion-note>
+
 
           <ion-item>
             <ion-icon name="calendar" slot="start"></ion-icon>
