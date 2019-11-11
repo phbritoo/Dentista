@@ -17,7 +17,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
   templateUrl: './editar-pedido.page.html',
   styleUrls: ['./editar-pedido.page.scss']
 })
-export class EditarPedidoPage implements OnInit {
+export class EditarPedidoPage implements OnInit, OnDestroy {
   editarPedido: FormGroup;
   public pedido: Pedido = {};
   private pedidoId: string = null;
