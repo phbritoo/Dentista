@@ -6,7 +6,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { User } from '../interfaces/user';
-
+import { auth } from 'firebase/app';
+import { NavController } from '@ionic/angular';
 import { UserService } from 'src/app/core/services/user.service';
 @Component({
   selector: 'app-perfil-dentista',
@@ -42,7 +43,8 @@ export class PerfilDentistaPage implements OnInit {
     private authService: AuthService,
     private afs: AngularFirestore,
     private afa: AngularFireAuth,
-    private userService: UserService
+    private userService: UserService,
+    private navCtrl: NavController
   ) {
     this.initializeApp();
   }
@@ -57,8 +59,6 @@ export class PerfilDentistaPage implements OnInit {
       this.telefone = event.telefone;
       this.data = event.data;
       this.email = event.email;
-      console.log(this.nome);
-      console.log(this.userLogado);
     });
   }
 
@@ -79,7 +79,7 @@ export class PerfilDentistaPage implements OnInit {
       cpf: ['', [Validators.required]],
       cro: ['', [Validators.required]],
       // cro: [{ value: '' }],
-      telefone: ['', [Validators.required, Validators.minLength(15)]],
+      telefone: ['', [Validators.required, Validators.minLength(14)]],
       data: ['', [Validators.required]],
       email: ['', [Validators.required]],
       criadoEm: [new Date().getTime()],
@@ -87,21 +87,37 @@ export class PerfilDentistaPage implements OnInit {
     });
   }
   // mostrar mensagem de erro no ion-note
+  get name(): FormControl {
+    return this.atualizarDentista.get('nome') as FormControl;
+  }
+  // mostrar mensagem de erro no ion-note
   get phone(): FormControl {
     return this.atualizarDentista.get('telefone') as FormControl;
   }
 
+  updateNomeMenu(nome: string) {
+    this.afa.auth.currentUser.updateProfile({ displayName: this.nome });
+  }
+
   async update() {
+    if (!this.nome) {
+      return this.presentToast('<center>' + 'Informe seu nome !' + '</center>');
+    }
+    if (!this.telefone) {
+      return this.presentToast('<center>' + 'Informe seu telefone !' + '</center>');
+    }
     try {
       await this.mainuser.update({
         nome: this.nome,
         telefone: this.telefone
       });
     } catch (error) {
-      return await this.presentToast('<center>' + 'error' + '</center>');
+      return await this.presentToast('<center>' + 'Error ao atualizar !' + '</center>');
     }
-    await this.presentToast('<center>' + 'Perfil Atualizado com sucesso!' + '</center>');
-    console.log(this.nome);
+    this.updateNomeMenu(this.nome);
+    this.presentToast('<center>' + 'Perfil atualizado com sucesso !' + '</center>');
+    // this.router.navigateBack(['/home-dentista']);
+    this.navCtrl.navigateBack(['/home-dentista']);
   }
 
   async presentLoading() {
