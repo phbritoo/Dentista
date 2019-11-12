@@ -15,21 +15,18 @@
         <!-- Login Form -->
         <form [formGroup]="novoPedido" (submit)="savePedido()">
           <ion-item>
-            <ion-icon name="person" slot="start">
-            </ion-icon>
-            <ion-input type="text" class="fadeIn second ion-padding" clearInput
-              formControlName="nomePaciente"
-              maxlength="50" placeholder="Nome do Paciente">
+            <ion-icon name="person" slot="start"> </ion-icon>
+            <ion-label position="stacked">Nome do Paciente:</ion-label>
+            <ion-input type="text" class="fadeIn second ion-padding" clearInput formControlName="nomePaciente"
+              maxlength="50">
             </ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-icon name="contact" slot="start">
-            </ion-icon>
-
+            <ion-icon name="contact" slot="start"> </ion-icon>
+            <ion-label position="stacked">Nome do Protetico:</ion-label>
             <ion-select formControlName="nomeProtetico" class="fadeIn second
-              ion-padding-bottom" interface="popover"
-              [interfaceOptions]="proteticoLabel" placeholder="Protetico">
+              ion-padding-bottom" interface="popover" [interfaceOptions]="proteticoLabel">
               <ng-container *ngFor="let user of users | async">
                 <span *ngIf="user.isDentista == false">
                   <ion-select-option value="{{ user.nome }}">
@@ -41,12 +38,10 @@
           </ion-item>
           <ion-item>
             <ion-icon name="beaker" slot="start"></ion-icon>
-            <ion-select class="fadeIn third ion-padding-bottom"
-              interface="popover" [interfaceOptions]="categoriaLabel"
-              placeholder="Categoria de Protese" formControlName="tipoProtese">
-              <!--(ionChange)="tipoProteseChange($event)"-->
-              <ion-select-option *ngFor="let categoria of categorias | async"
-                value="{{ categoria.nome }}">
+            <ion-label position="stacked">Categoria da Prótese:</ion-label>
+            <ion-select class="fadeIn third ion-padding-bottom" interface="popover" [interfaceOptions]="categoriaLabel"
+              formControlName="tipoProtese">
+              <ion-select-option *ngFor="let categoria of categorias | async" value="{{ categoria.nome }}">
                 {{ categoria.nome }}
               </ion-select-option>
             </ion-select>
@@ -54,9 +49,9 @@
 
           <ion-item>
             <ion-icon name="flask" slot="start"></ion-icon>
-            <ion-select class="fadeIn five ion-padding-bottom"
-              interface="popover" [interfaceOptions]="tipoLabel"
-              placeholder="Tipo de Protese" formControlName="subTipoProtese">
+            <ion-label position="stacked">Tipo da Prótese:</ion-label>
+            <ion-select class="fadeIn five ion-padding-bottom" interface="popover" [interfaceOptions]="tipoLabel"
+              formControlName="subTipoProtese">
               <ion-select-option *ngFor="let tipo of tipos | async" value="{{
                 tipo.nome }}">
                 {{ tipo.nome }}</ion-select-option>
@@ -64,15 +59,12 @@
           </ion-item>
           <ion-item>
             <ion-icon name="information-circle" slot="start"></ion-icon>
-            <ion-label position="floating" class="fadeIn six
-              ion-padding-bottom">Detalhes do pedido </ion-label>
-            <ion-textarea formControlName="observacao" maxlength="50" clearInput
-              class="fadeIn six ion-padding-bottom">
+            <ion-label position="stacked">Detalhes do Pedido:</ion-label>
+            <ion-textarea formControlName="observacao" maxlength="50" clearInput class="fadeIn six ion-padding-bottom">
             </ion-textarea>
           </ion-item>
           <div class="ion-padding-top">
-            <button type="submit" class="btn btn-info fadeIn seven"
-              [disabled]="novoPedido.invalid">Enviar pedido
+            <button type="submit" class="btn btn-info fadeIn seven" [disabled]="novoPedido.invalid">Enviar pedido
               &nbsp;
               <i class="fa fa-sign-in ion-padding-right"></i> </button>
           </div>
