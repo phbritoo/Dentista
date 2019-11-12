@@ -15,59 +15,52 @@
               src="https://www.hotelmoreto.com/uploads/testimonials/2f8c38b0c7ef0e101671959549633db409d8edc1.png">
           </div>
           <ion-item>
+            <ion-label position="stacked">Nome</ion-label>
             <ion-icon name="person" slot="start"></ion-icon>
             <ion-input type="text" minlength="3" maxlength="50" class="fadeIn second" [(ngModel)]="nome" clearInput
-              [ngModelOptions]="{standalone: true}">
+              [ngModelOptions]="{standalone: true}" required>
             </ion-input>
           </ion-item>
-          <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('required')">
-            Obrigatório
-          </ion-note>
-          <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('minlength')">
-            Mínimo 3 Caracteres
-          </ion-note>
-
           <ion-item>
+            <ion-label position="stacked">CPF</ion-label>
             <ion-icon name="finger-print" slot="start"></ion-icon>
-            <ion-input type="tel" class="fadeIn third" clearInput formControlName="cpf">
+            <ion-input type="tel" color="medium" class="fadeIn third" clearInput formControlName="cpf">
               {{ cpf }}
             </ion-input>
           </ion-item>
 
           <ion-item>
+            <ion-label position="stacked">CRO</ion-label>
             <ion-icon name="md-medkit" slot="start"></ion-icon>
-            <ion-input type="text" class="fadeIn fourth" minlength="4" formControlName="cro">
+            <ion-input type="text" color="medium" class="fadeIn fourth" minlength="4" formControlName="cro">
               {{ cro }}
             </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-icon name="phone-portrait" slot="start"></ion-icon>
-            <ion-input type="tel" minlength="15" maxlength="15" class="fadeIn five" clearInput [brmasker]="{phone: true}" [(ngModel)]="telefone"
-              [ngModelOptions]="{standalone: true}">
+            <ion-label position="stacked">Contato</ion-label>
+            <ion-input type="tel" minlength="15" maxlength="15" class="fadeIn five" clearInput
+              [brmasker]="{phone: true}" [(ngModel)]="telefone" [ngModelOptions]="{standalone: true}" required>
             </ion-input>
           </ion-item>
-          <ion-note slot="end" color="danger" *ngIf="phone.dirty && phone.hasError('required')">
-            Obrigatório
-          </ion-note>
-
-
           <ion-item>
             <ion-icon name="calendar" slot="start"></ion-icon>
-            <ion-input clearInput formControlName="data" class="fadeIn seven">
+            <ion-label position="stacked">Data de Nascimento</ion-label>
+            <ion-input color="medium" clearInput formControlName="data" class="fadeIn seven">
               {{ data }}
             </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-icon name="at" slot="start"></ion-icon>
-            <ion-input type="email" clearInput formControlName="email" class="fadeIn seven">
+            <ion-label position="stacked">E-mail</ion-label>
+            <ion-input type="email" color="medium" clearInput formControlName="email" class="fadeIn seven">
               {{ email }}
             </ion-input>
           </ion-item>
-          <!-- <ion-button type="submit">Atualizar</ion-button> -->
           <div class="ion-padding-top ">
-            <button type="submit" class="btn btn-info fadeIn seven btn-login ">Atualizar Perfil
+            <button type="submit" class="btn btn-info fadeIn seven btn-login ">Atualizar
               &nbsp;
               <i class="fa fa-check ion-padding-right"></i> </button>
           </div>

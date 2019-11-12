@@ -78,6 +78,8 @@ export class EditarPedidoPage implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.createForm();
     this.editarPedido.controls.nomeProtetico.disable();
+    this.editarPedido.controls.tipoProtese.disable();
+    this.editarPedido.controls.subTipoProtese.disable();
   }
   ngOnDestroy() {
     if (this.pedidoSubscription) {
