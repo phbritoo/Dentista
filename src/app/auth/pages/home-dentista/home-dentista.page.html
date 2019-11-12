@@ -29,11 +29,13 @@
                   <p>{{ pedido.criadoEm | date: 'short' }}</p>
                 </ion-label>
 
-                <ion-note class="status" color="primary" slot="end" *ngIf="pedido.tipoProtese">{{
-                pedido.status
-              }}</ion-note>
+                  <ion-note class="status" slot="end" *ngIf="pedido.status" [ngClass]="{
+                    'text-success':pedido.status === 'ACEITO',
+                    'text-warning':pedido.status === 'PENDENTE',
+                    'text-danger':pedido.status === 'CANCELADO'
+                  }">{{ pedido.status}}
+                </ion-note>
               </ion-item>
-
               <ion-item-options side="end">
                 <ion-item-option color="danger" (click)="presentAlertConfirm(pedido.id)">
                   <ion-icon slot="top" name="trash"></ion-icon>
