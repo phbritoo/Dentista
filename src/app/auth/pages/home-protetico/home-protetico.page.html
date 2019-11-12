@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar translucent>
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-menu-button color="primary"></ion-menu-button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-title>
-      <div class="text ion-text-center">Meus Pedidos</div>
+      <div class="text ion-text-center"> Meus Pedidos</div>
     </ion-title>
+    <ion-fab vertical="center" horizontal="end">
+      <ion-fab-button  size="small">
+        <ion-icon name="log-out" (click)="logout()"> </ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -47,4 +52,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-  

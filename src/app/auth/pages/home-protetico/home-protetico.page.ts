@@ -50,7 +50,7 @@ export class HomeProteticoPage implements OnInit {
   }
 
   editarPedido(id: string) {
-    this.router.navigate(['/editar-pedido/' + id.split('/')[0]]);
+    this.router.navigate(['/editar-pedido-prot/' + id.split('/')[0]]);
     console.log(id);
   }
   ngOnInit() {}
