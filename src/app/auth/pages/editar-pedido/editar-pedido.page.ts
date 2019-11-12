@@ -138,7 +138,7 @@ export class EditarPedidoPage implements OnInit, OnDestroy {
     });
   }
 
-  async update() {
+  async atualizarPedido() {
     if (!this.nomePaciente) {
       return this.presentToast('<center>' + 'Informe o nome do paciente !' + '</center>');
     }
