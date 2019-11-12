@@ -23,9 +23,9 @@
                 </ion-avatar>
                 <!-- <ion-label (click)="openModal()"> -->
                 <ion-label (click)="editarPedido(pedido.id)">
-                  {{ pedido.tipoProtese }}
-                  <p>{{ pedido.subTipoProtese }}</p>
-                  <p>{{ pedido.nomeProtetico }}</p>
+                 {{pedido.nomePaciente}}
+                  <p><b>{{ pedido.tipoProtese }}</b></p>
+                  <p><b>{{ pedido.subTipoProtese }}</b></p>
                   <p>{{ pedido.criadoEm | date: 'short' }}</p>
                 </ion-label>
 
