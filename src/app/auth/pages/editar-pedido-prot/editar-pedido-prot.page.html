@@ -1,116 +1,74 @@
 <ion-content>
 
   <body class="login-blue">
-    <!-- <ion-buttons slot="start">
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-    </ion-buttons> -->
+    </ion-buttons>
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <div class="fadeIn first componente">
           <a href="javascript:void(0);" class="icone" (click)="cancelar()">
             <i class="fa fa-arrow-left fa-lg mx-4 texto-cor "></i>
           </a>
-          <h2 class="texto-cor">Pedido </h2>
+          <h2 class="texto-cor"> Detalhes do Pedido </h2>
         </div>
-        <!-- <div class="fadeIn first heading-desc">
-          <button type="button" class="pull-left" (click)="cancelar()"> <i class="fa fa-arrow-left icone"></i></button>
-          <h2 class="ion-margin pedido1"> Pedido </h2>
-        </div> -->
-        <!-- <form [formGroup]="novoPedido" (submit)="savePedido()"> -->
         <form [formGroup]="editarPedido" (submit)="atualizarPedido()">
-
           <ion-item>
+            <ion-label position="stacked">Nome do Paciente:</ion-label>
+            <ion-input type="text" class="fadeIn second ion-padding" clearInput maxlength="50"
+              [(ngModel)]="nomePaciente" [ngModelOptions]="{standalone: true}" required>
+            </ion-input>
             <ion-icon name="person" slot="start">
             </ion-icon>
-            <!-- <ion-input type="text" class="fadeIn second ion-padding" clearInput formControlName="nomePaciente"
-              maxlength="50" placeholder="Nome do Paciente"> -->
-            <ion-input type="text" class="fadeIn second ion-padding" clearInput maxlength="50"
-              formControlName="nomePaciente">
-              nomePaciente
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Nome do Protético:</ion-label>
+            <ion-input type="text" color="medium" class="fadeIn second ion-padding" formControlName="nomeProtetico">
+              {{nomeProtetico}}
             </ion-input>
-          </ion-item>
-
-          <!-- <ion-item>
-            <ion-icon name="contact"  slot="start">
+            <ion-icon name="contact" slot="start">
             </ion-icon>
-
-            <ion-select formControlName="nomeProtetico" class="fadeIn second ion-padding-bottom"
-              interface="action-sheet" [interfaceOptions]="proteticoLabel" placeholder="Protetico">
-              <ng-container *ngFor="let user of users | async">
-                <ion-select-option *ngIf="user.isDentista == false" value="{{ user.nome }}">
-                  {{ user.nome }}
-                </ion-select-option>
-              </ng-container>
-            </ion-select>
-          </ion-item> -->
-          <ion-item>
-            <ion-icon name="contact" slot="start"></ion-icon>
-            <ion-label>Protetico</ion-label>
-            <ion-select formControlName="nomeProtetico" multiple="false">
-              <ion-select-option value="peperoni" selected>Protetico numero 1</ion-select-option>
-              <ion-select-option value="hawaii">Hawaii</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <!-- <ion-item>
-            <ion-icon name="beaker" slot="start" ></ion-icon>
-            <ion-select interface="action-sheet" class="fadeIn third ion-padding-bottom"
-              [interfaceOptions]="categoriaLabel" placeholder="Categoria de Protese" formControlName="tipoProtese"> -->
-          <!--(ionChange)="tipoProteseChange($event)"-->
-          <!-- <ion-select-option *ngFor="let categoria of categorias | async" value="{{ categoria.nome }}">
-                {{ categoria.nome }}
-              </ion-select-option>
-            </ion-select>
-          </ion-item>-->
-          <ion-item>
-            <ion-icon name="beaker" slot="start"></ion-icon>
-            <ion-label>Protese</ion-label>
-            <ion-select multiple="false" formControlName="tipoProtese">
-              <ion-select-option value="peperoni" selected>Protese 12</ion-select-option>
-              <ion-select-option value="hawaii">Hawaii</ion-select-option>
-            </ion-select>
           </ion-item>
 
-          <!-- <ion-item>
-            <ion-icon name="flask"  slot="start"></ion-icon>
-            <ion-select interface="action-sheet" class="fadeIn five ion-padding-bottom" [interfaceOptions]="tipoLabel"
-              placeholder="Tipo de Protese" formControlName="subTipoProtese">
-              <ion-select-option *ngFor="let tipo of tipos | async" value="{{ tipo.nome }}">
-                {{ tipo.nome }}</ion-select-option>
-            </ion-select>
-          </ion-item> -->
           <ion-item>
-            <ion-icon name="flask" slot="start"></ion-icon>
-            <ion-label>Tipo de Protese</ion-label>
-            <ion-select multiple="false" formControlName="subTipoProtese">
-              <ion-select-option value="peperoni" selected>Tipo de protese 12</ion-select-option>
-              <ion-select-option value="hawaii">Hawaii</ion-select-option>
-            </ion-select>
+            <ion-label position="stacked">Tipo da Protese:</ion-label>
+            <ion-input type="text" color="medium" class="fadeIn second ion-padding" formControlName="tipoProtese">
+              {{tipoProtese}}
+            </ion-input>
+            <ion-icon name="beaker" slot="start">
+            </ion-icon>
           </ion-item>
-
+          <ion-item>
+            <ion-label position="stacked">Subtipo da Protese:</ion-label>
+            <ion-input type="text" color="medium" class="fadeIn second ion-padding" formControlName="subTipoProtese">
+              {{subTipoProtese}}
+            </ion-input>
+            <ion-icon name="flask" slot="start">
+            </ion-icon>
+          </ion-item>
           <ion-item>
             <ion-icon name="information-circle" slot="start"></ion-icon>
-            <ion-label position="floating" class="fadeIn six ion-padding-bottom"></ion-label>
-            <!-- <ion-textarea formControlName="observacao" maxlength="50" clearInput class="fadeIn six ion-padding-bottom"> -->
-            <ion-textarea maxlength="50" clearInput class="fadeIn six ion-padding-bottom" formControlName="observacao">
-              dente 01 + dente 02
-            </ion-textarea>
+            <ion-label position="floating">Observação</ion-label>
+            <ion-textarea maxlength="50" class="fadeIn six ion-padding-bottom" [(ngModel)]="observacao"
+              [ngModelOptions]="{standalone: true}" required></ion-textarea>
           </ion-item>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Status do Pedido</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option selected> PENDENTE</option>
-              <option>CONCLUIDO</option>
-              <option>CANCELADO</option>
-            </select>
-          </div>
 
-          <div class="ion-padding-top">
-            <button type="button" class="btn btn-info fadeIn seven btn-login " id="editar" (click)="editar()">Alterar
+          <ion-item>
+            <ion-icon name="checkbox" slot="start"></ion-icon>
+            <ion-label position="stacked">Status do Pedido:</ion-label>
+            <ion-select class="fadeIn five ion-padding-bottom" interface="popover" [interfaceOptions]="tipoLabel"
+            [(ngModel)]="status"   [ngModelOptions]="{standalone: true}" required>
+              <ion-select-option selected value="PENDENTE"> PENDENTE </ion-select-option>
+              <ion-select-option  value="CANCELADO"> CANCELADO </ion-select-option>
+              <ion-select-option  value="ACEITO"> ACEITO </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+      
+          <div class="ion-padding-top ">
+            <button type="submit" class="btn btn-info fadeIn seven">Atualizar Pedido
               &nbsp;
-              <i class="fa fa-pencil ion-padding-right"></i> </button>
-            <button type="button" class="btn fadeIn primary btn-login" id="enviar"> Atualizar &nbsp; <i
-                class="fa fa-check ion-padding-right"></i></button>
-
+              <i class="fa fa-check ion-padding-right"></i> </button>
           </div>
         </form>
       </div>
