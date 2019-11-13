@@ -26,6 +26,7 @@ export class HomeProteticoPage implements OnInit {
   private pedidosSubscription: Subscription;
   public userLogado: any;
   backButtonSubscription;
+  nome;
 
   constructor(
     public popoverCtrl: PopoverController,
@@ -41,6 +42,7 @@ export class HomeProteticoPage implements OnInit {
     private platform: Platform,
     public menuCtrl: MenuController
   ) {
+    this.nome = this.authService.getAuth().currentUser.displayName;
     this.menuCtrl.enable(false);
     this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
       this.pedidos = data;
