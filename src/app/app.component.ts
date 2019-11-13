@@ -53,6 +53,18 @@ export class AppComponent implements OnDestroy {
         url: '/home-dentista',
         // direct: 'forward',
         icon: 'clock'
+      },
+      {
+        title: 'Pedidos Cancelados',
+        url: '/home-dentista',
+        // direct: 'forward',
+        icon: 'close-circle-outline'
+      },
+      {
+        title: 'Solicitar Protése',
+        url: '/novo-pedido',
+        // direct: 'forward',
+        icon: 'add'
       }
     ];
     this.initializeApp();
