@@ -20,7 +20,7 @@
     </div>
   </div>
 </div> -->
-
+<!--
 <ion-fab vertical="bottom" horizontal="end">
   <ion-fab-button>
     <ion-icon name="apps"></ion-icon>
@@ -35,6 +35,21 @@
   <ion-fab-list side="top">
     <ion-fab-button>
       <ion-icon name="add" (click)="togglePopupMenu()" color="primary"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab> -->
+<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+  <ion-fab-button color="primary">
+    <ion-icon name="apps"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button color="secondary">
+      <ion-icon name="add" (click)="togglePopupMenu()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+  <ion-fab-list side="start">
+    <ion-fab-button color="light">
+      <ion-icon size="large" name="log-out" (click)="logout()"></ion-icon>
     </ion-fab-button>
   </ion-fab-list>
 </ion-fab>
