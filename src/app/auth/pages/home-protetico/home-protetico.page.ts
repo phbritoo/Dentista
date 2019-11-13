@@ -38,8 +38,10 @@ export class HomeProteticoPage implements OnInit {
     private router: Router,
     private alertController: AlertController,
     public modalController: ModalController,
-    private platform: Platform
+    private platform: Platform,
+    public menuCtrl: MenuController
   ) {
+    this.menuCtrl.enable(false);
     this.pedidosSubscription = this.pedidoService.getPedidos().subscribe(data => {
       this.pedidos = data;
 
@@ -53,15 +55,23 @@ export class HomeProteticoPage implements OnInit {
     this.router.navigate(['/editar-pedido-prot/' + id.split('/')[0]]);
     console.log(id);
   }
-  ngOnInit() {}
+  ngOnInit(): void {
+    // menu
+    this.menuCtrl.enable(false);
+  }
 
   ngAfterViewInit() {
+    this.menuCtrl.enable(false);
     this.backButtonSubscription = this.platform.backButton.subscribe(() => {
       navigator['app'].exitApp();
     });
   }
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   ngOnDestroy() {
+    this.menuCtrl.enable(false);
     this.pedidosSubscription.unsubscribe();
     this.backButtonSubscription.unsubscribe();
   }

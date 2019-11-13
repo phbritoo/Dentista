@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController, ToastController, NavController } from '@ionic/angular';
+import { LoadingController, ToastController, NavController, MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Subscription, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
@@ -53,7 +53,8 @@ export class EditarPedidoProtPage implements OnInit, OnDestroy {
     private toastCtrl: ToastController,
     private authService: AuthService,
     private router: Router,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public menuCtrl: MenuController
   ) {
     this.pedidoId = this.activatedRoute.snapshot.params.id;
     if (this.pedidoId) {
@@ -61,8 +62,12 @@ export class EditarPedidoProtPage implements OnInit, OnDestroy {
     }
     this.initializeApp();
   }
-
+  // menu
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
   initializeApp() {
+    this.menuCtrl.enable(false);
     this.mainpedido = this.afs.doc('Pedidos/' + this.pedidoId);
     this.sub = this.mainpedido.valueChanges().subscribe(event => {
       this.nomeProtetico = event.nomeProtetico;
@@ -76,6 +81,7 @@ export class EditarPedidoProtPage implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.menuCtrl.enable(false);
     this.createForm();
     this.editarPedido.controls.nomeProtetico.disable();
     this.editarPedido.controls.tipoProtese.disable();
