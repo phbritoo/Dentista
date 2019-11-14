@@ -8,6 +8,9 @@ import { NavController, MenuController, AlertController } from '@ionic/angular';
   styleUrls: ['./tela-inicial.page.scss']
 })
 export class TelaInicialPage implements OnInit {
+  sliderOpts: any;
+  
+  
   constructor(
     private router: Router,
     public navCtrl: NavController,
@@ -16,20 +19,20 @@ export class TelaInicialPage implements OnInit {
   ) {}
 
   // coleção de imagens e títulos
-  slides = [
-    {
-      img: 'assets/img/dentista.png',
-      titulo: 'ProtoLAB é essencial para você<br>profissional da odontologia'
-    },
-    {
-      img: 'assets/img/protese.png',
-      titulo: 'Tenha o controle de todas as<br>próteses solicitadas'
-    },
-    {
-      img: 'assets/img/dente.png',
-      titulo: 'Desde o pedido até a entrega.<br>Faça já seu cadastro!'
-    }
-  ];
+  // slides = [
+  //   {
+  //     img: 'assets/img/dentista.png',
+  //     titulo: 'ProtoLAB é essencial para você<br>profissional da odontologia'
+  //   },
+  //   {
+  //     img: 'assets/img/protese.png',
+  //     titulo: 'Tenha o controle de todas as<br>próteses solicitadas'
+  //   },
+  //   {
+  //     img: 'assets/img/dente.png',
+  //     titulo: 'Desde o pedido até a entrega.<br>Faça já seu cadastro!'
+  //   }
+  // ];
   // Chama a tela de login
   openLogin() {
     this.router.navigate(['/login']);
@@ -42,4 +45,13 @@ export class TelaInicialPage implements OnInit {
   ngOnInit() {
     this.menuCtrl.enable(false);
   }
+
+  
+  slideOpts = {  
+    // initialSlide: 1,  
+    speed: 500,  
+    effect: 'fade',  
+    slidesPerView: 1,
+    autoplay:true
+  };  
 }
