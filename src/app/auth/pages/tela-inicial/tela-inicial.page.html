@@ -1,27 +1,34 @@
-<ion-content class="back">
-    <ion-slides pager="true">
-        <ion-slide *ngFor="let slide of slides">
-            <div class="slide-img-padding">
-                <img [src]="slide.img">
-            </div>
-            <div>
-                <h3 [innerHTML]="slide.titulo"></h3>
-            </div>
-        </ion-slide>
-    </ion-slides>
-</ion-content>
 
-<ion-footer no-border>
-
+  <ion-content color="xxx" fullscreen>  
+    <ion-slides pager="true"  [options]="slideOpts">    
+    
+      <ion-slide>  
+        <img src="assets/img/dentista.png"/>
+        <h2><b>ProtoLAB</b></h2>  
+        <p>Essencial para você profissional da odontologia.</p>  
+      </ion-slide>  
+    
+      <ion-slide> 
+        <img src="assets/img/protese.png"/>
+        <h2><b>ProtoLAB</b></h2>   
+        <p>Tenha o controle de todas as próteses solicitadas</p>  
+      </ion-slide>  
+    
+      <ion-slide>  
+        <img src="assets/img/dente.png"/>
+        <h2><b>ProtoLAB</b></h2>   
+        <p>Desde o pedido até a entrega.<br> Faça já seu cadastro!</p>  
+      </ion-slide>  
+    </ion-slides> 
     <ion-grid fixed>
         <ion-row>
             <ion-col size="10" offset="1" class="ion-text-center" >
                 <!-- Botão pra chamar a tela de login -->
-               <ion-button  shape="round" mode="ios" class="btn-primary" (click)="openLogin()">
-                    Entrar
+               <ion-button  shape="round" class="btn-primary" (click)="openLogin()">
+                    Entrar &nbsp;&nbsp;
                     <ion-icon name="arrow-round-forward"></ion-icon>
                 </ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>
-</ion-footer>
+  </ion-content> 
