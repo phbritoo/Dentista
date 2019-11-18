@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Pedido } from '../interfaces/pedido';
 import { PedidoService } from 'src/app/core/services/pedido.service';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController, ToastController, NavController } from '@ionic/angular';
+import { LoadingController, ToastController, NavController, AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Subscription, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
@@ -52,6 +52,7 @@ export class EditarPedidoPage implements OnInit, OnDestroy {
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private authService: AuthService,
+    private alertController: AlertController,
     private router: Router,
     private afs: AngularFirestore
   ) {
@@ -81,6 +82,45 @@ export class EditarPedidoPage implements OnInit, OnDestroy {
     this.editarPedido.controls.tipoProtese.disable();
     this.editarPedido.controls.subTipoProtese.disable();
   }
+
+  
+  async deletePedido(id: string) {
+    try {
+      await this.pedidoService.deletePedido(id);
+    } catch (error) {
+      this.presentToast('Erro ao tentar deletar');
+    }
+  }
+
+  async presentAlertConfirm(id: string) {
+    const alert = await this.alertController.create({
+      header: 'ATENÇÃO!',
+      message: 'Tem certeza que deseja excluir este pedido?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: blah => {
+            console.log('Ação cancelada pelo usuário');
+            // this.presentToast('<center>' + 'Ação cancelada!' + '</center>');
+          }
+        },
+        {
+          text: 'Excluir Pedido',
+          handler: () => {
+            console.log('Pedido Exluído do Firebase');
+            this.deletePedido(id);
+            this.presentToast('O pedido foi excluído com sucesso');
+            this.navCtrl.navigateBack(['/home-dentista']);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   ngOnDestroy() {
     if (this.pedidoSubscription) {
       this.pedidoSubscription.unsubscribe();
