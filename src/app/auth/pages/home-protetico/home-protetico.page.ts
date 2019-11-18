@@ -79,18 +79,41 @@ export class HomeProteticoPage implements OnInit {
   }
 
   async logout() {
-    await this.presentLoading();
+    const alert = await this.alertController.create({
+      header: 'ATENÇÃO!',
+      message: 'Tem certeza que deseja sair?',
+      buttons: [
+        {
+          text: 'Não',
+          cssClass: 'secondary',
+          role: 'cancel',
+          handler: blah => {
+            console.log('Ação cancelada pelo usuário');
+            // this.presentToast('<center>' + 'Ação cancelada!' + '</center>');
+          }
+        },
+        {
+          text: 'SAIR',
+          cssClass: 'warning',
+          handler: () => {
+            try {
+               this.authService.logout();
+              /* devido ao CanActivate, provavelmente não será necessário
+         esse router. Ele será automático. Comentar e testar depois */
+              // this.router.navigate(['/login']);
+            } catch (error) {
+              console.error(error);
+            } 
+            console.log('Fez logout');
+            // this.presentToast('O pedido foi excluído com sucesso');
+          }
+        }
+      ]
+    });
+    await alert.present();
+    // await this.presentLoading();
 
-    try {
-      await this.authService.logout();
-      /* devido ao CanActivate, provavelmente não será necessário
- esse router. Ele será automático. Comentar e testar depois */
-      // this.router.navigate(['/login']);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      this.loading.dismiss();
-    }
+ 
   }
 
   async deletePedido(id: string) {
