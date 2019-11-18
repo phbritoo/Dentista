@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
+import { DentistaGuard } from './guards/dentista.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'tela-inicial', pathMatch: 'full' },
@@ -27,17 +28,20 @@ const routes: Routes = [
   {
     path: 'home-dentista',
     loadChildren: './auth/pages/home-dentista/home-dentista.module#HomeDentistaPageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    canActivateChild: [DentistaGuard]
   },
   {
     path: 'home-protetico',
     loadChildren: './auth/pages/home-protetico/home-protetico.module#HomeProteticoPageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    canActivateChild: [DentistaGuard]
   },
   {
     path: 'novo-pedido',
     loadChildren: './auth/pages/novo-pedido/novo-pedido.module#NovoPedidoPageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    canActivateChild: [DentistaGuard]
   },
   {
     path: 'popup-menu',
@@ -47,7 +51,8 @@ const routes: Routes = [
   {
     path: 'perfil-dentista',
     loadChildren: './auth/pages/perfil-dentista/perfil-dentista.module#PerfilDentistaPageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    canActivateChild: [DentistaGuard]
   },
   {
     path: 'perfil-protetico',
@@ -57,13 +62,15 @@ const routes: Routes = [
   {
     path: 'editar-pedido/:id',
     loadChildren: './auth/pages/editar-pedido/editar-pedido.module#EditarPedidoPageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    canActivateChild: [DentistaGuard]
   },
   {
     path: 'editar-pedido-prot/:id',
     loadChildren:
       './auth/pages/editar-pedido-prot/editar-pedido-prot.module#EditarPedidoProtPageModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    canActivateChild: [DentistaGuard]
   }
 ];
 
