@@ -30,7 +30,7 @@ export class AppComponent implements OnDestroy {
   ) {
     this.appPages = [
       {
-        title: 'Meus Pedidos',
+        title: 'Home',
         url: '/home-dentista',
         // direct: 'root',
         icon: 'md-list-box'
