@@ -44,19 +44,19 @@ export class AppComponent implements OnDestroy {
 
       {
         title: 'Pedidos Concluídos',
-        url: '/home-dentista',
+        url: '/status-concluido',
         // direct: 'forward',
         icon: 'md-checkbox-outline'
       },
       {
         title: 'Pedidos Pendentes',
-        url: '/home-dentista',
+        url: '/status-pendente',
         // direct: 'forward',
         icon: 'clock'
       },
       {
         title: 'Pedidos Cancelados',
-        url: '/home-dentista',
+        url: '/status-cancelado',
         // direct: 'forward',
         icon: 'close-circle-outline'
       },

@@ -28,20 +28,20 @@ const routes: Routes = [
   {
     path: 'home-dentista',
     loadChildren: './auth/pages/home-dentista/home-dentista.module#HomeDentistaPageModule',
-    canActivate: [AuthGuard],
-    canActivateChild: [DentistaGuard]
+    canActivate: [AuthGuard]
+    // canActivateChild: [DentistaGuard]
   },
   {
     path: 'home-protetico',
     loadChildren: './auth/pages/home-protetico/home-protetico.module#HomeProteticoPageModule',
-    canActivate: [AuthGuard],
-    canActivateChild: [DentistaGuard]
+    canActivate: [AuthGuard]
+    // canActivateChild: [DentistaGuard]
   },
   {
     path: 'novo-pedido',
     loadChildren: './auth/pages/novo-pedido/novo-pedido.module#NovoPedidoPageModule',
-    canActivate: [AuthGuard],
-    canActivateChild: [DentistaGuard]
+    canActivate: [AuthGuard]
+    // canActivateChild: [DentistaGuard]
   },
   {
     path: 'popup-menu',
@@ -51,26 +51,36 @@ const routes: Routes = [
   {
     path: 'perfil-dentista',
     loadChildren: './auth/pages/perfil-dentista/perfil-dentista.module#PerfilDentistaPageModule',
-    canActivate: [AuthGuard],
-    canActivateChild: [DentistaGuard]
-  },
-  {
-    path: 'perfil-protetico',
-    loadChildren: './auth/pages/perfil-protetico/perfil-protetico.module#PerfilProteticoPageModule',
     canActivate: [AuthGuard]
+    // canActivateChild: [DentistaGuard]
   },
   {
     path: 'editar-pedido/:id',
     loadChildren: './auth/pages/editar-pedido/editar-pedido.module#EditarPedidoPageModule',
-    canActivate: [AuthGuard],
-    canActivateChild: [DentistaGuard]
+    canActivate: [AuthGuard]
+    // canActivateChild: [DentistaGuard]
   },
   {
     path: 'editar-pedido-prot/:id',
     loadChildren:
       './auth/pages/editar-pedido-prot/editar-pedido-prot.module#EditarPedidoProtPageModule',
-    canActivate: [AuthGuard],
-    canActivateChild: [DentistaGuard]
+    canActivate: [AuthGuard]
+    // canActivateChild: [DentistaGuard]
+  },
+  {
+    path: 'status-cancelado',
+    loadChildren: './auth/pages/status-cancelado/status-cancelado.module#StatusCanceladoPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'status-concluido',
+    loadChildren: './auth/pages/status-concluido/status-concluido.module#StatusConcluidoPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'status-pendente',
+    loadChildren: './auth/pages/status-pendente/status-pendente.module#StatusPendentePageModule',
+    canActivate: [AuthGuard]
   }
 ];
 
