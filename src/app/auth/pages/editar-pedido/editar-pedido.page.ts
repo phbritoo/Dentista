@@ -83,16 +83,7 @@ export class EditarPedidoPage implements OnInit, OnDestroy {
     this.editarPedido.controls.subTipoProtese.disable();
   }
 
-  
-  async deletePedido(id: string) {
-    try {
-      await this.pedidoService.deletePedido(id);
-    } catch (error) {
-      this.presentToast('Erro ao tentar deletar');
-    }
-  }
-
-  async presentAlertConfirm(id: string) {
+  async presentAlertConfirm(pedidoId: string) {
     const alert = await this.alertController.create({
       header: 'ATENÇÃO!',
       message: 'Tem certeza que deseja excluir este pedido?',
@@ -109,16 +100,22 @@ export class EditarPedidoPage implements OnInit, OnDestroy {
         {
           text: 'Excluir Pedido',
           handler: () => {
+            this.deletePedido(this.pedidoId);
+            this.presentToast('<center>' + 'O pedido foi excluído com sucesso' + '</center>');
             console.log('Pedido Exluído do Firebase');
-            this.deletePedido(id);
-            this.presentToast('O pedido foi excluído com sucesso');
             this.navCtrl.navigateBack(['/home-dentista']);
           }
         }
       ]
     });
-
     await alert.present();
+  }
+  async deletePedido(pedidoId: string) {
+    try {
+      await this.pedidoService.deletePedido(this.pedidoId);
+    } catch (error) {
+      this.presentToast('<center>' + 'Erro ao tentar deletar' + '</center>');
+    }
   }
 
   ngOnDestroy() {
