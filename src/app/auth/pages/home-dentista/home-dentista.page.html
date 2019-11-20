@@ -23,7 +23,7 @@
       <ion-col class="align-self-center" size-md="6" size-lg="6" size-xs="12">
         <ion-list>
           <ng-container *ngFor="let pedido of pedidos">
-            <ion-item-sliding *ngIf="pedido.idDentista == userLogado && pedido.status !== 'FINALIZADO'">
+            <ion-item-sliding *ngIf="((pedido.idDentista === userLogado) && (pedido.status !== 'FINALIZADO') && (pedido.status !== 'CANCELADO'))">
               <ion-item>
                 <ion-avatar slot="start">
                   <img [src]="pedido.picture" />

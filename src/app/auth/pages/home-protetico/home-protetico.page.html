@@ -23,7 +23,7 @@
         <ion-list>
           <ion-searchbar (ionInput)="filterList($event)" (ionClear)="resetChanges()"></ion-searchbar>
           <ng-container *ngFor="let pedido of pedidos">
-            <ion-item-sliding *ngIf="pedido.nomeProtetico == userLogado">
+            <ion-item-sliding *ngIf="((pedido.idDentista !== userLogado) && (pedido.status !== 'FINALIZADO') && (pedido.status !== 'CANCELADO'))">
               <ion-item>
                 <ion-avatar slot="start">
                   <img [src]="pedido.picture" />
@@ -32,7 +32,7 @@
                   {{pedido.nomePaciente}}
                   <p><b>{{ pedido.tipoProtese }}</b></p>
                   <p><b>{{ pedido.subTipoProtese }}</b></p>
-                  <p>{{ pedido.criadoEm | date: 'short' }}</p>
+                  <p>{{ pedido.criadoEm | date: 'medium' }}</p>
                 </ion-label>
 
                 <ion-note class="status" slot="end" *ngIf="pedido.status" [ngClass]="{
