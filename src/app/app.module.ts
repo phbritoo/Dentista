@@ -17,7 +17,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RouteReuseStrategy } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DentistaGuard } from './guards/dentista.guard';
-// import { ProteticoGuard } from './guards/protetico.guard';
+import { ProteticoGuard } from './guards/protetico.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +41,7 @@ import { DentistaGuard } from './guards/dentista.guard';
     StatusBar,
     SplashScreen,
     DentistaGuard,
+    ProteticoGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
