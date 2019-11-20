@@ -29,11 +29,12 @@ html {
 
 
 .searchbar {
-  margin: 3px 0px 5px 0px;
-  height: 42px;
-  background-color: #353b48;
+  margin: 6px 0px 6px 0px;
+  height: 40px;
+  // background-color: #353b48;
+  background: linear-gradient(145deg, #2196f3, #3f51b5);
   border-radius: 40px;
-  padding: 2px 10px 5px 5px;
+  padding: 0px 15px 0px 15px;
 }
 
 .search_input {
@@ -54,21 +55,22 @@ html {
 }
 
 .searchbar:hover>.search_icon {
-  background: white;
-  color: #e74c3c;
+  // background: blue;
+  color: white;
 }
 
 .search_icon {
-  height: 35px;
-  width: 25px;
+  height: 30px;
+  width: 24px;
   float: right;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
+  margin-top: 5px;
   -webkit-box-align: center;
   align-items: center;
-  border-radius: 30%;
+  border-radius: 35%;
   color: white;
 }
 
@@ -118,4 +120,24 @@ ion-fab-list {
   ion-fab-list {
     padding: 0 35px 30px 0px;
   }
+}
+
+.titulo{
+  margin: 8px 0px 0px 0px;
+}
+
+::-webkit-input-placeholder {
+  color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: white;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: white;  
+}
+
+:-ms-input-placeholder {  
+  color: white;  
 }
