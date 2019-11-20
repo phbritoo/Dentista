@@ -27,6 +27,9 @@ export class HomeProteticoPage implements OnInit {
   public userLogado: any;
   backButtonSubscription;
   nome;
+   public searchListCopy: Array<any>;
+
+
 
   constructor(
     public popoverCtrl: PopoverController,
@@ -50,6 +53,11 @@ export class HomeProteticoPage implements OnInit {
       this.platform = platform;
 
       this.userLogado = this.authService.getAuth().currentUser.displayName;
+
+      this.searchListCopy = this.pedidos;
+
+
+
     });
   }
 
@@ -60,6 +68,7 @@ export class HomeProteticoPage implements OnInit {
   ngOnInit(): void {
     // menu
     this.menuCtrl.enable(false);
+
   }
 
   ngAfterViewInit() {
@@ -103,7 +112,7 @@ export class HomeProteticoPage implements OnInit {
               // this.router.navigate(['/login']);
             } catch (error) {
               console.error(error);
-            } 
+            }
             console.log('Fez logout');
             // this.presentToast('O pedido foi excluído com sucesso');
           }
@@ -113,7 +122,7 @@ export class HomeProteticoPage implements OnInit {
     await alert.present();
     // await this.presentLoading();
 
- 
+
   }
 
   async deletePedido(id: string) {
@@ -167,4 +176,31 @@ export class HomeProteticoPage implements OnInit {
   // ionViewDidLeave() {
   //   this.router.navigate(['/login']);
   // }
+
+
+
+  initializeItems(): void {
+
+    this.pedidos = this.searchListCopy;
+  }
+
+  filterList(evt) {
+    this.initializeItems();
+    const searchTerm = evt.srcElement.value;
+
+    if (!searchTerm) {
+      return;
+    }
+
+    this.pedidos = this.searchListCopy.filter(item => {
+      if (item.status && searchTerm) {
+        if (item.status.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+      }
+        return false;
+    }
+
+    });
+
+  }
 }
