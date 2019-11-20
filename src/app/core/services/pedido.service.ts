@@ -22,7 +22,7 @@ export class PedidoService {
           const id = a.payload.doc.id;
 
           return { id, ...data };
-        });
+        }).sort((b, c) => c.criadoEm - b.criadoEm);
       })
     );
   }

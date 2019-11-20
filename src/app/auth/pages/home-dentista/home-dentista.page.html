@@ -32,7 +32,7 @@
                   {{pedido.nomePaciente}}
                   <p><b>{{ pedido.tipoProtese }}</b></p>
                   <p><b>{{ pedido.subTipoProtese }}</b></p>
-                  <p>{{ pedido.criadoEm | date: 'short' }}</p>
+                  <p>{{ pedido.criadoEm | date: 'medium' }}</p>
                 </ion-label>
 
                 <ion-note class="status" slot="end" *ngIf="pedido.status" [ngClass]="{
