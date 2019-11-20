@@ -6,7 +6,7 @@ import { NavController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
-export class DentistaGuard implements CanActivateChild {
+export class ProteticoGuard implements CanActivateChild {
   tipoUsuario;
   userRef;
   constructor(
@@ -29,9 +29,9 @@ export class DentistaGuard implements CanActivateChild {
         } else {
           this.tipoUsuario = doc.get('isDentista');
         }
-        if (this.tipoUsuario === false) {
-          console.log('protetico');
-          this.router.navigate(['/home-protetico']);
+        if (this.tipoUsuario === true) {
+          console.log('dentista');
+          this.router.navigate(['/home-dentista']);
           return false;
         }
       });
