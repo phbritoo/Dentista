@@ -58,6 +58,29 @@ export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
   }
   ngOnInit() {}
 
+// NAO APAGAR - 
+  // filtroSelect(value) {
+  //   console.log(value);
+  //   if (value === '1') {
+  //      this.router.navigate(['/home-dentista']);
+  //   }
+  //   if (value === '2') {
+  //     this.router.navigate(['/status-aprovado']);
+  //  }
+  //   if (value === '3') {
+  //    this.router.navigate(['/status-cancelado']);
+  //   }
+  //   if (value === '4') {
+  //     this.router.navigate(['/status-pendente']);
+  //   }
+  //   if (value === '5') {
+  //     this.router.navigate(['/status-finalizado']);
+  //   }
+  //   if (value === '6') {
+  //     this.router.navigate(['/status-fabricacao']);
+  //   }
+  // }
+
   ngAfterViewInit() {
     this.backButtonSubscription = this.platform.backButton.subscribe(() => {
       navigator['app'].exitApp();
@@ -142,4 +165,20 @@ export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
   }
+
+  pendente(){
+    // this.router.navigate(['/status-pendente']);
+    window.open('/status-pendente');
+  }
+  aprovado(){
+    this.router.navigate(['/status-aprovado']);
+  }
+  fabricacao(){
+    this.router.navigate(['/status-fabricacao']);
+  }
+  cancelado(){
+    this.router.navigate(['/status-cancelado']);
+  }
+  
 }
+
