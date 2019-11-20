@@ -102,7 +102,8 @@ const routes: Routes = [
       './auth/pages/status-finalizado/status-finalizado.module#StatusFinalizadoPageModule',
     canActivate: [AuthGuard],
     canActivateChild: [DentistaGuard]
-  }
+  },
+    { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
