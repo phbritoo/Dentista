@@ -5,18 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { StatusConcluidoPage } from './status-concluido.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { StatusAprovadoPage } from './status-aprovado.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: StatusConcluidoPage
+    component: StatusAprovadoPage
   }
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forChild(routes)],
-  declarations: [StatusConcluidoPage]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    RouterModule.forChild(routes)
+  ],
+  declarations: [StatusAprovadoPage]
 })
-export class StatusConcluidoPageModule {}
+export class StatusAprovadoPageModule {}

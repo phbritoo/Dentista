@@ -4,7 +4,8 @@
       <ion-menu-button color="secondary"></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <div class="text ion-text-center">Pedidos Concluídos</div>
+      <div class="text ion-text-center">Pedidos Aprovados
+      </div>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,14 +15,11 @@
       <ion-col class="align-self-center" size-md="6" size-lg="6" size-xs="12">
         <ion-list>
           <ng-container *ngFor="let pedido of pedidos">
-            <ion-item-sliding *ngIf="pedido.idDentista == userLogado && pedido.status == 'ACEITO' ">
-              <!-- <ion-item (click)="openModal()"> -->
-              <ion-item>
-                <!--  <ion-item button [routerLink]="['/modal-pedido', pedido.id]"> -->
+            <ion-item-sliding *ngIf="pedido.idDentista == userLogado">
+              <ion-item *ngIf="pedido.status == 'APROVADO'">
                 <ion-avatar slot="start">
                   <img [src]="pedido.picture" />
                 </ion-avatar>
-                <!-- <ion-label (click)="openModal()"> -->
                 <ion-label (click)="editarPedido(pedido.id)">
                   {{pedido.nomePaciente}}
                   <p><b>{{ pedido.tipoProtese }}</b></p>
@@ -30,10 +28,12 @@
                 </ion-label>
 
                 <ion-note class="status" slot="end" *ngIf="pedido.status" [ngClass]="{
-                    'text-success':pedido.status === 'ACEITO',
+                    'text-primary':pedido.status === 'APROVADO',
                     'text-warning':pedido.status === 'PENDENTE',
-                    'text-danger':pedido.status === 'CANCELADO'
-                  }">{{ pedido.status}}
+                    'text-danger':pedido.status === 'CANCELADO',
+                    'text-success':pedido.status === 'FINALIZADO',
+                    'text-text':pedido.status === 'EM FABRICAÇÃO'
+                  }"><b>{{ pedido.status}}</b>
                 </ion-note>
               </ion-item>
               <ion-item-options side="end">

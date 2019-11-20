@@ -1,18 +1,21 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { NavController, MenuController,
+          PopoverController, AlertController,
+          ModalController, LoadingController,
+          ToastController, Platform } from '@ionic/angular';
 import { Pedido } from '../interfaces/pedido';
 import { Subscription } from 'rxjs';
-import { NavController, MenuController, PopoverController, AlertController, ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { PedidoService } from 'src/app/core/services/pedido.service';
 import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+
 
 @Component({
-  selector: 'app-status-concluido',
-  templateUrl: './status-concluido.page.html',
-  styleUrls: ['./status-concluido.page.scss'],
+  selector: 'app-status-aprovado',
+  templateUrl: './status-aprovado.page.html',
+  styleUrls: ['./status-aprovado.page.scss'],
 })
-export class StatusConcluidoPage implements OnInit, OnDestroy, AfterViewInit {
+export class StatusAprovadoPage implements OnInit, OnDestroy, AfterViewInit {
   private loading: any;
   public pedidos = new Array<Pedido>();
   private pedidosSubscription: Subscription;
