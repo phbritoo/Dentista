@@ -32,38 +32,36 @@ export class AppComponent implements OnDestroy {
       {
         title: 'Home',
         url: '/home-dentista',
-        // direct: 'root',
         icon: 'md-list-box'
       },
-      // {
-      //   title: 'Novo Pedido',
-      //   url: '/novo-pedido',
-      //   // direct: 'forward',
-      //   icon: 'md-add-circle-outline'
-      // },
-
       {
-        title: 'Pedidos Concluídos',
-        url: '/status-concluido',
-        // direct: 'forward',
-        icon: 'md-checkbox-outline'
+        title: 'Pedidos Aprovados',
+        url: '/status-aprovado',
+        icon: 'thumbs-up'
       },
       {
         title: 'Pedidos Pendentes',
         url: '/status-pendente',
-        // direct: 'forward',
-        icon: 'clock'
+        icon: 'warning'
       },
       {
         title: 'Pedidos Cancelados',
         url: '/status-cancelado',
-        // direct: 'forward',
-        icon: 'close-circle-outline'
+        icon: 'close-circle'
+      },
+      {
+        title: 'Pedidos em Fabricação',
+        url: '/status-fabricacao',
+        icon: 'construct'
+      },
+      {
+        title: 'Pedidos Finalizados',
+        url: '/status-finalizado',
+        icon: 'md-checkbox-outline'
       },
       {
         title: 'Solicitar Protése',
         url: '/novo-pedido',
-        // direct: 'forward',
         icon: 'add'
       }
     ];

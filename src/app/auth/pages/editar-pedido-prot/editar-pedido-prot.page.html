@@ -58,9 +58,11 @@
             <ion-label position="stacked">Status do Pedido:</ion-label>
             <ion-select class="fadeIn five ion-padding-bottom" interface="popover" [interfaceOptions]="tipoLabel"
             [(ngModel)]="status"   [ngModelOptions]="{standalone: true}" required>
-              <ion-select-option selected value="PENDENTE"> PENDENTE </ion-select-option>
+              <ion-select-option selected value="APROVADO"> APROVADO </ion-select-option>
               <ion-select-option  value="CANCELADO"> CANCELADO </ion-select-option>
-              <ion-select-option  value="ACEITO"> ACEITO </ion-select-option>
+              <ion-select-option  value="PENDENTE"> PENDENTE </ion-select-option>
+              <ion-select-option  value="FINALIZADO"> FINALIZADO </ion-select-option>
+              <ion-select-option  value="EM FABRICAÇÃO">EM FABRICAÇÃO </ion-select-option>
             </ion-select>
           </ion-item>
 
