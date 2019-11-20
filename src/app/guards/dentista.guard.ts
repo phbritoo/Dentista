@@ -1,35 +1,40 @@
-
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivateChild, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { NavController } from '@ionic/angular';
-
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
 export class DentistaGuard implements CanActivateChild {
-
-constructor(
-
-    private navCtrl: NavController
+  tipoUsuario;
+  userRef;
+  constructor(
+    private navCtrl: NavController,
+    private afs: AngularFirestore,
+    private authService: AuthService,
+    private router: Router
   ) {
-
+    const newUser = this.authService.getAuth().currentUser.uid;
+    this.userRef = this.afs.collection('User').doc(newUser);
   }
 
-  canActivateChild(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | boolean {
-    console.log('guarta de rota filha');
-
-    if (state.url.includes('prot') ) {
-      console.log('nao');
-      this.navCtrl.navigateBack(['/home-dentista']);
-      return false;
-    }
-
-    console.log(route);
-    console.log(state);
+  canActivateChild(): Observable<boolean> | boolean {
+    this.tipoUsuario = this.userRef
+      .get()
+      .toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('Não existe documento');
+        } else {
+          this.tipoUsuario = doc.get('isDentista');
+        }
+        if (this.tipoUsuario === false) {
+          console.log('protetico');
+          this.router.navigate(['/home-protetico']);
+          return false;
+        }
+      });
     return true;
   }
 }
