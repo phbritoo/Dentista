@@ -15,7 +15,7 @@
         <ion-list>
           <ion-searchbar class="barra" (ionInput)="filterList($event)" clearInput placeholder="Pesquisar pedido..."></ion-searchbar>
           <ng-container *ngFor="let pedido of pedidos">
-            <ion-item-sliding *ngIf="pedido.idDentista !== userLogado">
+            <ion-item-sliding *ngIf="pedido.nomeProtetico === userLogado">
               <ion-item>
                 <ion-avatar slot="start">
                   <img [src]="pedido.picture" />
