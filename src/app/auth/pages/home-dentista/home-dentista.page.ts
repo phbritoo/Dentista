@@ -26,6 +26,7 @@ export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
   private pedidosSubscription: Subscription;
   public userLogado: any;
   backButtonSubscription;
+  public searchListCopy: Array<any>;
 
   constructor(
     public navCtrl: NavController,
@@ -48,6 +49,8 @@ export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
       this.platform = platform;
 
       this.userLogado = this.authService.getAuth().currentUser.uid;
+
+      this.searchListCopy = this.pedidos;
     });
   }
 
@@ -58,7 +61,7 @@ export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
   }
   ngOnInit() {}
 
-// NAO APAGAR - 
+  // NAO APAGAR -
   // filtroSelect(value) {
   //   console.log(value);
   //   if (value === '1') {
@@ -184,5 +187,35 @@ export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
     this.router.navigate(['/novo-pedido']);
   }
 
+  initializeItems(): void {
+    this.pedidos = this.searchListCopy;
+  }
+
+  filterList(evt) {
+    this.initializeItems();
+    const searchTerm = evt.srcElement.value;
+
+    if (!searchTerm) {
+      return;
+    }
+
+    this.pedidos = this.searchListCopy.filter(item => {
+      if (item.status && searchTerm) {
+        if (item.status.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        if (item.nomePaciente.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        if (item.tipoProtese.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        if (item.subTipoProtese.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
 }
 
