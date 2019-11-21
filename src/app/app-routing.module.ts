@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-import { LoginGuard } from './guards/login.guard';
 import { DentistaGuard } from './guards/dentista.guard';
 import { ProteticoGuard } from './guards/protetico.guard';
 
@@ -47,11 +46,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canActivateChild: [DentistaGuard]
   },
-  {
-    path: 'popup-menu',
-    loadChildren: './auth/pages/popup-menu/popup-menu.module#PopupMenuPageModule',
-    canActivate: [AuthGuard]
-  },
+ 
   {
     path: 'perfil-dentista',
     loadChildren: './auth/pages/perfil-dentista/perfil-dentista.module#PerfilDentistaPageModule',
