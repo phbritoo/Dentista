@@ -166,19 +166,23 @@ export class HomeDentistaPage implements OnInit, OnDestroy, AfterViewInit {
     this.menuCtrl.enable(true);
   }
 
-  pendente(){
+  pendente() {
     // this.router.navigate(['/status-pendente']);
     window.open('/status-pendente');
   }
-  aprovado(){
+  aprovado() {
     this.router.navigate(['/status-aprovado']);
   }
-  fabricacao(){
+  fabricacao() {
     this.router.navigate(['/status-fabricacao']);
   }
-  cancelado(){
+  cancelado() {
     this.router.navigate(['/status-cancelado']);
   }
-  
+
+  novo() {
+    this.router.navigate(['/novo-pedido']);
+  }
+
 }
 

@@ -19,62 +19,6 @@ ion-note {
   background: #dde0fd;
 }
 
-body,
-html {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-.searchbar {
-  margin: 6px 0px 6px 0px;
-  height: 40px;
-  // background-color: #353b48;
-  background: linear-gradient(145deg, #2196f3, #3f51b5);
-  border-radius: 40px;
-  padding: 0px 15px 0px 15px;
-}
-
-.search_input {
-  color: white;
-  border: 0;
-  outline: 0;
-  background: none;
-  width: 0;
-  line-height: 40px;
-  transition: width 0.4s linear;
-}
-
-.searchbar:hover>.search_input {
-  // padding: -1px 10px; //
-  width: 270px;
-  // -webkit-transition: width 0.4s linear; //
-  transition: width 0.4s linear;
-}
-
-.searchbar:hover>.search_icon {
-  // background: blue;
-  color: white;
-}
-
-.search_icon {
-  height: 30px;
-  width: 24px;
-  float: right;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  margin-top: 5px;
-  -webkit-box-align: center;
-  align-items: center;
-  border-radius: 35%;
-  color: white;
-}
-
-
 ion-fab {
   padding: 0 35px 30px 0px;
 
@@ -140,4 +84,8 @@ ion-fab-list {
 
 :-ms-input-placeholder {  
   color: white;  
+}
+
+.barra{
+  margin: -18px 0px 10px 0px;
 }
