@@ -197,6 +197,15 @@ export class HomeProteticoPage implements OnInit {
         if (item.status.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
           return true;
       }
+        if (item.nomePaciente.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+        return true;
+      }
+        if (item.tipoProtese.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+        return true;
+      }
+        if (item.subTipoProtese.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+        return true;
+      }
         return false;
     }
 
