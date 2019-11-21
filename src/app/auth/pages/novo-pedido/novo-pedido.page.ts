@@ -67,7 +67,8 @@ export class NovoPedidoPage implements OnInit, OnDestroy {
       observacao: ['', [Validators.required]],
       status: ['PENDENTE'],
       nomePaciente: ['', [Validators.required]],
-      criadoEm: [new Date().getTime()]
+      criadoEm: [new Date().getTime()],
+      nomeDentista: [this.authService.getAuth().currentUser.displayName]
     });
   }
 
