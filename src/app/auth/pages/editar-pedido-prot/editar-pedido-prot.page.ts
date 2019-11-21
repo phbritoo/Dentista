@@ -38,6 +38,7 @@ export class EditarPedidoProtPage implements OnInit, OnDestroy {
   sub;
   nomeProtetico;
   nomePaciente;
+  nomeDentista;
   tipoProtese;
   subTipoProtese;
   criadoEm;
@@ -77,6 +78,7 @@ export class EditarPedidoProtPage implements OnInit, OnDestroy {
       this.criadoEm = event.criadoEm;
       this.observacao = event.observacao;
       this.status = event.status;
+      this.nomeDentista = event.nomeDentista;
     });
   }
 
@@ -86,6 +88,7 @@ export class EditarPedidoProtPage implements OnInit, OnDestroy {
     this.editarPedido.controls.nomeProtetico.disable();
     this.editarPedido.controls.tipoProtese.disable();
     this.editarPedido.controls.subTipoProtese.disable();
+    this.editarPedido.controls.nomeDentista.disable();
   }
   ngOnDestroy() {
     if (this.pedidoSubscription) {
@@ -101,6 +104,7 @@ export class EditarPedidoProtPage implements OnInit, OnDestroy {
     this.editarPedido = this.fb.group({
       nomeProtetico: ['', [Validators.required]],
       nomePaciente: ['', [Validators.required]],
+      nomeDentista: ['', [Validators.required]],
       tipoProtese: ['', [Validators.required]],
       subTipoProtese: ['', [Validators.required]],
       observacao: ['', [Validators.required]],
@@ -166,7 +170,8 @@ export class EditarPedidoProtPage implements OnInit, OnDestroy {
         tipoProtese: this.tipoProtese,
         subTipoProtese: this.subTipoProtese,
         observacao: this.observacao,
-        status: this.status
+        status: this.status,
+        nomeDentista: this.nomeDentista
       });
     } catch (error) {
       return await this.presentToast('<center>' + 'Error ao atualizar !' + '</center>');

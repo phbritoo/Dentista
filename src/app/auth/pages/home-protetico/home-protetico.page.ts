@@ -193,7 +193,6 @@ export class HomeProteticoPage implements OnInit {
     }
 
     this.pedidos = this.searchListCopy.filter(item => {
-      if (item.status && searchTerm) {
         if (item.status.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
           return true;
       }
@@ -206,8 +205,9 @@ export class HomeProteticoPage implements OnInit {
         if (item.subTipoProtese.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
         return true;
       }
-        return false;
-    }
+        if (item.nomeDentista.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+        return true;
+      }
 
     });
 
