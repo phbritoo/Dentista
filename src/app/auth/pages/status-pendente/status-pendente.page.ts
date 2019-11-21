@@ -20,6 +20,7 @@ export class StatusPendentePage implements OnInit, OnDestroy, AfterViewInit {
   private pedidosSubscription: Subscription;
   public userLogado: any;
   backButtonSubscription;
+  public searchListCopy: Array<any>;
 
   constructor(
     public navCtrl: NavController,
@@ -42,6 +43,8 @@ export class StatusPendentePage implements OnInit, OnDestroy, AfterViewInit {
       this.platform = platform;
 
       this.userLogado = this.authService.getAuth().currentUser.uid;
+
+      this.searchListCopy = this.pedidos;
     });
   }
 
@@ -135,5 +138,40 @@ export class StatusPendentePage implements OnInit, OnDestroy, AfterViewInit {
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
+  }
+
+  initializeItems(): void {
+    this.pedidos = this.searchListCopy;
+  }
+
+  filterList(evt) {
+    this.initializeItems();
+    const searchTerm = evt.srcElement.value;
+
+    if (!searchTerm) {
+      return;
+    }
+
+    this.pedidos = this.searchListCopy.filter(item => {
+      if (item.status && searchTerm) {
+        if (item.status.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        if (item.nomePaciente.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        if (item.tipoProtese.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        if (item.subTipoProtese.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
+
+  novo() {
+    this.router.navigate(['/novo-pedido']);
   }
 }

@@ -14,6 +14,8 @@
     <ion-row color="primary" class="ion-justify-content-center">
       <ion-col class="align-self-center" size-md="6" size-lg="6" size-xs="12">
         <ion-list>
+            <ion-searchbar class="barra" (ionInput)="filterList($event)" clearInput placeholder="Pesquisar pedido...">
+              </ion-searchbar>
           <ng-container *ngFor="let pedido of pedidos">
             <ion-item-sliding *ngIf="pedido.idDentista == userLogado">
               <ion-item *ngIf="pedido.status == 'APROVADO'">
@@ -49,3 +51,8 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="primary">
+      <ion-icon name="add" title="Novo Pedido" (click)="novo()"> </ion-icon>
+    </ion-fab-button>
+  </ion-fab>
