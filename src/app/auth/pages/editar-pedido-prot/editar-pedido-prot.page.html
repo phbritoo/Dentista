@@ -56,7 +56,7 @@
           <ion-item>
             <ion-icon name="checkbox" slot="start"></ion-icon>
             <ion-label position="stacked">Status do Pedido:</ion-label>
-            <ion-select class="fadeIn five ion-padding-bottom" interface="popover" [interfaceOptions]="tipoLabel"
+            <ion-select class="fadeIn five ion-padding-bottom" interface="popover" [interfaceOptions]="status"
             [(ngModel)]="status"   [ngModelOptions]="{standalone: true}" required>
               <ion-select-option selected value="APROVADO"> APROVADO </ion-select-option>
               <ion-select-option  value="CANCELADO"> CANCELADO </ion-select-option>
