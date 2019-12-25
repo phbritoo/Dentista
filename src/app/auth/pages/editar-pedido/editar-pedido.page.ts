@@ -83,7 +83,7 @@ export class EditarPedidoPage implements OnInit, OnDestroy {
     this.editarPedido.controls.subTipoProtese.disable();
   }
 
-  async presentAlertConfirm(pedidoId: string) {
+  async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'ATENÇÃO!',
       message: 'Tem certeza que deseja excluir este pedido?',

@@ -34,7 +34,7 @@ import { ProteticoGuard } from './guards/protetico.guard';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule
   ],
   entryComponents: [],
   providers: [
